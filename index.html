@@ -77,10 +77,10 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:300;}
 .eyebrow-c::after{content:'';width:28px;height:1px;background:currentColor;opacity:.55;flex-shrink:0;}
 .divider{width:48px;height:1px;background:linear-gradient(to right,var(--rose),transparent);margin:26px 0;}
 
-/* QUOTE — now inline below about section, smaller */
-.quote-inline{background:var(--parch);padding:52px 10%;text-align:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.quote-inline blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2vw,22px);font-weight:300;line-height:1.7;color:var(--muted);max-width:620px;margin:0 auto;}
-.quote-inline blockquote em{font-style:italic;color:var(--rose);}
+/* QUOTE — inside work section, below tiles */
+.work-quote{text-align:center;padding:64px 10% 0;border-top:1px solid var(--border);margin-top:52px;}
+.work-quote blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.6vw,30px);font-weight:300;line-height:1.7;color:var(--muted);max-width:680px;margin:0 auto;}
+.work-quote blockquote em{font-style:italic;color:var(--rose);}
 
 /* ABOUT */
 .about{padding:0;display:grid;grid-template-columns:1fr 1fr;align-items:stretch;background:var(--cream);overflow:hidden;}
@@ -403,11 +403,10 @@ footer{background:var(--dark);padding:76px 72px 40px;}
       </div>
     </div>
   </div>
+  <div class="work-quote">
+    <blockquote class="rv">&ldquo;You are not broken. There is nothing to fix. <em>Everything you seek already lives within you.</em>&rdquo;</blockquote>
+  </div>
 </section>
-
-<div class="quote-inline">
-  <blockquote class="rv">&ldquo;You are not broken. There is nothing to fix. <em>Everything you seek already lives within you.</em>&rdquo;</blockquote>
-</div>
 
 <section class="testimonials">
   <div class="testi-hd">
