@@ -77,10 +77,10 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:300;}
 .eyebrow-c::after{content:'';width:28px;height:1px;background:currentColor;opacity:.55;flex-shrink:0;}
 .divider{width:48px;height:1px;background:linear-gradient(to right,var(--rose),transparent);margin:26px 0;}
 
-/* QUOTE */
-.quote-band{background:var(--parch);padding:100px 10%;text-align:center;border-bottom:1px solid var(--border);}
-.quote-band blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3.5vw,38px);font-weight:300;line-height:1.65;color:var(--text);max-width:780px;margin:0 auto;}
-.quote-band blockquote em{font-style:italic;color:var(--rose);}
+/* QUOTE — now inline below about section, smaller */
+.quote-inline{background:var(--parch);padding:52px 10%;text-align:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.quote-inline blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2vw,22px);font-weight:300;line-height:1.7;color:var(--muted);max-width:620px;margin:0 auto;}
+.quote-inline blockquote em{font-style:italic;color:var(--rose);}
 
 /* ABOUT */
 .about{padding:128px 72px;display:grid;grid-template-columns:5fr 6fr;gap:100px;align-items:center;background:var(--cream);}
@@ -93,13 +93,13 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:300;}
 .link-rose::after{content:'&#8594;';}
 .link-rose:hover{gap:18px;}
 
-/* DIOSA FEATURE */
-.diosa{background:var(--dark);color:#fff;padding:120px 10%;text-align:center;position:relative;overflow:hidden;}
-.diosa::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(170,68,102,.14),transparent 70%);pointer-events:none;}
-.diosa h2{font-size:clamp(26px,4.5vw,56px);line-height:1.35;max-width:820px;margin:0 auto 26px;font-weight:300;}
+/* DIOSA FEATURE — reduced to accent band, not full hero section */
+.diosa{background:var(--dark);color:#fff;padding:72px 10%;text-align:center;position:relative;overflow:hidden;}
+.diosa::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(170,68,102,.12),transparent 70%);pointer-events:none;}
+.diosa h2{font-size:clamp(18px,2.4vw,28px);line-height:1.5;max-width:820px;margin:0 auto 20px;font-weight:300;letter-spacing:.02em;}
 .diosa h2 em{font-style:italic;color:var(--rose-pale);}
-.diosa p{font-size:1.05rem;line-height:1.9;color:rgba(255,255,255,.58);max-width:680px;margin:0 auto 14px;}
-.diosa .divider{margin:28px auto;width:80px;background:linear-gradient(to right,transparent,var(--rose-pale),transparent);}
+.diosa p{font-size:.96rem;line-height:1.9;color:rgba(255,255,255,.52);max-width:660px;margin:0 auto 12px;}
+.diosa .divider{margin:20px auto;width:60px;background:linear-gradient(to right,transparent,var(--rose-pale),transparent);}
 
 /* PLEASURE */
 .pleasure{display:grid;grid-template-columns:1fr 1fr;}
@@ -119,13 +119,45 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:300;}
 .medicine-hd h2 em{font-style:italic;color:var(--rose-pale);}
 .medicine-hd p{color:rgba(255,255,255,.48);font-size:.98rem;line-height:1.85;max-width:520px;margin:0 auto;}
 .med-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;}
-.med-card{background:rgba(255,255,255,.03);border:1px solid rgba(170,68,102,.1);padding:40px 24px 36px;text-align:center;position:relative;overflow:hidden;transition:background .35s,border-color .35s;}
-.med-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--rose),transparent);transform:scaleX(0);transition:transform .45s cubic-bezier(.16,1,.3,1);}
-.med-card:hover{background:rgba(170,68,102,.07);border-color:rgba(170,68,102,.22);}
-.med-card:hover::after{transform:scaleX(1);}
-.med-icon{font-size:1.3rem;margin-bottom:16px;opacity:.65;}
+.med-card{
+  border:1px solid rgba(170,68,102,.1);padding:40px 24px 36px;text-align:center;
+  position:relative;overflow:hidden;
+  transition:border-color .35s,transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s;
+}
+/* faint illustrative bg image per card, rose-tinted overlay on top */
+.med-card::before{
+  content:'';position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  opacity:.18;transition:opacity .35s;
+  filter:saturate(.4) brightness(.7);
+}
+.med-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(160deg,rgba(122,40,66,.72),rgba(38,20,28,.88));
+  z-index:0;
+}
+.med-card > *{position:relative;z-index:1;}
+.med-card:hover{
+  border-color:rgba(170,68,102,.32);
+  transform:scale(1.035);
+  box-shadow:0 20px 48px rgba(122,40,66,.35);
+  z-index:2;
+}
+.med-card:hover::before{opacity:.32;}
+/* individual bg images per card */
+.med-card:nth-child(1)::before{background-image:url('images/rosa-cacao.jpg');}
+.med-card:nth-child(2)::before{background-image:url('images/rosa-ceremony-healing.jpg');}
+.med-card:nth-child(3)::before{background-image:url('images/rosa-rose-garden.png');}
+.med-card:nth-child(4)::before{background-image:url('images/rosa-ceremony-wide.jpg');}
+.med-card:nth-child(5)::before{background-image:url('images/rosa-orange-seated.jpg');}
+.med-card:nth-child(6)::before{background-image:url('images/rosa-soundbowls.jpg');}
+.med-card:nth-child(7)::before{background-image:url('images/rosa-rose-painting.png');}
+.med-card:nth-child(8)::before{background-image:url('images/rosa-bamboo.png');}
+.med-card:nth-child(9)::before{background-image:url('images/rosa-ceremony-gong.jpg');}
+.med-card:nth-child(10)::before{background-image:url('images/rosa-pyramid.jpg');}
+.med-icon{font-size:1.3rem;margin-bottom:16px;opacity:.7;}
 .med-card h3{font-family:'Cormorant Garamond',serif;font-size:1.02rem;font-weight:400;color:#fff;margin-bottom:10px;line-height:1.35;}
-.med-card p{font-size:.78rem;line-height:1.72;color:rgba(255,255,255,.4);}
+.med-card p{font-size:.78rem;line-height:1.72;color:rgba(255,255,255,.45);}
 
 /* WORK */
 .work{padding:120px 72px;background:var(--cream);}
@@ -136,7 +168,7 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:300;}
 .work-card{position:relative;overflow:hidden;min-height:580px;display:flex;align-items:flex-end;}
 .work-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 8s ease;}
 .work-card:hover img{transform:scale(1.04);}
-.work-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(24,10,16,.88) 0%,rgba(24,10,16,.18) 58%,rgba(24,10,16,.1) 100%);}
+.work-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(24,10,16,.97) 0%,rgba(24,10,16,.82) 40%,rgba(24,10,16,.3) 70%,rgba(24,10,16,.05) 100%);}
 .work-body{position:relative;z-index:2;padding:52px;}
 .cap-label{font-family:'Cinzel',serif;font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;color:var(--rose-pale);margin-bottom:12px;display:block;}
 .work-body h3{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.8vw,34px);font-weight:300;color:#fff;margin-bottom:16px;line-height:1.2;}
@@ -279,18 +311,10 @@ footer{background:var(--dark);padding:76px 72px 40px;}
   </div>
 </div>
 
-<div class="quote-band">
-  <blockquote class="rv">
-    You are not broken.<br>
-    There is nothing to fix.<br>
-    <em>Everything you seek already lives within you.</em>
-  </blockquote>
-</div>
-
 <section class="about" id="about">
   <div class="rv-l">
     <div class="about-frame">
-      <img src="images/rosa-rose-painting.png" alt="Rosa Diaz de Leon" id="about-img">
+      <img src="images/rosa-pyramid.jpg" alt="Rosa Diaz de Leon" id="about-img">
     </div>
   </div>
   <div class="rv-r about-text">
@@ -303,6 +327,10 @@ footer{background:var(--dark);padding:76px 72px 40px;}
     <a href="#medicine" class="link-rose">Discover My Medicine</a>
   </div>
 </section>
+
+<div class="quote-inline">
+  <blockquote class="rv">&ldquo;You are not broken. There is nothing to fix. <em>Everything you seek already lives within you.</em>&rdquo;</blockquote>
+</div>
 
 <div class="diosa">
   <p class="eyebrow eyebrow-c rv" style="color:var(--rose-pale);">The Rose Goddess &nbsp;&middot;&nbsp; Diosa Rosa</p>
@@ -402,7 +430,7 @@ footer{background:var(--dark);padding:76px 72px 40px;}
 </section>
 
 <section class="cta" id="contact">
-  <img src="images/rosa-rose-garden.png" alt="" class="cta-bg" id="cta-bg">
+  <img src="images/rosa-rainbow-joy.jpg" alt="" class="cta-bg" id="cta-bg">
   <div class="cta-grad"></div>
   <div class="cta-body rv">
     <p class="eyebrow eyebrow-c" style="color:var(--rose-pale);">Begin</p>
