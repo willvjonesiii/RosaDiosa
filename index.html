@@ -45,7 +45,9 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:300;}
 
 /* HERO */
 .hero{position:relative;height:100vh;min-height:660px;display:flex;align-items:flex-end;overflow:hidden;background:var(--dark);}
-.hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.52;}
+.hero-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.52;z-index:0;transition:opacity .6s;}
+.hero-fallback.hidden{opacity:0;pointer-events:none;}
+.hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.52;z-index:1;}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(24,10,16,.9) 0%,rgba(24,10,16,.25) 52%,rgba(24,10,16,.48) 100%);}
 .hero-content{position:relative;z-index:2;width:100%;padding:0 72px 100px;text-align:center;}
 .hero-eyebrow{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.38em;text-transform:uppercase;color:var(--rose-pale);opacity:.82;margin-bottom:26px;display:flex;align-items:center;justify-content:center;gap:22px;}
@@ -286,7 +288,8 @@ footer{background:var(--dark);padding:76px 72px 40px;}
 </nav>
 
 <section class="hero">
-  <video class="hero-vid" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1547996807-75e34d9e1e53?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+  <img class="hero-fallback" src="https://images.unsplash.com/photo-1547996807-75e34d9e1e53?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+  <video class="hero-vid" autoplay muted loop playsinline>
     <source src="Hero.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
@@ -533,6 +536,12 @@ footer{background:var(--dark);padding:76px 72px 40px;}
     if(cb&&cw){var r3=cw.getBoundingClientRect();if(r3.bottom>0&&r3.top<wh){var p3=(wh*.5-r3.top)/(wh+r3.height);cb.style.transform='translateY('+(p3*24-12)+'%)';}}
   }
   window.addEventListener('scroll',s,{passive:true});s();
+})();
+(function(){
+  var vid=document.querySelector('.hero-vid');
+  var fb=document.querySelector('.hero-fallback');
+  if(!vid||!fb)return;
+  vid.addEventListener('playing',function(){fb.classList.add('hidden');},{once:true});
 })();
 </script>
 </body>
