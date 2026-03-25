@@ -57,7 +57,7 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300;}
 
 /* PROGRAM HERO */
 .prog-hero{position:relative;height:88vh;min-height:580px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--dark);}
-.prog-hero-bg{position:absolute;inset:0;width:100%;height:112%;object-fit:cover;opacity:.5;will-change:transform;}
+.prog-hero-bg{position:absolute;inset:0;width:100%;height:112%;object-fit:cover;object-position:center 20%;opacity:.5;will-change:transform;}
 .prog-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(24,10,16,.92) 0%,rgba(24,10,16,.28) 50%,rgba(24,10,16,.55) 100%);}
 .prog-hero-content{position:relative;z-index:2;text-align:center;padding:0 10%;}
 .prog-hero-eyebrow{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.38em;text-transform:uppercase;color:var(--rose-pale);opacity:.82;margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:20px;}
@@ -107,18 +107,40 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300;}
 .stages-hd h2 em{font-style:italic;color:var(--rose);}
 .stages-hd p{font-size:1rem;line-height:1.82;color:var(--muted);max-width:540px;margin:0 auto;}
 .stages-list{display:flex;flex-direction:column;gap:3px;}
-.stage-row{display:grid;grid-template-columns:72px 1fr 1fr;background:rgba(255,255,255,.65);border:1px solid var(--border);overflow:hidden;transition:background .3s,border-color .3s;}
-.stage-row:hover{background:#fff;border-color:rgba(170,68,102,.22);}
-.stage-num{display:flex;align-items:center;justify-content:center;background:var(--rose);color:#fff;font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;flex-shrink:0;}
+.stage-row{display:grid;grid-template-columns:72px 1fr 1fr;position:relative;overflow:hidden;border:1px solid var(--border);transition:border-color .4s;min-height:110px;}
+/* bg photo layer */
+.stage-row::before{content:'';position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;filter:saturate(.6) brightness(.6);transition:opacity .5s;z-index:0;}
+/* tinted overlay */
+.stage-row::after{content:'';position:absolute;inset:0;background:rgba(245,234,228,.92);z-index:1;transition:background .4s;}
+.stage-row > *{position:relative;z-index:2;}
+/* all rows dimmed by default */
+.stage-num{display:flex;align-items:center;justify-content:center;background:rgba(170,68,102,.18);color:rgba(255,255,255,.4);font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;flex-shrink:0;transition:background .4s,color .4s;}
 .stage-body{padding:36px 40px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border);}
-.stage-element{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--rose);margin-bottom:8px;}
-.stage-body h3{font-size:clamp(18px,2.4vw,28px);line-height:1.2;margin-bottom:6px;}
-.stage-archetype{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.96rem;color:var(--muted);}
+.stage-element{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(170,68,102,.28);margin-bottom:8px;transition:color .4s;}
+.stage-body h3{font-size:clamp(18px,2.4vw,28px);line-height:1.2;margin-bottom:6px;color:rgba(44,20,32,.22);transition:color .4s;}
+.stage-archetype{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.96rem;color:rgba(138,100,112,.24);transition:color .4s;}
 .stage-focus{padding:36px 40px;display:flex;flex-direction:column;justify-content:center;}
-.stage-focus-label{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.stage-focus-label{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(138,100,112,.2);margin-bottom:14px;transition:color .4s;}
 .stage-focus ul{display:flex;flex-direction:column;gap:8px;}
-.stage-focus li{font-size:.9rem;color:var(--text);display:flex;align-items:center;gap:12px;}
-.stage-focus li::before{content:'';width:16px;height:1px;background:var(--rose);opacity:.55;flex-shrink:0;}
+.stage-focus li{font-size:.9rem;color:rgba(44,20,32,.2);display:flex;align-items:center;gap:12px;transition:color .4s;}
+.stage-focus li::before{content:'';width:16px;height:1px;background:var(--rose);opacity:.18;flex-shrink:0;transition:opacity .4s;}
+/* active / hover — illuminate */
+.stage-row.active,.stage-row:hover{border-color:rgba(170,68,102,.3);}
+.stage-row.active::before,.stage-row:hover::before{opacity:.26;}
+.stage-row.active::after,.stage-row:hover::after{background:rgba(245,234,228,.72);}
+.stage-row.active .stage-num,.stage-row:hover .stage-num{background:var(--rose);color:#fff;}
+.stage-row.active .stage-element,.stage-row:hover .stage-element{color:var(--rose);}
+.stage-row.active .stage-body h3,.stage-row:hover .stage-body h3{color:var(--text);}
+.stage-row.active .stage-archetype,.stage-row:hover .stage-archetype{color:var(--muted);}
+.stage-row.active .stage-focus-label,.stage-row:hover .stage-focus-label{color:var(--muted);}
+.stage-row.active .stage-focus li,.stage-row:hover .stage-focus li{color:var(--text);}
+.stage-row.active .stage-focus li::before,.stage-row:hover .stage-focus li::before{opacity:.55;}
+/* per-row Unsplash bg images matching each archetype */
+.stage-row:nth-child(1)::before{background-image:url('https://images.unsplash.com/photo-1671164458343-34007812c289?auto=format&fit=crop&w=1600&q=80');}
+.stage-row:nth-child(2)::before{background-image:url('https://images.unsplash.com/photo-1746941156236-35287878fcf2?auto=format&fit=crop&w=1600&q=80');}
+.stage-row:nth-child(3)::before{background-image:url('https://images.unsplash.com/photo-1670772024735-d23ff38aabff?auto=format&fit=crop&w=1600&q=80');}
+.stage-row:nth-child(4)::before{background-image:url('https://images.unsplash.com/photo-1434073258536-670ac0e5ee06?auto=format&fit=crop&w=1600&q=80');}
+.stage-row:nth-child(5)::before{background-image:url('https://images.unsplash.com/photo-1740772405060-577d40b6c8fd?auto=format&fit=crop&w=1600&q=80');}
 
 /* ARCHETYPES */
 .archetypes{background:var(--bark);padding:112px 72px;}
@@ -127,44 +149,13 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300;}
 .archetypes-hd h2 em{font-style:italic;color:var(--rose-pale);}
 .archetypes-hd p{color:rgba(255,255,255,.45);font-size:.98rem;line-height:1.85;max-width:520px;margin:0 auto;}
 .arch-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;}
-.arch-card{
-  border:1px solid rgba(170,68,102,.08);padding:36px 20px 32px;text-align:center;
-  position:relative;overflow:hidden;
-  transition:border-color .45s,box-shadow .45s;
-}
-/* photo bg */
-.arch-card::before{
-  content:'';position:absolute;inset:0;
-  background-size:cover;background-position:center;
-  opacity:.13;filter:saturate(.25) brightness(.55);
-  transition:opacity .45s;
-}
-/* dark overlay */
-.arch-card::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(170deg,rgba(24,10,16,.94),rgba(38,20,28,.96));
-  z-index:0;transition:background .45s;
-}
-.arch-card > *{position:relative;z-index:1;}
-/* dimmed by default */
-.arch-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--rose-pale);opacity:.12;line-height:1;margin-bottom:12px;transition:opacity .45s;}
-.arch-card h3{font-family:'Cormorant Garamond',serif;font-size:.98rem;font-weight:400;color:rgba(255,255,255,.18);margin-bottom:8px;line-height:1.3;transition:color .45s;}
-.arch-card p{font-size:.74rem;line-height:1.65;color:rgba(255,255,255,.1);transition:color .45s;}
-/* hover — illuminate */
-.arch-card:hover{border-color:rgba(170,68,102,.3);}
-.arch-card:hover::before{opacity:.34;}
-.arch-card:hover::after{background:linear-gradient(170deg,rgba(24,10,16,.76),rgba(38,20,28,.82));}
-.arch-card:hover .arch-num{opacity:.55;}
-.arch-card:hover h3{color:#fff;}
-.arch-card:hover p{color:rgba(255,255,255,.62);}
-/* per-card bg images — one per archetype concept */
-.arch-card:nth-child(1)::before{background-image:url('images/rosa-pyramid.jpg');}
-.arch-card:nth-child(2)::before{background-image:url('images/rosa-rose-painting.png');}
-.arch-card:nth-child(3)::before{background-image:url('images/rosa-rose-garden.png');}
-.arch-card:nth-child(4)::before{background-image:url('images/rosa-drum-crown.png');}
-.arch-card:nth-child(5)::before{background-image:url('images/rosa-waterfall-drum.png');}
-.arch-card:nth-child(6)::before{background-image:url('images/rosa-ceremony-healing.jpg');}
-.arch-card:nth-child(7)::before{background-image:url('images/rosa-rainbow-joy.jpg');}
+.arch-card{background:rgba(255,255,255,.03);border:1px solid rgba(170,68,102,.1);padding:36px 20px 32px;text-align:center;transition:background .35s,border-color .35s;position:relative;overflow:hidden;}
+.arch-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--rose-pale),transparent);transform:scaleX(0);transition:transform .45s cubic-bezier(.16,1,.3,1);}
+.arch-card:hover{background:rgba(170,68,102,.07);border-color:rgba(170,68,102,.22);}
+.arch-card:hover::after{transform:scaleX(1);}
+.arch-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--rose-pale);opacity:.28;line-height:1;margin-bottom:12px;}
+.arch-card h3{font-family:'Cormorant Garamond',serif;font-size:.98rem;font-weight:400;color:#fff;margin-bottom:8px;line-height:1.3;}
+.arch-card p{font-size:.74rem;line-height:1.65;color:rgba(255,255,255,.38);}
 
 /* PROGRAM CTA */
 .prog-cta{position:relative;min-height:500px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
@@ -292,8 +283,8 @@ footer{background:var(--dark);padding:72px 72px 40px;}
     <h2 class="rv">The Five <em>Elemental Stages</em></h2>
     <p class="rv">Each stage corresponds to an element of nature, an archetype of the feminine, and a domain of your inner landscape waiting to be reclaimed.</p>
   </div>
-  <div class="stages-list">
-    <div class="stage-row rv">
+  <div class="stages-list" id="stages-list">
+    <div class="stage-row rv active">
       <div class="stage-num">I</div>
       <div class="stage-body">
         <p class="stage-element">Earth</p>
@@ -309,7 +300,7 @@ footer{background:var(--dark);padding:72px 72px 40px;}
         </ul>
       </div>
     </div>
-    <div class="stage-row rv" style="transition-delay:60ms">
+    <div class="stage-row rv" style="transition-delay:120ms">
       <div class="stage-num">II</div>
       <div class="stage-body">
         <p class="stage-element">Water</p>
@@ -325,7 +316,7 @@ footer{background:var(--dark);padding:72px 72px 40px;}
         </ul>
       </div>
     </div>
-    <div class="stage-row rv" style="transition-delay:120ms">
+    <div class="stage-row rv" style="transition-delay:240ms">
       <div class="stage-num">III</div>
       <div class="stage-body">
         <p class="stage-element">Fire</p>
@@ -341,7 +332,7 @@ footer{background:var(--dark);padding:72px 72px 40px;}
         </ul>
       </div>
     </div>
-    <div class="stage-row rv" style="transition-delay:180ms">
+    <div class="stage-row rv" style="transition-delay:360ms">
       <div class="stage-num">IV</div>
       <div class="stage-body">
         <p class="stage-element">Air</p>
@@ -357,7 +348,7 @@ footer{background:var(--dark);padding:72px 72px 40px;}
         </ul>
       </div>
     </div>
-    <div class="stage-row rv" style="transition-delay:240ms">
+    <div class="stage-row rv" style="transition-delay:480ms">
       <div class="stage-num">V</div>
       <div class="stage-body">
         <p class="stage-element">Spirit</p>
@@ -389,32 +380,32 @@ footer{background:var(--dark);padding:72px 72px 40px;}
       <h3>The Seed</h3>
       <p>Potential and beginnings</p>
     </div>
-    <div class="arch-card rv" style="transition-delay:110ms">
+    <div class="arch-card rv" style="transition-delay:55ms">
       <div class="arch-num">02</div>
       <h3>The Bud</h3>
       <p>Awakening sensuality</p>
     </div>
-    <div class="arch-card rv" style="transition-delay:220ms">
+    <div class="arch-card rv" style="transition-delay:110ms">
       <div class="arch-num">03</div>
       <h3>The Blooming Rose</h3>
       <p>Embodied pleasure</p>
     </div>
-    <div class="arch-card rv" style="transition-delay:330ms">
+    <div class="arch-card rv" style="transition-delay:165ms">
       <div class="arch-num">04</div>
       <h3>The Thorn Keeper</h3>
       <p>Boundaries and truth</p>
     </div>
-    <div class="arch-card rv" style="transition-delay:440ms">
+    <div class="arch-card rv" style="transition-delay:220ms">
       <div class="arch-num">05</div>
       <h3>The Wild Rose</h3>
       <p>Untamed feminine power</p>
     </div>
-    <div class="arch-card rv" style="transition-delay:550ms">
+    <div class="arch-card rv" style="transition-delay:275ms">
       <div class="arch-num">06</div>
       <h3>The Priestess of the Rose</h3>
       <p>Intuition and spiritual connection</p>
     </div>
-    <div class="arch-card rv" style="transition-delay:660ms">
+    <div class="arch-card rv" style="transition-delay:330ms">
       <div class="arch-num">07</div>
       <h3>The Rose Goddess</h3>
       <p>Sovereignty and integration</p>
@@ -424,7 +415,7 @@ footer{background:var(--dark);padding:72px 72px 40px;}
 
 <!-- CTA -->
 <section class="prog-cta">
-  <img src="images/rosa-dance-field.png" alt="" class="prog-cta-bg" id="prog-cta-bg">
+  <img src="images/rosa-program-cta.jpg" alt="" class="prog-cta-bg" id="prog-cta-bg">
   <div class="prog-cta-grad"></div>
   <div class="prog-cta-body rv">
     <p class="eyebrow eyebrow-c" style="color:var(--rose-pale);">The Invitation</p>
@@ -491,6 +482,21 @@ footer{background:var(--dark);padding:72px 72px 40px;}
     if(cb){var r2=cb.closest('.prog-cta').getBoundingClientRect();if(r2.bottom>0&&r2.top<wh){var p2=(wh*.5-r2.top)/(wh+r2.height);cb.style.transform='translateY('+(p2*10-5)+'%)';}}
   }
   window.addEventListener('scroll',s,{passive:true});s();
+})();
+(function(){
+  var list=document.getElementById('stages-list');
+  if(!list)return;
+  var rows=list.querySelectorAll('.stage-row');
+  rows.forEach(function(row){
+    row.addEventListener('mouseenter',function(){
+      rows.forEach(function(r){r.classList.remove('active');});
+      row.classList.add('active');
+    });
+  });
+  list.addEventListener('mouseleave',function(){
+    rows.forEach(function(r){r.classList.remove('active');});
+    if(rows[0])rows[0].classList.add('active');
+  });
 })();
 </script>
 </body>
