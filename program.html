@@ -3,666 +3,463 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Rose Goddess Path — Templo de la Diosa Rosa</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<title>The Rose Goddess Path &mdash; Templo de la Diosa Rosa</title>
+<meta name="description" content="A 10-week guided earth-centered journey of embodied feminine awakening. Five elemental stages, seven archetypes, one complete transformation.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=Cinzel:wght@400;500&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
 :root{
-  --earth:#1a1510;--bark:#2c2218;--clay:#8b5e3c;
-  --rose:#c4806a;--blush:#e8b8a0;--petal:#f2d4c8;
-  --cream:#f5ede4;--parch:#f9f4ef;--white:#fdfaf7;
-  --gold:#c9a96e;--mid:rgba(26,21,16,.5);--border:rgba(26,21,16,.08);
+  --cream:#FDF6F2;--parch:#F5EAE4;--blush:#EDD0D6;
+  --rose-pale:#D4899A;--rose:#AA4466;--rose-deep:#7A2842;
+  --dark:#180A10;--bark:#26141C;--gold:#C9A96E;
+  --text:#2C1420;--muted:#8A6470;--border:rgba(170,68,102,.12);
 }
-body{background:var(--white);color:var(--earth);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;font-weight:300;background:var(--cream);color:var(--text);overflow-x:hidden;}
+img{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+ul{list-style:none;}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300;}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:30px 56px;display:flex;align-items:center;justify-content:space-between;transition:all .5s ease;}
-nav.sc{background:rgba(253,250,247,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:18px 56px;box-shadow:0 1px 40px rgba(26,21,16,.06);}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--white);text-decoration:none;letter-spacing:.06em;transition:color .5s;}
-nav.sc .nav-logo{color:var(--earth);}
-nav ul{list-style:none;display:flex;gap:36px;align-items:center;}
-nav a.nl{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(253,250,247,.55);text-decoration:none;font-weight:300;transition:color .3s;}
-nav.sc a.nl{color:var(--mid);}
-nav a.nl:hover{color:var(--gold);}
-nav.sc a.nl:hover{color:var(--gold);}
-.nav-cta{display:inline-block;padding:10px 26px;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;font-weight:300;text-decoration:none;border:1px solid rgba(253,250,247,.3);color:var(--white);border-radius:40px;transition:all .35s;white-space:nowrap;flex-shrink:0;}
-nav.sc .nav-cta{border-color:rgba(26,21,16,.15);color:var(--earth);}
-.nav-cta:hover{background:var(--gold);border-color:var(--gold);color:var(--earth);}
+.rv  {opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
+.rv-l{opacity:0;transform:translateX(-30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
+.rv-r{opacity:0;transform:translateX(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
+.rv.vis,.rv-l.vis,.rv-r.vis{opacity:1;transform:translate(0);}
 
-/* ── HAMBURGER ── */
-.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;z-index:210;flex-shrink:0;}
-.nav-burger span{display:block;width:22px;height:1px;background:var(--white);transition:background .5s,transform .35s,opacity .35s;}
-nav.sc .nav-burger span{background:var(--earth);}
-.nav-burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
-.nav-burger.open span:nth-child(2){opacity:0;}
-.nav-burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:30px 56px;transition:background .45s,padding .45s,box-shadow .45s;}
+#nav.scrolled{background:rgba(24,10,16,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:18px 56px;box-shadow:0 1px 0 rgba(170,68,102,.18);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.12rem;font-weight:300;color:#fff;letter-spacing:.06em;line-height:1.1;}
+.nav-logo em{font-style:italic;color:var(--rose-pale);}
+.nav-links{display:flex;gap:38px;align-items:center;}
+.nav-links a{font-family:'Cinzel',serif;font-size:.57rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.7);transition:color .3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--rose-pale);}
+.nav-cta{color:var(--rose-pale) !important;border:1px solid rgba(212,137,154,.45);padding:10px 24px;transition:all .35s;}
+.nav-cta:hover{background:var(--rose-pale);color:var(--dark) !important;}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:102;}
+.burger span{display:block;width:26px;height:1px;background:#fff;transition:all .3s;}
+.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
 
-/* ── PROGRAM HERO ── */
-.prog-hero{position:relative;height:100vh;min-height:680px;display:flex;align-items:flex-end;overflow:hidden;background:var(--earth);}
-.prog-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.45) saturate(.7);}
-.prog-hero-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,21,16,.97) 0%,rgba(26,21,16,.3) 50%,transparent 80%),linear-gradient(160deg,rgba(196,128,106,.15) 0%,transparent 55%);}
-.prog-hero-content{position:relative;z-index:2;padding:0 56px 100px;max-width:880px;}
-.prog-hero-eyebrow{display:flex;align-items:center;gap:16px;font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:var(--blush);font-weight:300;margin-bottom:24px;opacity:0;animation:rise .9s .15s forwards;}
-.prog-hero-line{width:28px;height:1px;background:var(--blush);opacity:.6;}
-.prog-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,7vw,7.5rem);font-weight:300;line-height:.96;letter-spacing:-.02em;color:var(--white);margin-bottom:28px;opacity:0;animation:rise 1.1s .3s forwards;}
-.prog-hero h1 em{font-style:italic;color:var(--petal);display:block;}
-.prog-hero-sub{font-size:.92rem;line-height:2;color:rgba(253,250,247,.45);max-width:480px;font-weight:300;margin-bottom:44px;opacity:0;animation:rise .9s .55s forwards;}
-.prog-hero-btns{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:rise .9s .75s forwards;}
-.scroll-hint{position:absolute;bottom:38px;right:56px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:rise .7s 1.2s forwards;}
-.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,transparent,rgba(253,250,247,.25));animation:pulse-line 2s 1.5s infinite;}
-@keyframes pulse-line{0%,100%{opacity:.4}50%{opacity:1}}
-.scroll-txt{font-size:.44rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(253,250,247,.25);writing-mode:vertical-rl;}
-@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+/* BUTTONS */
+.btn-ghost{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;padding:15px 38px;border:1px solid rgba(212,137,154,.5);color:var(--rose-pale);transition:all .35s;display:inline-block;}
+.btn-ghost:hover{background:var(--rose-pale);color:var(--dark);}
+.btn-fill{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;padding:15px 38px;background:var(--rose);color:#fff;border:1px solid var(--rose);transition:all .35s;display:inline-block;}
+.btn-fill:hover{background:var(--rose-deep);border-color:var(--rose-deep);}
 
-/* ── SECTION HELPERS ── */
-.eyebrow{display:flex;align-items:center;gap:12px;font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;color:var(--rose);font-weight:300;margin-bottom:16px;}
-.eyebrow::before,.eyebrow::after{content:'';flex:0 0 18px;height:1px;background:currentColor;opacity:.5;}
-.eyebrow.gold{color:var(--gold);}
-.eyebrow.center{justify-content:center;}
-h2.display{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4vw,3.8rem);font-weight:300;line-height:1.1;color:var(--earth);margin-bottom:22px;letter-spacing:-.02em;}
-h2.display em{font-style:italic;color:var(--rose);}
-h2.display.light{color:var(--white);}
-h2.display.light em{color:var(--blush);}
-.lead{font-size:.92rem;line-height:2;color:var(--mid);font-weight:300;margin-bottom:14px;}
-.gold-rule{width:36px;height:1px;background:var(--gold);opacity:.4;margin:24px 0;}
+/* UTILITIES */
+.eyebrow{font-family:'Cinzel',serif;font-size:.57rem;letter-spacing:.32em;text-transform:uppercase;color:var(--rose);margin-bottom:14px;display:flex;align-items:center;gap:14px;}
+.eyebrow::before{content:'';width:28px;height:1px;background:currentColor;opacity:.55;flex-shrink:0;}
+.eyebrow-c{justify-content:center;}
+.eyebrow-c::after{content:'';width:28px;height:1px;background:currentColor;opacity:.55;flex-shrink:0;}
+.divider{width:48px;height:1px;background:linear-gradient(to right,var(--rose),transparent);margin:26px 0;}
 
-/* ── BTNS ── */
-.btn-rose{display:inline-block;padding:15px 40px;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;font-weight:300;text-decoration:none;background:linear-gradient(135deg,var(--rose),var(--clay));color:var(--white);border-radius:40px;transition:opacity .3s,transform .3s;white-space:nowrap;flex-shrink:0;}
-.btn-rose:hover{opacity:.85;transform:translateY(-1px);}
-.btn-out{display:inline-block;padding:15px 40px;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;font-weight:300;text-decoration:none;border:1px solid rgba(253,250,247,.25);color:rgba(253,250,247,.65);border-radius:40px;transition:all .35s;white-space:nowrap;flex-shrink:0;}
-.btn-out:hover{border-color:var(--blush);color:var(--blush);}
-.btn-dark{display:inline-block;padding:15px 40px;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;font-weight:300;text-decoration:none;border:1px solid var(--border);color:var(--earth);border-radius:40px;transition:all .35s;white-space:nowrap;}
-.btn-dark:hover{border-color:var(--rose);color:var(--rose);}
+/* PROGRAM HERO */
+.prog-hero{position:relative;height:88vh;min-height:580px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--dark);}
+.prog-hero-bg{position:absolute;inset:0;width:100%;height:112%;object-fit:cover;opacity:.5;will-change:transform;}
+.prog-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(24,10,16,.92) 0%,rgba(24,10,16,.28) 50%,rgba(24,10,16,.55) 100%);}
+.prog-hero-content{position:relative;z-index:2;text-align:center;padding:0 10%;}
+.prog-hero-eyebrow{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.38em;text-transform:uppercase;color:var(--rose-pale);opacity:.82;margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:20px;}
+.hero-line{width:40px;height:1px;background:var(--rose-pale);opacity:.45;}
+.prog-hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(46px,8vw,100px);line-height:1.05;color:#fff;margin-bottom:22px;}
+.prog-hero h1 em{display:block;font-style:italic;color:var(--rose-pale);}
+.prog-hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,2vw,20px);color:rgba(255,255,255,.65);letter-spacing:.04em;max-width:600px;margin:0 auto 44px;line-height:1.6;}
+.prog-hero-content > *{opacity:0;animation:hUp .9s cubic-bezier(.16,1,.3,1) forwards;}
+.prog-hero-eyebrow{animation-delay:.3s;}.prog-hero h1{animation-delay:.5s;}.prog-hero-sub{animation-delay:.7s;}.prog-hero .btn-ghost{animation-delay:.88s;}
+@keyframes hUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
 
-/* ── OVERVIEW ── */
-.overview{padding:130px 56px;background:var(--white);}
-.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;}
-.overview-stat{text-align:center;padding:40px;background:var(--parch);border-radius:20px;}
-.overview-stat-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:3.5rem;color:var(--rose);line-height:1;margin-bottom:8px;}
-.overview-stat-label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);}
-.overview-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px;}
-.overview-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;}
-.overview-tag{padding:7px 16px;border:1px solid var(--border);border-radius:40px;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);}
+/* OVERVIEW */
+.overview{padding:112px 72px;background:var(--cream);display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center;}
+.overview-img{position:relative;overflow:hidden;border-radius:2px;box-shadow:0 40px 80px rgba(122,40,66,.14);}
+.overview-img img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;transition:transform 8s ease;}
+.overview-img:hover img{transform:scale(1.04);}
+.overview-badge{
+  position:absolute;bottom:-18px;right:-18px;
+  background:var(--rose);color:#fff;
+  width:108px;height:108px;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  box-shadow:0 16px 40px rgba(170,68,102,.4);
+}
+.overview-badge .badge-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;line-height:1;}
+.overview-badge .badge-label{font-family:'Cinzel',serif;font-size:.45rem;letter-spacing:.22em;text-transform:uppercase;opacity:.85;}
+.overview-text h2{font-size:clamp(28px,3.8vw,48px);line-height:1.2;margin-bottom:22px;}
+.overview-text h2 em{font-style:italic;color:var(--rose);}
+.overview-text p{font-size:1.02rem;line-height:1.88;color:var(--muted);margin-bottom:16px;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+.pill{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;padding:8px 18px;border:1px solid var(--border);color:var(--rose);}
 
-/* ── DIETA ── */
-.dieta{padding:130px 56px;background:linear-gradient(160deg,var(--petal) 0%,var(--cream) 50%,var(--parch) 100%);position:relative;overflow:hidden;}
-.dieta::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(232,184,160,.4),transparent 70%);pointer-events:none;}
-.dieta-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1;}
-.dieta-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;background:rgba(196,128,106,.12);border:1px solid rgba(196,128,106,.2);border-radius:40px;margin-bottom:32px;}
-.dieta-badge span{font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);}
-.dieta-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.6rem,3vw,2.6rem);font-weight:300;line-height:1.25;color:var(--earth);margin-bottom:24px;}
-.dieta-visual{background:var(--earth);border-radius:32px;padding:56px 44px;position:relative;overflow:hidden;}
-.dieta-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,rgba(196,128,106,.1),transparent 70%);pointer-events:none;}
-.dieta-rose-sym{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:6rem;color:rgba(196,128,106,.07);line-height:1;margin-bottom:24px;}
-.dieta-visual h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--cream);margin-bottom:16px;}
-.dieta-visual p{font-size:.82rem;line-height:1.95;color:rgba(245,237,228,.4);}
-.dieta-teachers{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px;}
-.dieta-teacher{padding:6px 14px;border:1px solid rgba(201,169,110,.2);border-radius:40px;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,169,110,.6);}
+/* INITIATION */
+.initiation{background:var(--dark);padding:112px 72px;display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:center;}
+.init-text h2{color:#fff;font-size:clamp(28px,4vw,50px);line-height:1.2;margin-bottom:22px;}
+.init-text h2 em{font-style:italic;color:var(--rose-pale);}
+.init-text p{font-size:1.02rem;line-height:1.88;color:rgba(255,255,255,.55);margin-bottom:16px;}
+.init-text .divider{background:linear-gradient(to right,var(--rose-pale),transparent);}
+.init-img{position:relative;overflow:hidden;border-radius:2px;}
+.init-img img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;display:block;transition:transform 8s ease;}
+.init-img:hover img{transform:scale(1.04);}
+.init-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(24,10,16,.35),transparent 60%);}
 
-/* ── ARCHETYPES ── */
-.archetypes{padding:130px 56px;background:var(--earth);position:relative;overflow:hidden;}
-.archetypes::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(196,128,106,.05),transparent 70%);pointer-events:none;}
-.arch-intro{text-align:center;max-width:620px;margin:0 auto 80px;position:relative;z-index:1;}
-.arch-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;position:relative;z-index:1;}
-.arch-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.04);padding:36px 20px;text-align:center;transition:background .4s,transform .4s cubic-bezier(.16,1,.3,1);}
-.arch-card:hover{background:rgba(201,169,110,.07);transform:translateY(-6px);}
-.arch-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.8rem;color:rgba(201,169,110,.4);margin-bottom:16px;}
-.arch-name{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:300;color:var(--cream);margin-bottom:10px;line-height:1.3;}
-.arch-essence{font-size:.62rem;color:rgba(245,237,228,.25);letter-spacing:.08em;text-transform:uppercase;line-height:1.6;}
-.arch-line{width:18px;height:1px;background:var(--gold);opacity:.3;margin:14px auto 0;}
+/* STAGES */
+.stages{padding:112px 72px;background:var(--parch);}
+.stages-hd{text-align:center;margin-bottom:76px;}
+.stages-hd h2{font-size:clamp(28px,4vw,52px);margin-bottom:10px;}
+.stages-hd h2 em{font-style:italic;color:var(--rose);}
+.stages-hd p{font-size:1rem;line-height:1.82;color:var(--muted);max-width:540px;margin:0 auto;}
+.stages-list{display:flex;flex-direction:column;gap:3px;}
+.stage-row{display:grid;grid-template-columns:72px 1fr 1fr;background:rgba(255,255,255,.65);border:1px solid var(--border);overflow:hidden;transition:background .3s,border-color .3s;}
+.stage-row:hover{background:#fff;border-color:rgba(170,68,102,.22);}
+.stage-num{display:flex;align-items:center;justify-content:center;background:var(--rose);color:#fff;font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;flex-shrink:0;}
+.stage-body{padding:36px 40px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border);}
+.stage-element{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--rose);margin-bottom:8px;}
+.stage-body h3{font-size:clamp(18px,2.4vw,28px);line-height:1.2;margin-bottom:6px;}
+.stage-archetype{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.96rem;color:var(--muted);}
+.stage-focus{padding:36px 40px;display:flex;flex-direction:column;justify-content:center;}
+.stage-focus-label{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.stage-focus ul{display:flex;flex-direction:column;gap:8px;}
+.stage-focus li{font-size:.9rem;color:var(--text);display:flex;align-items:center;gap:12px;}
+.stage-focus li::before{content:'';width:16px;height:1px;background:var(--rose);opacity:.55;flex-shrink:0;}
 
-/* ── STAGES ── */
-.stages{padding:0;}
-.stage{display:grid;grid-template-columns:1fr 1fr;min-height:600px;}
-.stage:nth-child(even) .stage-content{order:1;}
-.stage:nth-child(even) .stage-visual{order:2;}
-.stage-content{padding:100px 72px;display:flex;flex-direction:column;justify-content:center;}
-.stage-visual{position:relative;overflow:hidden;}
-.stage-visual-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
-.stage-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35;filter:saturate(.5);}
-.stage-element{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(7rem,14vw,16rem);color:rgba(196,128,106,.06);line-height:1;position:absolute;bottom:-20px;right:-10px;pointer-events:none;z-index:1;}
-.stage-roman{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--gold);letter-spacing:.1em;margin-bottom:12px;display:block;}
-.stage-archetype-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--border);border-radius:40px;margin-bottom:20px;}
-.stage-archetype-tag span{font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);}
-.stage-focus{margin-top:32px;}
-.stage-focus h4{font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:14px;}
-.stage-focus ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
-.stage-focus li{display:flex;align-items:center;gap:10px;font-size:.8rem;color:var(--mid);font-weight:300;}
-.stage-focus li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--rose);flex-shrink:0;opacity:.6;}
+/* ARCHETYPES */
+.archetypes{background:var(--bark);padding:112px 72px;}
+.archetypes-hd{text-align:center;margin-bottom:72px;}
+.archetypes-hd h2{color:#fff;font-size:clamp(28px,4vw,52px);margin-bottom:10px;}
+.archetypes-hd h2 em{font-style:italic;color:var(--rose-pale);}
+.archetypes-hd p{color:rgba(255,255,255,.45);font-size:.98rem;line-height:1.85;max-width:520px;margin:0 auto;}
+.arch-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;}
+.arch-card{background:rgba(255,255,255,.03);border:1px solid rgba(170,68,102,.1);padding:36px 20px 32px;text-align:center;transition:background .35s,border-color .35s;position:relative;overflow:hidden;}
+.arch-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--rose-pale),transparent);transform:scaleX(0);transition:transform .45s cubic-bezier(.16,1,.3,1);}
+.arch-card:hover{background:rgba(170,68,102,.07);border-color:rgba(170,68,102,.22);}
+.arch-card:hover::after{transform:scaleX(1);}
+.arch-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--rose-pale);opacity:.28;line-height:1;margin-bottom:12px;}
+.arch-card h3{font-family:'Cormorant Garamond',serif;font-size:.98rem;font-weight:400;color:#fff;margin-bottom:8px;line-height:1.3;}
+.arch-card p{font-size:.74rem;line-height:1.65;color:rgba(255,255,255,.38);}
 
-/* Stage color variants */
-.stage-earth{background:var(--parch);}
-.stage-earth .stage-visual{background:linear-gradient(135deg,#2c3a1a,#1a2410);}
-.stage-water{background:var(--cream);}
-.stage-water .stage-visual{background:linear-gradient(135deg,#1a2535,#0f1a28);}
-.stage-fire{background:var(--white);}
-.stage-fire .stage-visual{background:linear-gradient(135deg,#3a1a10,#280f0a);}
-.stage-air{background:var(--parch);}
-.stage-air .stage-visual{background:linear-gradient(135deg,#1e2a35,#141c24);}
-.stage-spirit{background:var(--earth);}
-.stage-spirit .stage-content{padding:100px 72px;}
-.stage-spirit h2.display{color:var(--white);}
-.stage-spirit h2.display em{color:var(--blush);}
-.stage-spirit .stage-roman{color:rgba(201,169,110,.7);}
-.stage-spirit .lead{color:rgba(245,237,228,.38);}
-.stage-spirit .stage-focus li{color:rgba(245,237,228,.4);}
-.stage-spirit .stage-archetype-tag{border-color:rgba(255,255,255,.08);}
-.stage-spirit .stage-archetype-tag span{color:rgba(245,237,228,.3);}
-.stage-spirit .stage-visual{background:linear-gradient(135deg,#3a1a3a,#1a0f1f);}
-
-/* Stage visual number */
-.stage-vis-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(8rem,15vw,18rem);color:rgba(255,255,255,.03);line-height:1;z-index:1;position:relative;}
-.stage-vis-label{position:absolute;bottom:40px;left:44px;right:44px;z-index:2;}
-.stage-vis-label h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:rgba(255,255,255,.6);margin-bottom:4px;}
-.stage-vis-label p{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.2);}
-
-/* ── CTA ── */
-.prog-cta{position:relative;overflow:hidden;padding:180px 56px;text-align:center;background:var(--earth);}
-.prog-cta-glow{position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(196,128,106,.12),transparent 70%);pointer-events:none;}
-.prog-cta-inner{position:relative;z-index:2;max-width:640px;margin:0 auto;}
-.prog-cta-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;color:var(--white);line-height:1.05;margin-bottom:24px;letter-spacing:-.02em;}
-.prog-cta-inner h2 em{font-style:italic;color:var(--blush);}
-.prog-cta-sub{font-size:.9rem;line-height:2;color:rgba(253,250,247,.4);max-width:420px;margin:0 auto 48px;}
+/* PROGRAM CTA */
+.prog-cta{position:relative;min-height:500px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.prog-cta-bg{position:absolute;inset:0;width:100%;height:112%;object-fit:cover;will-change:transform;}
+.prog-cta-grad{position:absolute;inset:0;background:linear-gradient(160deg,rgba(24,10,16,.72),rgba(122,40,66,.75));}
+.prog-cta-body{position:relative;z-index:2;text-align:center;padding:0 10%;color:#fff;}
+.prog-cta-body h2{font-size:clamp(26px,5vw,58px);line-height:1.2;margin-bottom:20px;font-weight:300;}
+.prog-cta-body h2 em{font-style:italic;color:var(--rose-pale);}
+.prog-cta-body p{font-size:1rem;color:rgba(255,255,255,.62);max-width:500px;margin:0 auto 36px;line-height:1.82;}
 .prog-cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
 
-/* ── DISCLAIMER ── */
-.disclaimer-section{padding:80px 56px;background:var(--bark);border-top:1px solid rgba(255,255,255,.04);}
-.disclaimer-inner{max-width:760px;margin:0 auto;}
-.disclaimer-inner h5{font-size:.52rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(245,237,228,.2);margin-bottom:20px;}
-.disclaimer-inner p{font-size:.72rem;line-height:1.9;color:rgba(245,237,228,.2);font-weight:300;margin-bottom:10px;}
-.disclaimer-inner p + p{margin-top:10px;}
+/* FOOTER */
+footer{background:var(--dark);padding:72px 72px 40px;}
+.footer-grid{display:grid;grid-template-columns:2.2fr 1fr 1fr;gap:56px;margin-bottom:56px;}
+.footer-brand .nav-logo{font-size:1.28rem;color:#fff;display:block;margin-bottom:16px;}
+.footer-brand p{font-size:.84rem;line-height:1.82;color:rgba(255,255,255,.4);max-width:300px;}
+.footer-col h4{font-family:'Cinzel',serif;font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:var(--rose-pale);margin-bottom:20px;}
+.footer-col li{margin-bottom:10px;}
+.footer-col a{font-size:.84rem;color:rgba(255,255,255,.45);transition:color .3s;}
+.footer-col a:hover{color:var(--rose-pale);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-bottom p,.footer-bottom a{font-size:.76rem;color:rgba(255,255,255,.3);}
+.footer-bottom a:hover{color:var(--rose-pale);}
 
-/* ── FOOTER ── */
-footer{background:var(--bark);padding:80px 56px 0;}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:72px;padding-bottom:56px;border-bottom:1px solid rgba(253,250,247,.06);}
-.f-logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--cream);margin-bottom:14px;letter-spacing:.04em;}
-.f-tagline{font-size:.76rem;line-height:1.9;color:rgba(245,237,228,.22);max-width:260px;}
-.f-col h5{font-size:.5rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(245,237,228,.15);margin-bottom:20px;}
-.f-col ul{list-style:none;display:flex;flex-direction:column;gap:12px;}
-.f-col a{font-size:.76rem;color:rgba(245,237,228,.28);text-decoration:none;transition:color .25s;}
-.f-col a:hover{color:var(--gold);}
-.footer-disclaimer{padding:32px 0;border-top:1px solid rgba(253,250,247,.04);border-bottom:1px solid rgba(253,250,247,.04);margin-bottom:4px;}
-.footer-disclaimer p{font-size:.65rem;line-height:1.85;color:rgba(245,237,228,.15);font-weight:300;}
-.footer-disclaimer strong{color:rgba(245,237,228,.22);font-weight:400;letter-spacing:.06em;}
-.footer-btm{padding:20px 0;display:flex;align-items:center;justify-content:space-between;font-size:.54rem;color:rgba(245,237,228,.13);letter-spacing:.1em;text-transform:uppercase;}
-
-/* ── REVEAL ── */
-.rv{opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1);}
-.rv-l{opacity:0;transform:translateX(-32px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1);}
-.rv-r{opacity:0;transform:translateX(32px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1);}
-.rv-s{opacity:0;transform:scale(.96);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1);}
-.rv.on,.rv-l.on,.rv-r.on,.rv-s.on{opacity:1;transform:none;}
-
-/* ── CURSOR ── */
-html, html *, html *::before, html *::after { cursor: none !important; }
-#cursor {position:fixed;pointer-events:none;z-index:9999;width:27px;height:27px;top:0;left:0;margin:-13px 0 0 -13px;animation:cursor-pulse 2s ease-in-out infinite;will-change:transform;}
-#cursor img{width:100%;height:100%;display:block;}
-#cursor.hovering{animation:cursor-pulse-big 1s ease-in-out infinite;}
-@keyframes cursor-pulse{0%{transform:rotate(-35deg) scale(1);}50%{transform:rotate(-35deg) scale(1.18);}100%{transform:rotate(-35deg) scale(1);}}
-@keyframes cursor-pulse-big{0%{transform:rotate(-35deg) scale(1.15);}50%{transform:rotate(-35deg) scale(1.35);}100%{transform:rotate(-35deg) scale(1.15);}}
-@media(hover:none){#cursor{display:none;}body,*{cursor:auto !important;}}
-
-/* ── MOBILE ── */
-@media(max-width:900px){
-  nav{padding:16px 22px;}nav.sc{padding:14px 22px;}
-  nav ul{position:fixed;inset:0;background:rgba(26,21,16,.97);flex-direction:column;align-items:center;justify-content:center;gap:40px;z-index:200;display:none;}
-  nav ul.open{display:flex;}
-  nav ul.open a.nl{color:rgba(245,237,228,.7);font-size:.72rem;letter-spacing:.24em;}
-  nav ul.open .nav-cta{color:var(--white);border-color:rgba(253,250,247,.25);font-size:.62rem;}
-  .nav-burger{display:flex;}
-  .prog-hero-content{padding:0 22px 80px;}
-  .overview{padding:88px 22px;}
-  .overview-grid{grid-template-columns:1fr;gap:44px;}
-  .overview-stats{grid-template-columns:1fr 1fr;}
-  .dieta{padding:88px 22px;}
-  .dieta-inner{grid-template-columns:1fr;gap:44px;}
-  .archetypes{padding:88px 22px;}
+/* RESPONSIVE */
+@media(max-width:960px){
+  #nav{padding:22px 24px;}#nav.scrolled{padding:16px 24px;}
+  .nav-links{display:none;flex-direction:column;position:fixed;inset:0;background:rgba(24,10,16,.97);justify-content:center;align-items:center;gap:30px;z-index:100;}
+  .nav-links.open{display:flex;}.nav-links a{font-size:.72rem;}
+  .burger{display:flex;}
+  .overview,.initiation{grid-template-columns:1fr;padding:88px 28px;gap:52px;}
+  .initiation .init-img{order:-1;}
+  .stages{padding:88px 28px;}
+  .stage-row{grid-template-columns:60px 1fr;}
+  .stage-focus{display:none;}
+  .archetypes{padding:88px 28px;}
+  .arch-grid{grid-template-columns:repeat(3,1fr);}
+  .footer-grid{grid-template-columns:1fr;gap:36px;}
+  footer{padding:56px 28px 32px;}
+}
+@media(max-width:600px){
+  .prog-hero h1{font-size:clamp(38px,11vw,62px);}
   .arch-grid{grid-template-columns:repeat(2,1fr);}
-  .stage{grid-template-columns:1fr;}
-  .stage:nth-child(even) .stage-content,.stage:nth-child(even) .stage-visual{order:unset;}
-  .stage-visual{min-height:280px;}
-  .stage-content{padding:60px 22px;}
-  .stage-spirit .stage-content{padding:60px 22px;}
-  .prog-cta{padding:110px 22px;}
-  .disclaimer-section{padding:60px 22px;}
-  footer{padding:56px 22px 0;}
-  .footer-grid{grid-template-columns:1fr;gap:44px;}
+  .overview,.initiation{padding:72px 20px;}
+  .stage-body{padding:24px 20px;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+  .prog-cta-body{padding:0 24px;}
 }
 </style>
 </head>
 <body>
 
-<div id="cursor"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='8' fill='%23c4806a' opacity='.9'/%3E%3C/svg%3E" alt=""></div>
-
 <nav id="nav">
-  <a href="index.html" class="nav-logo">Diosa Rosa</a>
-  <ul id="nav-menu">
-    <li><a href="index.html#about" class="nl">About</a></li>
-    <li><a href="index.html#medicine" class="nl">My Medicine</a></li>
-    <li><a href="index.html#sessions" class="nl">Sessions</a></li>
-    <li><a href="program.html" class="nl" style="color:var(--gold);">The Path</a></li>
-    <li><a href="index.html#contact" class="nav-cta">Work With Me</a></li>
-  </ul>
-  <button class="nav-burger" id="nav-burger" aria-label="Open menu">
+  <a href="index.html" class="nav-logo">Templo de la <em>Diosa Rosa</em></a>
+  <div class="burger" id="burger" role="button" tabindex="0" aria-label="Toggle menu">
     <span></span><span></span><span></span>
-  </button>
+  </div>
+  <ul class="nav-links" id="nav-menu">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#medicine">My Medicine</a></li>
+    <li><a href="index.html#work">Work With Me</a></li>
+    <li><a href="program.html" class="active">The Path</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Connect</a></li>
+  </ul>
 </nav>
 
-<!-- PROGRAM HERO -->
+<!-- HERO -->
 <section class="prog-hero">
-  <img
-    class="prog-hero-bg"
-    src="https://drive.google.com/thumbnail?id=1YBArNwUaWhUaYslWetgSpL2I9_69si4O&sz=w1800"
-    onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&auto=format&fit=crop&q=80'"
-    alt="Rose Goddess Path"
-  >
-  <div class="prog-hero-grad"></div>
+  <img src="images/rosa-garden.jpg" alt="" class="prog-hero-bg" id="prog-hero-bg">
+  <div class="prog-hero-overlay"></div>
   <div class="prog-hero-content">
     <div class="prog-hero-eyebrow">
-      <div class="prog-hero-line"></div>
-      A Guided Earth-Centered Journey
+      <div class="hero-line"></div>10-Week Journey &nbsp;&middot;&nbsp; Earth-Centered &nbsp;&middot;&nbsp; Online<div class="hero-line"></div>
     </div>
-    <h1>The Rose<br><em>Goddess Path</em></h1>
-    <p class="prog-hero-sub">12 weeks of embodied feminine awakening — from the first seed of potential to the full sovereignty of the Rose Goddess within you.</p>
-    <div class="prog-hero-btns">
-      <a href="index.html#contact" class="btn-rose">Begin the Journey</a>
-      <a href="#overview" class="btn-out">Explore the Path</a>
-    </div>
-  </div>
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    <span class="scroll-txt">Scroll</span>
+    <h1>The Rose<em>Goddess Path</em></h1>
+    <p class="prog-hero-sub">A Guided Journey of Embodied Feminine Awakening through the Five Elements and Seven Archetypes of the Rose</p>
+    <a href="#overview" class="btn-ghost">Begin the Journey</a>
   </div>
 </section>
 
 <!-- OVERVIEW -->
 <section class="overview" id="overview">
-  <div class="overview-grid">
-    <div>
-      <div class="eyebrow rv">The Journey</div>
-      <h2 class="display rv" style="transition-delay:60ms">A sacred path back<br>to <em>yourself.</em></h2>
-      <p class="lead rv" style="transition-delay:120ms">The Rose Goddess Path is a 10-week earth-centered journey designed for women who are ready to awaken their bodies, reclaim their pleasure, and embody the full power of the sacred feminine.</p>
-      <p class="lead rv" style="transition-delay:160ms">You will move through five elemental stages — Earth, Water, Fire, Air, and Spirit — each one a sacred doorway into a deeper layer of yourself. The journey begins with a 2-week Rose Dieta initiation.</p>
-      <div class="gold-rule rv" style="transition-delay:200ms"></div>
-      <p class="lead rv" style="font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--clay);transition-delay:240ms">"Everything you seek already lives within you."</p>
+  <div class="rv-l overview-img">
+    <img src="images/rosa-ceremony-gong.jpg" alt="Rosa leading ceremony">
+    <div class="overview-badge">
+      <span class="badge-num">10</span>
+      <span class="badge-label">Weeks</span>
     </div>
-    <div>
-      <div class="overview-stats rv" style="transition-delay:100ms">
-        <div class="overview-stat">
-          <div class="overview-stat-num">12</div>
-          <div class="overview-stat-label">Total Weeks</div>
-        </div>
-        <div class="overview-stat">
-          <div class="overview-stat-num">5</div>
-          <div class="overview-stat-label">Sacred Stages</div>
-        </div>
-        <div class="overview-stat">
-          <div class="overview-stat-num">7</div>
-          <div class="overview-stat-label">Archetypes</div>
-        </div>
-        <div class="overview-stat">
-          <div class="overview-stat-num">∞</div>
-          <div class="overview-stat-label">Online · Worldwide</div>
-        </div>
-      </div>
-      <div class="overview-tags rv" style="transition-delay:180ms">
-        <span class="overview-tag">Somatic Embodiment</span>
-        <span class="overview-tag">Energy Healing</span>
-        <span class="overview-tag">Sacred Ceremony</span>
-        <span class="overview-tag">Rose Priestess</span>
-        <span class="overview-tag">Sound Healing</span>
-        <span class="overview-tag">Shadow Work</span>
-        <span class="overview-tag">Voice Activation</span>
-        <span class="overview-tag">Light Language</span>
-      </div>
+  </div>
+  <div class="rv-r overview-text">
+    <p class="eyebrow">The Path</p>
+    <h2>A journey back to<br>your <em>sovereign self.</em></h2>
+    <div class="divider"></div>
+    <p>The Rose Goddess Path is a guided, earth-centered journey through the five elements &mdash; Earth, Water, Fire, Air, and Spirit &mdash; designed to awaken the embodied feminine within you.</p>
+    <p>Over ten weeks, you move through each elemental stage, meeting a different archetype of the Rose Goddess within yourself, emerging with a deeper connection to your body, your voice, and your sacred power.</p>
+    <div class="pills rv">
+      <span class="pill">5 Elements</span>
+      <span class="pill">7 Archetypes</span>
+      <span class="pill">10 Weeks</span>
+      <span class="pill">Online</span>
+      <span class="pill">For Women</span>
     </div>
   </div>
 </section>
 
-<!-- ROSE DIETA -->
-<section class="dieta" id="dieta">
-  <div class="dieta-inner">
-    <div>
-      <div class="dieta-badge rv"><span>The Initiation</span></div>
-      <h2 class="display rv" style="transition-delay:60ms">The Rose<br><em>Dieta</em></h2>
-      <p class="lead rv" style="transition-delay:120ms">Before the journey begins, there is a 2-week period of sacred listening. Rooted in indigenous traditions, a <em>dieta</em> invites you to slow down and build a relationship with a plant spirit.</p>
-      <p class="lead rv" style="transition-delay:160ms">The rose becomes your teacher of softness, boundaries, beauty, and truth. She asks nothing of you except your presence.</p>
-      <div class="gold-rule rv" style="transition-delay:200ms"></div>
-      <p class="lead rv" style="transition-delay:240ms;font-size:.82rem;color:rgba(26,21,16,.4);">Duration: 2 weeks · Online · Guided by Rosa</p>
-    </div>
-    <div class="dieta-visual rv-r">
-      <div class="dieta-rose-sym">✦</div>
-      <h3>The rose teaches</h3>
-      <p>In the stillness of the dieta, the rose reveals herself as teacher. She holds the paradox of the feminine — profound softness and fierce protection, delicate beauty and sharp truth.</p>
-      <div class="dieta-teachers">
-        <span class="dieta-teacher">Softness</span>
-        <span class="dieta-teacher">Boundaries</span>
-        <span class="dieta-teacher">Beauty</span>
-        <span class="dieta-teacher">Truth</span>
-        <span class="dieta-teacher">Presence</span>
-        <span class="dieta-teacher">Listening</span>
-      </div>
-    </div>
+<!-- INITIATION -->
+<section class="initiation">
+  <div class="init-text rv-l">
+    <p class="eyebrow" style="color:var(--rose-pale);">Before the Path</p>
+    <h2>The Initiation:<br><em>The Rose Dieta</em></h2>
+    <div class="divider"></div>
+    <p>Before the ten-week journey begins, there is an initiation &mdash; a sacred two-week period of listening called the Rose Dieta.</p>
+    <p>Rooted in indigenous traditions, a dieta invites us to slow down and build a relationship with a plant spirit. The rose becomes a teacher of softness, boundaries, beauty, and truth.</p>
+    <p style="color:rgba(255,255,255,.7);">The Rose Dieta is not preparation for the work &mdash; it <em style="color:var(--rose-pale);">is</em> the first act of it.</p>
   </div>
-</section>
-
-<!-- ARCHETYPES -->
-<section class="archetypes" id="archetypes">
-  <div class="arch-intro rv">
-    <div class="eyebrow gold center">The 7 Archetypes of the Rose Goddess</div>
-    <h2 class="display light">Seven faces of<br><em>feminine power.</em></h2>
-    <p style="font-size:.85rem;line-height:1.95;color:rgba(245,237,228,.35);font-weight:300;margin-top:12px;">Throughout the journey, women encounter seven archetypal expressions of feminine power. These archetypes emerge naturally during the stages of the path.</p>
-  </div>
-  <div class="arch-grid">
-    <div class="arch-card rv" style="transition-delay:0ms">
-      <div class="arch-num">I</div>
-      <div class="arch-name">The Seed</div>
-      <div class="arch-essence">Potential &amp; beginnings</div>
-      <div class="arch-line"></div>
-    </div>
-    <div class="arch-card rv" style="transition-delay:60ms">
-      <div class="arch-num">II</div>
-      <div class="arch-name">The Bud</div>
-      <div class="arch-essence">Awakening sensuality</div>
-      <div class="arch-line"></div>
-    </div>
-    <div class="arch-card rv" style="transition-delay:120ms">
-      <div class="arch-num">III</div>
-      <div class="arch-name">The Blooming Rose</div>
-      <div class="arch-essence">Embodied pleasure</div>
-      <div class="arch-line"></div>
-    </div>
-    <div class="arch-card rv" style="transition-delay:180ms">
-      <div class="arch-num">IV</div>
-      <div class="arch-name">The Thorn Keeper</div>
-      <div class="arch-essence">Boundaries &amp; truth</div>
-      <div class="arch-line"></div>
-    </div>
-    <div class="arch-card rv" style="transition-delay:240ms">
-      <div class="arch-num">V</div>
-      <div class="arch-name">The Wild Rose</div>
-      <div class="arch-essence">Untamed feminine power</div>
-      <div class="arch-line"></div>
-    </div>
-    <div class="arch-card rv" style="transition-delay:300ms">
-      <div class="arch-num">VI</div>
-      <div class="arch-name">Priestess of the Rose</div>
-      <div class="arch-essence">Intuition &amp; spiritual connection</div>
-      <div class="arch-line"></div>
-    </div>
-    <div class="arch-card rv" style="transition-delay:360ms">
-      <div class="arch-num">VII</div>
-      <div class="arch-name">The Rose Goddess</div>
-      <div class="arch-essence">Sovereignty &amp; integration</div>
-      <div class="arch-line"></div>
-    </div>
+  <div class="rv-r init-img">
+    <img src="images/rosa-rose-painting.png" alt="Rosa in ceremony">
   </div>
 </section>
 
 <!-- THE 5 STAGES -->
-<div id="stages">
+<section class="stages" id="stages">
+  <div class="stages-hd">
+    <p class="eyebrow eyebrow-c rv">The Journey</p>
+    <h2 class="rv">The Five <em>Elemental Stages</em></h2>
+    <p class="rv">Each stage corresponds to an element of nature, an archetype of the feminine, and a domain of your inner landscape waiting to be reclaimed.</p>
+  </div>
+  <div class="stages-list">
+    <div class="stage-row rv">
+      <div class="stage-num">I</div>
+      <div class="stage-body">
+        <p class="stage-element">Earth</p>
+        <h3>Awakening the Body</h3>
+        <p class="stage-archetype">Archetype: The Seed</p>
+      </div>
+      <div class="stage-focus">
+        <p class="stage-focus-label">Focus</p>
+        <ul>
+          <li>Grounding</li>
+          <li>Nervous system safety</li>
+          <li>Body awareness</li>
+        </ul>
+      </div>
+    </div>
+    <div class="stage-row rv" style="transition-delay:60ms">
+      <div class="stage-num">II</div>
+      <div class="stage-body">
+        <p class="stage-element">Water</p>
+        <h3>Reclaiming Pleasure</h3>
+        <p class="stage-archetype">Archetype: The Bud</p>
+      </div>
+      <div class="stage-focus">
+        <p class="stage-focus-label">Focus</p>
+        <ul>
+          <li>Sensuality</li>
+          <li>Emotional flow</li>
+          <li>Pleasure as guidance</li>
+        </ul>
+      </div>
+    </div>
+    <div class="stage-row rv" style="transition-delay:120ms">
+      <div class="stage-num">III</div>
+      <div class="stage-body">
+        <p class="stage-element">Fire</p>
+        <h3>Meeting the Shadow</h3>
+        <p class="stage-archetype">Archetype: The Thorn Keeper</p>
+      </div>
+      <div class="stage-focus">
+        <p class="stage-focus-label">Focus</p>
+        <ul>
+          <li>Transformation</li>
+          <li>Reclaiming suppressed parts</li>
+          <li>Boundaries</li>
+        </ul>
+      </div>
+    </div>
+    <div class="stage-row rv" style="transition-delay:180ms">
+      <div class="stage-num">IV</div>
+      <div class="stage-body">
+        <p class="stage-element">Air</p>
+        <h3>Awakening the Voice</h3>
+        <p class="stage-archetype">Archetype: The Wild Rose</p>
+      </div>
+      <div class="stage-focus">
+        <p class="stage-focus-label">Focus</p>
+        <ul>
+          <li>Expression</li>
+          <li>Voice</li>
+          <li>Breath</li>
+        </ul>
+      </div>
+    </div>
+    <div class="stage-row rv" style="transition-delay:240ms">
+      <div class="stage-num">V</div>
+      <div class="stage-body">
+        <p class="stage-element">Spirit</p>
+        <h3>Embodying the Rose Goddess</h3>
+        <p class="stage-archetype">Archetype: The Rose Goddess</p>
+      </div>
+      <div class="stage-focus">
+        <p class="stage-focus-label">Focus</p>
+        <ul>
+          <li>Integration</li>
+          <li>Sovereignty</li>
+          <li>Sacred feminine leadership</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- STAGE 1: EARTH -->
-<div class="stage stage-earth">
-  <div class="stage-content rv-l">
-    <span class="stage-roman">Stage I</span>
-    <div class="stage-archetype-tag"><span>🌱 Archetype: The Seed</span></div>
-    <h2 class="display">Earth —<br><em>Awakening the Body</em></h2>
-    <p class="lead">The journey begins in the earth. We come home to the body — the most sacred temple you will ever inhabit. Here, you learn to feel safe within yourself again.</p>
-    <div class="stage-focus">
-      <h4>What you'll explore</h4>
-      <ul>
-        <li>Grounding &amp; rootedness in the body</li>
-        <li>Nervous system safety &amp; regulation</li>
-        <li>Deep body awareness &amp; listening</li>
-      </ul>
+<!-- THE 7 ARCHETYPES -->
+<section class="archetypes">
+  <div class="archetypes-hd">
+    <p class="eyebrow eyebrow-c rv" style="color:var(--rose-pale);">The Seven Faces</p>
+    <h2 class="rv">Archetypes of the <em>Rose Goddess</em></h2>
+    <p class="rv">Throughout the journey, women encounter seven archetypal expressions of feminine power. These archetypes emerge naturally during the stages of the path.</p>
+  </div>
+  <div class="arch-grid">
+    <div class="arch-card rv" style="transition-delay:0ms">
+      <div class="arch-num">01</div>
+      <h3>The Seed</h3>
+      <p>Potential and beginnings</p>
+    </div>
+    <div class="arch-card rv" style="transition-delay:55ms">
+      <div class="arch-num">02</div>
+      <h3>The Bud</h3>
+      <p>Awakening sensuality</p>
+    </div>
+    <div class="arch-card rv" style="transition-delay:110ms">
+      <div class="arch-num">03</div>
+      <h3>The Blooming Rose</h3>
+      <p>Embodied pleasure</p>
+    </div>
+    <div class="arch-card rv" style="transition-delay:165ms">
+      <div class="arch-num">04</div>
+      <h3>The Thorn Keeper</h3>
+      <p>Boundaries and truth</p>
+    </div>
+    <div class="arch-card rv" style="transition-delay:220ms">
+      <div class="arch-num">05</div>
+      <h3>The Wild Rose</h3>
+      <p>Untamed feminine power</p>
+    </div>
+    <div class="arch-card rv" style="transition-delay:275ms">
+      <div class="arch-num">06</div>
+      <h3>The Priestess of the Rose</h3>
+      <p>Intuition and spiritual connection</p>
+    </div>
+    <div class="arch-card rv" style="transition-delay:330ms">
+      <div class="arch-num">07</div>
+      <h3>The Rose Goddess</h3>
+      <p>Sovereignty and integration</p>
     </div>
   </div>
-  <div class="stage-visual">
-    <img class="stage-bg" src="https://drive.google.com/thumbnail?id=12eUr9SL26PXBaZuvk3LtK-CvnoPeLO9P&sz=w900" onerror="this.src='https://images.unsplash.com/photo-1448375240586-882707db888b?w=900&auto=format&fit=crop&q=75'" alt="Earth">
-    <div class="stage-visual-inner">
-      <div class="stage-vis-num">I</div>
-    </div>
-    <div class="stage-vis-label">
-      <h3>Earth</h3>
-      <p>Weeks 3–4</p>
-    </div>
-    <div class="stage-element">Earth</div>
-  </div>
-</div>
+</section>
 
-<!-- STAGE 2: WATER -->
-<div class="stage stage-water">
-  <div class="stage-visual">
-    <img class="stage-bg" src="https://drive.google.com/thumbnail?id=1MjsfayT5s0ExrW7fZ0tWj8ZLxAqWXMAA&sz=w900" onerror="this.src='https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&auto=format&fit=crop&q=75'" alt="Water">
-    <div class="stage-visual-inner">
-      <div class="stage-vis-num">II</div>
-    </div>
-    <div class="stage-vis-label">
-      <h3>Water</h3>
-      <p>Weeks 5–6</p>
-    </div>
-    <div class="stage-element">Water</div>
-  </div>
-  <div class="stage-content rv-r">
-    <span class="stage-roman">Stage II</span>
-    <div class="stage-archetype-tag"><span>🌸 Archetype: The Bud</span></div>
-    <h2 class="display">Water —<br><em>Reclaiming Pleasure</em></h2>
-    <p class="lead">Pleasure is not a luxury — it is the language your body uses to guide you home. In this stage, you reclaim sensuality as your birthright and allow emotional flow to be your compass.</p>
-    <div class="stage-focus">
-      <h4>What you'll explore</h4>
-      <ul>
-        <li>Sensuality as a sacred practice</li>
-        <li>Emotional flow &amp; fluidity</li>
-        <li>Pleasure as an inner guidance system</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- STAGE 3: FIRE -->
-<div class="stage stage-fire">
-  <div class="stage-content rv-l">
-    <span class="stage-roman">Stage III</span>
-    <div class="stage-archetype-tag"><span>🌹 Archetype: The Thorn Keeper</span></div>
-    <h2 class="display">Fire —<br><em>Meeting the Shadow</em></h2>
-    <p class="lead">The fire is where transformation lives. Here you meet the parts of yourself that were hidden, suppressed, or deemed too much. The Thorn Keeper protects your truth.</p>
-    <div class="stage-focus">
-      <h4>What you'll explore</h4>
-      <ul>
-        <li>Shadow work &amp; integration</li>
-        <li>Reclaiming suppressed parts of the self</li>
-        <li>Boundaries as an act of love &amp; power</li>
-      </ul>
-    </div>
-  </div>
-  <div class="stage-visual">
-    <img class="stage-bg" src="https://drive.google.com/thumbnail?id=1lHWVsLTAAkmuvHPmms3OkpAT0W6xEWO1&sz=w900" onerror="this.src='https://images.unsplash.com/photo-1519750783826-e2420f4d687f?w=900&auto=format&fit=crop&q=75'" alt="Fire">
-    <div class="stage-visual-inner">
-      <div class="stage-vis-num">III</div>
-    </div>
-    <div class="stage-vis-label">
-      <h3>Fire</h3>
-      <p>Weeks 7–8</p>
-    </div>
-    <div class="stage-element">Fire</div>
-  </div>
-</div>
-
-<!-- STAGE 4: AIR -->
-<div class="stage stage-air">
-  <div class="stage-visual">
-    <img class="stage-bg" src="https://drive.google.com/thumbnail?id=1A2OFmnNeNdVhh_wfbqQ9CYFIh2bEqVRw&sz=w900" onerror="this.src='https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=900&auto=format&fit=crop&q=75'" alt="Air">
-    <div class="stage-visual-inner">
-      <div class="stage-vis-num">IV</div>
-    </div>
-    <div class="stage-vis-label">
-      <h3>Air</h3>
-      <p>Weeks 9–10</p>
-    </div>
-    <div class="stage-element">Air</div>
-  </div>
-  <div class="stage-content rv-r">
-    <span class="stage-roman">Stage IV</span>
-    <div class="stage-archetype-tag"><span>🌿 Archetype: The Wild Rose</span></div>
-    <h2 class="display">Air —<br><em>Awakening the Voice</em></h2>
-    <p class="lead">The voice is one of the most powerful expressions of the feminine. In this stage, you reclaim your right to be heard — through sound, breath, and the full expression of who you truly are.</p>
-    <div class="stage-focus">
-      <h4>What you'll explore</h4>
-      <ul>
-        <li>Voice activation &amp; expression</li>
-        <li>Breathwork as liberation</li>
-        <li>Speaking your truth from the body</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- STAGE 5: SPIRIT -->
-<div class="stage stage-spirit">
-  <div class="stage-content rv-l">
-    <span class="stage-roman">Stage V</span>
-    <div class="stage-archetype-tag"><span>✨ Archetype: The Rose Goddess</span></div>
-    <h2 class="display">Spirit —<br><em>Embodying the Rose Goddess</em></h2>
-    <p class="lead">The final stage is integration. You have moved through the elements, met your archetypes, and reclaimed what was always yours. Now you step into sovereignty — the full embodiment of the Rose Goddess within you.</p>
-    <div class="stage-focus">
-      <h4>What you'll explore</h4>
-      <ul>
-        <li>Full integration of all stages</li>
-        <li>Sovereignty &amp; sacred self-leadership</li>
-        <li>Sacred feminine leadership in the world</li>
-      </ul>
-    </div>
-    <a href="index.html#contact" class="btn-rose" style="margin-top:40px;display:inline-block;">Begin the Path</a>
-  </div>
-  <div class="stage-visual">
-    <img class="stage-bg" src="https://drive.google.com/thumbnail?id=1s_iaAMqKXwtXmG_VV5yxsYYrWLrAUDWq&sz=w900" onerror="this.src='https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&auto=format&fit=crop&q=75'" alt="Spirit">
-    <div class="stage-visual-inner">
-      <div class="stage-vis-num">V</div>
-    </div>
-    <div class="stage-vis-label">
-      <h3>Spirit</h3>
-      <p>Weeks 11–12</p>
-    </div>
-    <div class="stage-element">Spirit</div>
-  </div>
-</div>
-
-</div><!-- /stages -->
-
-<!-- PROGRAM CTA -->
+<!-- CTA -->
 <section class="prog-cta">
-  <div class="prog-cta-glow"></div>
-  <div class="prog-cta-inner">
-    <div class="eyebrow gold center rv">Begin the Journey</div>
-    <h2 class="rv" style="transition-delay:60ms">Your body<br>already <em>knows the way.</em></h2>
-    <p class="prog-cta-sub rv" style="transition-delay:120ms">The Rose Goddess Path is an invitation to remember who you are beneath everything you have been told to be. You are not broken. There is nothing to fix.</p>
-    <div class="prog-cta-btns rv" style="transition-delay:180ms">
-      <a href="index.html#contact" class="btn-rose">Work With Me</a>
-      <a href="index.html" class="btn-out">Back to the Temple</a>
+  <img src="images/rosa-beach-dance.jpg" alt="" class="prog-cta-bg" id="prog-cta-bg">
+  <div class="prog-cta-grad"></div>
+  <div class="prog-cta-body rv">
+    <p class="eyebrow eyebrow-c" style="color:var(--rose-pale);">The Invitation</p>
+    <h2>Are you ready to <em>bloom?</em></h2>
+    <p>The Rose Goddess Path is for women who feel the call to return to themselves &mdash; to their bodies, their power, and their truth.</p>
+    <div class="prog-cta-btns">
+      <a href="index.html#contact" class="btn-fill">Apply Now</a>
+      <a href="index.html#work" class="btn-ghost">All Offerings</a>
     </div>
   </div>
 </section>
 
-<!-- DISCLAIMER -->
-<section class="disclaimer-section">
-  <div class="disclaimer-inner rv">
-    <h5>Disclaimer</h5>
-    <p>This work is devotional and educational in nature. It is intended to support personal exploration, spiritual reflection, and embodied awareness. It is not a substitute for medical care, psychological counseling, mental health treatment, or trauma therapy.</p>
-    <p>By participating in this program, you acknowledge that you are responsible for your own physical, emotional, and psychological wellbeing. You agree to listen to your body, honor your personal boundaries, and engage in all practices with self-sovereignty and discernment.</p>
-    <p>If you have medical, psychological, or trauma-related concerns, please consult with a qualified and licensed healthcare provider before participating.</p>
-    <p>By entering this course or engaging in these teachings, you agree to release and hold Rosa Diaz de Leon harmless from any and all liability, claims, or damages arising from participation in this work.</p>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
-    <div>
-      <div class="f-logo">Templo de la Diosa Rosa</div>
-      <p class="f-tagline">A sacred space for women to remember their power, their bodies, and their inner medicine. Private online sessions worldwide.</p>
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">Templo de la <em>Diosa Rosa</em></a>
+      <p>A sacred space for women to remember their power, their bodies, and their inner medicine.</p>
     </div>
-    <div class="f-col">
-      <h5>The Temple</h5>
+    <div class="footer-col">
+      <h4>Navigate</h4>
       <ul>
         <li><a href="index.html#about">About</a></li>
         <li><a href="index.html#medicine">My Medicine</a></li>
-        <li><a href="index.html#sessions">Private Sessions</a></li>
+        <li><a href="index.html#work">Work With Me</a></li>
         <li><a href="program.html">The Rose Goddess Path</a></li>
       </ul>
     </div>
-    <div class="f-col">
-      <h5>Connect</h5>
+    <div class="footer-col">
+      <h4>Legal</h4>
       <ul>
-        <li><a href="index.html#contact">Work With Me</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
     </div>
   </div>
-  <div class="footer-disclaimer">
-    <p><strong>Disclaimer:</strong> This work is devotional and educational in nature. It is not a substitute for medical care, psychological counseling, mental health treatment, or trauma therapy. By engaging in these teachings, you agree to release and hold Rosa Diaz de Leon harmless from any and all liability, claims, or damages arising from participation in this work.</p>
-  </div>
-  <div class="footer-btm">
-    <span>© 2026 Templo de la Diosa Rosa</span>
-    <span>Sacred Feminine · Healing · Online</span>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Templo de la Diosa Rosa &nbsp;&middot;&nbsp; Rosa Diaz de Leon</p>
+    <a href="disclaimer.html">Disclaimer</a>
   </div>
 </footer>
 
 <script>
 (function(){
-  // Nav scroll
-  var nav = document.getElementById('nav');
-  window.addEventListener('scroll', function(){ nav.classList.toggle('sc', window.scrollY > 60); }, {passive:true});
-
-  // Hamburger
-  var burger = document.getElementById('nav-burger');
-  var menu = document.getElementById('nav-menu');
-  if(burger && menu){
-    burger.addEventListener('click', function(){
-      var open = menu.classList.toggle('open');
-      burger.classList.toggle('open', open);
-      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      document.body.style.overflow = open ? 'hidden' : '';
-    });
-    menu.querySelectorAll('a').forEach(function(link){
-      link.addEventListener('click', function(){
-        menu.classList.remove('open');
-        burger.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
+  var nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+})();
+(function(){
+  var b=document.getElementById('burger'),m=document.getElementById('nav-menu');
+  if(!b||!m)return;
+  b.addEventListener('click',function(){m.classList.toggle('open');b.classList.toggle('open');});
+  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');b.classList.remove('open');});});
+})();
+(function(){
+  var els=document.querySelectorAll('.rv,.rv-l,.rv-r');
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:0.1});
+  els.forEach(function(el){io.observe(el);});
+})();
+(function(){
+  var hb=document.getElementById('prog-hero-bg');
+  var cb=document.getElementById('prog-cta-bg');
+  function s(){
+    var wh=window.innerHeight;
+    if(hb){var r=hb.closest('.prog-hero').getBoundingClientRect();if(r.bottom>0&&r.top<wh){var p=(wh*.5-r.top)/(wh+r.height);hb.style.transform='translateY('+(p*10-5)+'%)';}}
+    if(cb){var r2=cb.closest('.prog-cta').getBoundingClientRect();if(r2.bottom>0&&r2.top<wh){var p2=(wh*.5-r2.top)/(wh+r2.height);cb.style.transform='translateY('+(p2*10-5)+'%)';}}
   }
-
-  // Reveal on scroll
-  var rvEls = document.querySelectorAll('.rv,.rv-l,.rv-r,.rv-s');
-  function reveal(){
-    rvEls.forEach(function(el){
-      if(el.getBoundingClientRect().top < window.innerHeight * 0.92) el.classList.add('on');
-    });
-  }
-  if('IntersectionObserver' in window){
-    var obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); }});
-    }, {threshold:0.08});
-    rvEls.forEach(function(el){ obs.observe(el); });
-  }
-  reveal();
-  window.addEventListener('scroll', reveal, {passive:true});
-  setTimeout(reveal, 200);
-
-  // Custom cursor
-  var cur = document.getElementById('cursor');
-  if(cur){
-    document.addEventListener('mousemove', function(e){
-      cur.style.left = e.clientX + 'px';
-      cur.style.top  = e.clientY + 'px';
-    });
-    document.querySelectorAll('a,button,.arch-card,.stage-content').forEach(function(el){
-      el.addEventListener('mouseenter', function(){ cur.classList.add('hovering'); });
-      el.addEventListener('mouseleave', function(){ cur.classList.remove('hovering'); });
-    });
-  }
+  window.addEventListener('scroll',s,{passive:true});s();
 })();
 </script>
 </body>
