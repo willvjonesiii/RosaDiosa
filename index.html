@@ -96,9 +96,10 @@ h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:300;}
 .link-rose::after{content:'&#8594;';}
 .link-rose:hover{gap:18px;}
 
-/* DIOSA FEATURE — accent band */
-.diosa{background:var(--dark);color:#fff;padding:72px 10%;text-align:center;position:relative;overflow:hidden;}
+/* DIOSA FEATURE — accent band with parallax content layer */
+.diosa{background:var(--dark);color:#fff;padding:100px 10%;text-align:center;position:relative;overflow:hidden;}
 .diosa::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(170,68,102,.12),transparent 70%);pointer-events:none;}
+.diosa-inner{will-change:transform;}
 .diosa h2{font-size:clamp(18px,2.4vw,28px);line-height:1.5;max-width:820px;margin:0 auto 20px;font-weight:300;letter-spacing:.02em;}
 .diosa h2 em{font-style:italic;color:var(--rose-pale);}
 .diosa p{font-size:.96rem;line-height:1.9;color:rgba(255,255,255,.52);max-width:660px;margin:0 auto 12px;}
@@ -330,11 +331,13 @@ footer{background:var(--dark);padding:76px 72px 40px;}
 </section>
 
 <div class="diosa">
-  <p class="eyebrow eyebrow-c rv" style="color:var(--rose-pale);">The Rose Goddess &nbsp;&middot;&nbsp; Diosa Rosa</p>
-  <h2 class="rv">A sacred space for women to remember<br>their power, their bodies, and their <em>inner medicine.</em></h2>
-  <div class="divider rv"></div>
-  <p class="rv">Through shamanic guidance, energy work, ceremony, movement, sound, and the exploration of ecstasy, I accompany women on a path of reconnection with their body, their voice, and their truth.</p>
-  <p class="rv">Each session is intuitive and guided by what your body and spirit are ready to explore.</p>
+  <div class="diosa-inner" id="diosa-inner">
+    <p class="eyebrow eyebrow-c rv" style="color:var(--rose-pale);">The Rose Goddess &nbsp;&middot;&nbsp; Diosa Rosa</p>
+    <h2 class="rv">A sacred space for women to remember<br>their power, their bodies, and their <em>inner medicine.</em></h2>
+    <div class="divider rv"></div>
+    <p class="rv">Through shamanic guidance, energy work, ceremony, movement, sound, and the exploration of ecstasy, I accompany women on a path of reconnection with their body, their voice, and their truth.</p>
+    <p class="rv">Each session is intuitive and guided by what your body and spirit are ready to explore.</p>
+  </div>
 </div>
 
 <div class="pleasure">
@@ -505,11 +508,13 @@ footer{background:var(--dark);padding:76px 72px 40px;}
 (function(){
   var ai=document.getElementById('about-img'),af=ai?ai.closest('.about-frame'):null;
   var pi=document.getElementById('pleasure-img'),pw=pi?pi.closest('.pleasure-img'):null;
+  var di=document.getElementById('diosa-inner'),diw=di?di.closest('.diosa'):null;
   var cb=document.getElementById('cta-bg'),cw=cb?cb.closest('.cta'):null;
   function s(){
     var wh=window.innerHeight;
     if(ai&&af){var r=af.getBoundingClientRect();if(r.bottom>0&&r.top<wh){var p=(wh*.5-r.top)/(wh+r.height);ai.style.transform='translateY('+(p*12)+'%)';}}
     if(pi&&pw){var r2=pw.getBoundingClientRect();if(r2.bottom>0&&r2.top<wh){var p2=(wh*.5-r2.top)/(wh+r2.height);pi.style.transform='translateY('+(p2*14-7)+'%)';}}
+    if(di&&diw){var rd=diw.getBoundingClientRect();if(rd.bottom>0&&rd.top<wh){var pd=(wh*.5-rd.top)/(wh+rd.height);di.style.transform='translateY('+(pd*48-24)+'px)';}}
     if(cb&&cw){var r3=cw.getBoundingClientRect();if(r3.bottom>0&&r3.top<wh){var p3=(wh*.5-r3.top)/(wh+r3.height);cb.style.transform='translateY('+(p3*24-12)+'%)';}}
   }
   window.addEventListener('scroll',s,{passive:true});s();
