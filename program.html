@@ -3,667 +3,710 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Rose Goddess Path — Templo de la Diosa Rosa</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<title>The Rose Goddess Path — Rosa Diosa</title>
+<meta name="description" content="A 10-week sacred initiation for women ready to journey from Seed to Rose Goddess. Move through 5 Stages of the Rose and embody 7 Archetypes on the path to full feminine sovereignty.">
+<link rel="stylesheet" href="style.css">
+
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-:root{
-  --earth:#1a1510;--bark:#2c2218;--clay:#8b5e3c;
-  --rose:#c4806a;--blush:#e8b8a0;--petal:#f2d4c8;
-  --cream:#f5ede4;--parch:#f9f4ef;--white:#fdfaf7;
-  --gold:#c9a96e;--mid:rgba(26,21,16,.5);--border:rgba(26,21,16,.08);
+/* ── PROGRAM-ONLY STYLES ── */
+
+/* PAGE HERO */
+.page-hero {
+  position: relative;
+  height: 68vh;
+  min-height: 480px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
 }
-body{background:var(--white);color:var(--earth);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;}
+.page-hero-bg {
+  position: absolute;
+  inset: -12% 0;
+  z-index: 0;
+}
+.page-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.page-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26,21,16,.85) 0%, rgba(26,21,16,.3) 60%, rgba(26,21,16,.5) 100%);
+  z-index: 1;
+}
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 60px 64px;
+  max-width: 740px;
+}
+.page-hero-content .eyebrow { color: var(--blush); margin-bottom: 16px; }
+.page-hero-content h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  line-height: 1.08;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+.page-hero-content p {
+  font-size: .95rem;
+  color: var(--petal);
+  line-height: 1.75;
+  max-width: 500px;
+}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:30px 56px;display:flex;align-items:center;justify-content:space-between;transition:all .5s ease;}
-nav.sc{background:rgba(253,250,247,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:18px 56px;box-shadow:0 1px 40px rgba(26,21,16,.06);}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--white);text-decoration:none;letter-spacing:.06em;transition:color .5s;}
-nav.sc .nav-logo{color:var(--earth);}
-nav ul{list-style:none;display:flex;gap:36px;align-items:center;}
-nav a.nl{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(253,250,247,.55);text-decoration:none;font-weight:300;transition:color .3s;}
-nav.sc a.nl{color:var(--mid);}
-nav a.nl:hover{color:var(--gold);}
-nav.sc a.nl:hover{color:var(--gold);}
-.nav-cta{display:inline-block;padding:10px 26px;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;font-weight:300;text-decoration:none;border:1px solid rgba(253,250,247,.3);color:var(--white);border-radius:40px;transition:all .35s;white-space:nowrap;flex-shrink:0;}
-nav.sc .nav-cta{border-color:rgba(26,21,16,.15);color:var(--earth);}
-.nav-cta:hover{background:var(--gold);border-color:var(--gold);color:var(--earth);}
+/* PROGRAM INTRO */
+.prog-intro {
+  background: var(--parch);
+  padding: 100px 60px;
+}
+.prog-intro-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.prog-intro h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: var(--earth);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+.prog-intro p {
+  font-size: .9rem;
+  line-height: 1.85;
+  color: var(--bark);
+  margin-bottom: 18px;
+}
+.prog-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.prog-stat {
+  background: var(--cream);
+  padding: 32px 24px;
+  text-align: center;
+}
+.prog-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 3rem;
+  color: var(--rose);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.prog-stat-label {
+  font-size: .65rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--clay);
+}
 
-/* ── HAMBURGER ── */
-.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;z-index:210;flex-shrink:0;}
-.nav-burger span{display:block;width:22px;height:1px;background:var(--white);transition:background .5s,transform .35s,opacity .35s;}
-nav.sc .nav-burger span{background:var(--earth);}
-.nav-burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
-.nav-burger.open span:nth-child(2){opacity:0;}
-.nav-burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+/* ROSE DIETA */
+.rose-dieta {
+  background: var(--earth);
+  padding: 100px 60px;
+}
+.rose-dieta-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+.rose-dieta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: var(--petal);
+  margin-bottom: 24px;
+}
+.rose-dieta p {
+  font-size: .9rem;
+  line-height: 1.85;
+  color: var(--blush);
+  margin-bottom: 18px;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.dieta-divider {
+  width: 1px;
+  height: 64px;
+  background: var(--hairline);
+  margin: 40px auto;
+}
 
-/* ── PROGRAM HERO ── */
-.prog-hero{position:relative;height:100vh;min-height:680px;display:flex;align-items:flex-end;overflow:hidden;background:var(--earth);}
-.prog-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.45) saturate(.7);}
-.prog-hero-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,21,16,.97) 0%,rgba(26,21,16,.3) 50%,transparent 80%),linear-gradient(160deg,rgba(196,128,106,.15) 0%,transparent 55%);}
-.prog-hero-content{position:relative;z-index:2;padding:0 56px 100px;max-width:880px;}
-.prog-hero-eyebrow{display:flex;align-items:center;gap:16px;font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:var(--blush);font-weight:300;margin-bottom:24px;opacity:0;animation:rise .9s .15s forwards;}
-.prog-hero-line{width:28px;height:1px;background:var(--blush);opacity:.6;}
-.prog-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,7vw,7.5rem);font-weight:300;line-height:.96;letter-spacing:-.02em;color:var(--white);margin-bottom:28px;opacity:0;animation:rise 1.1s .3s forwards;}
-.prog-hero h1 em{font-style:italic;color:var(--petal);display:block;}
-.prog-hero-sub{font-size:.92rem;line-height:2;color:rgba(253,250,247,.45);max-width:480px;font-weight:300;margin-bottom:44px;opacity:0;animation:rise .9s .55s forwards;}
-.prog-hero-btns{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:rise .9s .75s forwards;}
-.scroll-hint{position:absolute;bottom:38px;right:56px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:rise .7s 1.2s forwards;}
-.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,transparent,rgba(253,250,247,.25));animation:pulse-line 2s 1.5s infinite;}
-@keyframes pulse-line{0%,100%{opacity:.4}50%{opacity:1}}
-.scroll-txt{font-size:.44rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(253,250,247,.25);writing-mode:vertical-rl;}
-@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+/* STAGES */
+.stages {
+  padding: 100px 60px;
+  background: var(--white);
+}
+.stages-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 72px;
+}
+.stages-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: var(--earth);
+  margin-bottom: 16px;
+}
+.stages-header p {
+  font-size: .88rem;
+  color: var(--clay);
+  line-height: 1.7;
+}
+.stage-list {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.stage-item {
+  display: grid;
+  grid-template-columns: 72px 200px 1fr auto;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 48px;
+  background: var(--parch);
+  transition: background .3s;
+}
+.stage-item:hover { background: var(--cream); }
+.stage-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 3rem;
+  color: var(--rose);
+  opacity: .35;
+  line-height: 1;
+}
+.stage-meta { }
+.stage-element {
+  font-size: .62rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 6px;
+}
+.stage-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--earth);
+  line-height: 1.15;
+}
+.stage-body p {
+  font-size: .85rem;
+  color: var(--bark);
+  line-height: 1.75;
+}
+.stage-archetype {
+  text-align: right;
+}
+.stage-archetype-label {
+  font-size: .6rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--clay);
+  opacity: .6;
+  margin-bottom: 4px;
+}
+.stage-archetype-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--clay);
+}
 
-/* ── SECTION HELPERS ── */
-.eyebrow{display:flex;align-items:center;gap:12px;font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;color:var(--rose);font-weight:300;margin-bottom:16px;}
-.eyebrow::before,.eyebrow::after{content:'';flex:0 0 18px;height:1px;background:currentColor;opacity:.5;}
-.eyebrow.gold{color:var(--gold);}
-.eyebrow.center{justify-content:center;}
-h2.display{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4vw,3.8rem);font-weight:300;line-height:1.1;color:var(--earth);margin-bottom:22px;letter-spacing:-.02em;}
-h2.display em{font-style:italic;color:var(--rose);}
-h2.display.light{color:var(--white);}
-h2.display.light em{color:var(--blush);}
-.lead{font-size:.92rem;line-height:2;color:var(--mid);font-weight:300;margin-bottom:14px;}
-.gold-rule{width:36px;height:1px;background:var(--gold);opacity:.4;margin:24px 0;}
+/* ARCHETYPES */
+.archetypes {
+  background: var(--cream);
+  padding: 100px 60px;
+}
+.archetypes-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 64px;
+}
+.archetypes-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: var(--earth);
+  margin-bottom: 16px;
+}
+.archetype-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.acard {
+  background: var(--white);
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: background .3s;
+}
+.acard:hover { background: var(--parch); }
+.acard-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.8rem;
+  color: var(--rose);
+  opacity: .4;
+  line-height: 1;
+}
+.acard h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: var(--earth);
+  line-height: 1.2;
+}
+.acard p {
+  font-size: .82rem;
+  line-height: 1.7;
+  color: var(--bark);
+  flex: 1;
+}
 
-/* ── BTNS ── */
-.btn-rose{display:inline-block;padding:15px 40px;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;font-weight:300;text-decoration:none;background:linear-gradient(135deg,var(--rose),var(--clay));color:var(--white);border-radius:40px;transition:opacity .3s,transform .3s;white-space:nowrap;flex-shrink:0;}
-.btn-rose:hover{opacity:.85;transform:translateY(-1px);}
-.btn-out{display:inline-block;padding:15px 40px;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;font-weight:300;text-decoration:none;border:1px solid rgba(253,250,247,.25);color:rgba(253,250,247,.65);border-radius:40px;transition:all .35s;white-space:nowrap;flex-shrink:0;}
-.btn-out:hover{border-color:var(--blush);color:var(--blush);}
-.btn-dark{display:inline-block;padding:15px 40px;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;font-weight:300;text-decoration:none;border:1px solid var(--border);color:var(--earth);border-radius:40px;transition:all .35s;white-space:nowrap;}
-.btn-dark:hover{border-color:var(--rose);color:var(--rose);}
+/* JOURNEY VISUAL */
+.journey-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 580px;
+}
+.journey-img {
+  position: relative;
+  overflow: hidden;
+}
+.journey-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.journey-body {
+  background: var(--bark);
+  display: flex;
+  align-items: center;
+  padding: 80px 72px;
+}
+.journey-body-inner { max-width: 480px; }
+.journey-body h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: var(--petal);
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+.journey-body p {
+  font-size: .9rem;
+  line-height: 1.8;
+  color: var(--blush);
+  margin-bottom: 18px;
+}
+.journey-includes {
+  list-style: none;
+  margin: 28px 0;
+}
+.journey-includes li {
+  font-size: .85rem;
+  color: var(--petal);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(196,128,106,.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.journey-includes li::before {
+  content: '✦';
+  color: var(--rose);
+  font-size: .55rem;
+  flex-shrink: 0;
+}
 
-/* ── OVERVIEW ── */
-.overview{padding:130px 56px;background:var(--white);}
-.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;}
-.overview-stat{text-align:center;padding:40px;background:var(--parch);border-radius:20px;}
-.overview-stat-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:3.5rem;color:var(--rose);line-height:1;margin-bottom:8px;}
-.overview-stat-label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);}
-.overview-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px;}
-.overview-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;}
-.overview-tag{padding:7px 16px;border:1px solid var(--border);border-radius:40px;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);}
+/* CTA */
+.prog-cta {
+  background: var(--earth);
+  padding: 100px 60px;
+  text-align: center;
+}
+.prog-cta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--petal);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+.prog-cta p {
+  font-size: .9rem;
+  color: var(--blush);
+  line-height: 1.8;
+  max-width: 560px;
+  margin: 0 auto 36px;
+}
+.prog-cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
-/* ── DIETA ── */
-.dieta{padding:130px 56px;background:linear-gradient(160deg,var(--petal) 0%,var(--cream) 50%,var(--parch) 100%);position:relative;overflow:hidden;}
-.dieta::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(232,184,160,.4),transparent 70%);pointer-events:none;}
-.dieta-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1;}
-.dieta-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;background:rgba(196,128,106,.12);border:1px solid rgba(196,128,106,.2);border-radius:40px;margin-bottom:32px;}
-.dieta-badge span{font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);}
-.dieta-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.6rem,3vw,2.6rem);font-weight:300;line-height:1.25;color:var(--earth);margin-bottom:24px;}
-.dieta-visual{background:var(--earth);border-radius:32px;padding:56px 44px;position:relative;overflow:hidden;}
-.dieta-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,rgba(196,128,106,.1),transparent 70%);pointer-events:none;}
-.dieta-rose-sym{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:6rem;color:rgba(196,128,106,.07);line-height:1;margin-bottom:24px;}
-.dieta-visual h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--cream);margin-bottom:16px;}
-.dieta-visual p{font-size:.82rem;line-height:1.95;color:rgba(245,237,228,.4);}
-.dieta-teachers{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px;}
-.dieta-teacher{padding:6px 14px;border:1px solid rgba(201,169,110,.2);border-radius:40px;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,169,110,.6);}
+/* DISCLAIMER */
+.disclaimer {
+  background: var(--parch);
+  padding: 60px;
+  border-top: 1px solid var(--border);
+}
+.disclaimer-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.disclaimer h3 {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 16px;
+}
+.disclaimer p {
+  font-size: .78rem;
+  line-height: 1.8;
+  color: var(--clay);
+  opacity: .75;
+}
 
-/* ── ARCHETYPES ── */
-.archetypes{padding:130px 56px;background:var(--earth);position:relative;overflow:hidden;}
-.archetypes::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(196,128,106,.05),transparent 70%);pointer-events:none;}
-.arch-intro{text-align:center;max-width:620px;margin:0 auto 80px;position:relative;z-index:1;}
-.arch-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;position:relative;z-index:1;}
-.arch-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.04);padding:36px 20px;text-align:center;transition:background .4s,transform .4s cubic-bezier(.16,1,.3,1);}
-.arch-card:hover{background:rgba(201,169,110,.07);transform:translateY(-6px);}
-.arch-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.8rem;color:rgba(201,169,110,.4);margin-bottom:16px;}
-.arch-name{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:300;color:var(--cream);margin-bottom:10px;line-height:1.3;}
-.arch-essence{font-size:.62rem;color:rgba(245,237,228,.25);letter-spacing:.08em;text-transform:uppercase;line-height:1.6;}
-.arch-line{width:18px;height:1px;background:var(--gold);opacity:.3;margin:14px auto 0;}
-
-/* ── STAGES ── */
-.stages{padding:0;}
-.stage{display:grid;grid-template-columns:1fr 1fr;min-height:600px;}
-.stage:nth-child(even) .stage-content{order:1;}
-.stage:nth-child(even) .stage-visual{order:2;}
-.stage-content{padding:100px 72px;display:flex;flex-direction:column;justify-content:center;}
-.stage-visual{position:relative;overflow:hidden;}
-.stage-visual-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
-.stage-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35;filter:saturate(.5);}
-.stage-element{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(7rem,14vw,16rem);color:rgba(196,128,106,.06);line-height:1;position:absolute;bottom:-20px;right:-10px;pointer-events:none;z-index:1;}
-.stage-roman{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--gold);letter-spacing:.1em;margin-bottom:12px;display:block;}
-.stage-archetype-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--border);border-radius:40px;margin-bottom:20px;}
-.stage-archetype-tag span{font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);}
-.stage-focus{margin-top:32px;}
-.stage-focus h4{font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:14px;}
-.stage-focus ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
-.stage-focus li{display:flex;align-items:center;gap:10px;font-size:.8rem;color:var(--mid);font-weight:300;}
-.stage-focus li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--rose);flex-shrink:0;opacity:.6;}
-
-/* Stage color variants */
-.stage-earth{background:var(--parch);}
-.stage-earth .stage-visual{background:linear-gradient(135deg,#2c3a1a,#1a2410);}
-.stage-water{background:var(--cream);}
-.stage-water .stage-visual{background:linear-gradient(135deg,#1a2535,#0f1a28);}
-.stage-fire{background:var(--white);}
-.stage-fire .stage-visual{background:linear-gradient(135deg,#3a1a10,#280f0a);}
-.stage-air{background:var(--parch);}
-.stage-air .stage-visual{background:linear-gradient(135deg,#1e2a35,#141c24);}
-.stage-spirit{background:var(--earth);}
-.stage-spirit .stage-content{padding:100px 72px;}
-.stage-spirit h2.display{color:var(--white);}
-.stage-spirit h2.display em{color:var(--blush);}
-.stage-spirit .stage-roman{color:rgba(201,169,110,.7);}
-.stage-spirit .lead{color:rgba(245,237,228,.38);}
-.stage-spirit .stage-focus li{color:rgba(245,237,228,.4);}
-.stage-spirit .stage-archetype-tag{border-color:rgba(255,255,255,.08);}
-.stage-spirit .stage-archetype-tag span{color:rgba(245,237,228,.3);}
-.stage-spirit .stage-visual{background:linear-gradient(135deg,#3a1a3a,#1a0f1f);}
-
-/* Stage visual number */
-.stage-vis-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(8rem,15vw,18rem);color:rgba(255,255,255,.03);line-height:1;z-index:1;position:relative;}
-.stage-vis-label{position:absolute;bottom:40px;left:44px;right:44px;z-index:2;}
-.stage-vis-label h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:rgba(255,255,255,.6);margin-bottom:4px;}
-.stage-vis-label p{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.2);}
-
-/* ── CTA ── */
-.prog-cta{position:relative;overflow:hidden;padding:180px 56px;text-align:center;background:var(--earth);}
-.prog-cta-glow{position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(196,128,106,.12),transparent 70%);pointer-events:none;}
-.prog-cta-inner{position:relative;z-index:2;max-width:640px;margin:0 auto;}
-.prog-cta-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;color:var(--white);line-height:1.05;margin-bottom:24px;letter-spacing:-.02em;}
-.prog-cta-inner h2 em{font-style:italic;color:var(--blush);}
-.prog-cta-sub{font-size:.9rem;line-height:2;color:rgba(253,250,247,.4);max-width:420px;margin:0 auto 48px;}
-.prog-cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
-
-/* ── DISCLAIMER ── */
-.disclaimer-section{padding:80px 56px;background:var(--bark);border-top:1px solid rgba(255,255,255,.04);}
-.disclaimer-inner{max-width:760px;margin:0 auto;}
-.disclaimer-inner h5{font-size:.52rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(245,237,228,.2);margin-bottom:20px;}
-.disclaimer-inner p{font-size:.72rem;line-height:1.9;color:rgba(245,237,228,.2);font-weight:300;margin-bottom:10px;}
-.disclaimer-inner p + p{margin-top:10px;}
-
-/* ── FOOTER ── */
-footer{background:var(--bark);padding:80px 56px 0;}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:72px;padding-bottom:56px;border-bottom:1px solid rgba(253,250,247,.06);}
-.f-logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--cream);margin-bottom:14px;letter-spacing:.04em;}
-.f-tagline{font-size:.76rem;line-height:1.9;color:rgba(245,237,228,.22);max-width:260px;}
-.f-col h5{font-size:.5rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(245,237,228,.15);margin-bottom:20px;}
-.f-col ul{list-style:none;display:flex;flex-direction:column;gap:12px;}
-.f-col a{font-size:.76rem;color:rgba(245,237,228,.28);text-decoration:none;transition:color .25s;}
-.f-col a:hover{color:var(--gold);}
-.footer-disclaimer{padding:32px 0;border-top:1px solid rgba(253,250,247,.04);border-bottom:1px solid rgba(253,250,247,.04);margin-bottom:4px;}
-.footer-disclaimer p{font-size:.65rem;line-height:1.85;color:rgba(245,237,228,.15);font-weight:300;}
-.footer-disclaimer strong{color:rgba(245,237,228,.22);font-weight:400;letter-spacing:.06em;}
-.footer-btm{padding:20px 0;display:flex;align-items:center;justify-content:space-between;font-size:.54rem;color:rgba(245,237,228,.13);letter-spacing:.1em;text-transform:uppercase;}
-
-/* ── REVEAL ── */
-.rv{opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1);}
-.rv-l{opacity:0;transform:translateX(-32px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1);}
-.rv-r{opacity:0;transform:translateX(32px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1);}
-.rv-s{opacity:0;transform:scale(.96);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1);}
-.rv.on,.rv-l.on,.rv-r.on,.rv-s.on{opacity:1;transform:none;}
-
-/* ── CURSOR ── */
-html, html *, html *::before, html *::after { cursor: none !important; }
-#cursor {position:fixed;pointer-events:none;z-index:9999;width:27px;height:27px;top:0;left:0;margin:-13px 0 0 -13px;animation:cursor-pulse 2s ease-in-out infinite;will-change:transform;}
-#cursor img{width:100%;height:100%;display:block;}
-#cursor.hovering{animation:cursor-pulse-big 1s ease-in-out infinite;}
-@keyframes cursor-pulse{0%{transform:rotate(-35deg) scale(1);}50%{transform:rotate(-35deg) scale(1.18);}100%{transform:rotate(-35deg) scale(1);}}
-@keyframes cursor-pulse-big{0%{transform:rotate(-35deg) scale(1.15);}50%{transform:rotate(-35deg) scale(1.35);}100%{transform:rotate(-35deg) scale(1.15);}}
-@media(hover:none){#cursor{display:none;}body,*{cursor:auto !important;}}
-
-/* ── MOBILE ── */
-@media(max-width:900px){
-  nav{padding:16px 22px;}nav.sc{padding:14px 22px;}
-  nav ul{position:fixed;inset:0;background:rgba(26,21,16,.97);flex-direction:column;align-items:center;justify-content:center;gap:40px;z-index:200;display:none;}
-  nav ul.open{display:flex;}
-  nav ul.open a.nl{color:rgba(245,237,228,.7);font-size:.72rem;letter-spacing:.24em;}
-  nav ul.open .nav-cta{color:var(--white);border-color:rgba(253,250,247,.25);font-size:.62rem;}
-  .nav-burger{display:flex;}
-  .prog-hero-content{padding:0 22px 80px;}
-  .overview{padding:88px 22px;}
-  .overview-grid{grid-template-columns:1fr;gap:44px;}
-  .overview-stats{grid-template-columns:1fr 1fr;}
-  .dieta{padding:88px 22px;}
-  .dieta-inner{grid-template-columns:1fr;gap:44px;}
-  .archetypes{padding:88px 22px;}
-  .arch-grid{grid-template-columns:repeat(2,1fr);}
-  .stage{grid-template-columns:1fr;}
-  .stage:nth-child(even) .stage-content,.stage:nth-child(even) .stage-visual{order:unset;}
-  .stage-visual{min-height:280px;}
-  .stage-content{padding:60px 22px;}
-  .stage-spirit .stage-content{padding:60px 22px;}
-  .prog-cta{padding:110px 22px;}
-  .disclaimer-section{padding:60px 22px;}
-  footer{padding:56px 22px 0;}
-  .footer-grid{grid-template-columns:1fr;gap:44px;}
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .page-hero-content { padding: 0 28px 52px; }
+  .prog-intro { padding: 72px 28px; }
+  .prog-intro-inner { grid-template-columns: 1fr; gap: 48px; }
+  .prog-stats { grid-template-columns: repeat(3, 1fr); }
+  .rose-dieta { padding: 72px 28px; }
+  .stages { padding: 72px 28px; }
+  .stage-item { grid-template-columns: 48px 1fr; gap: 16px 24px; padding: 32px 24px; }
+  .stage-archetype { display: none; }
+  .archetypes { padding: 72px 28px; }
+  .archetype-grid { grid-template-columns: repeat(2, 1fr); }
+  .journey-split { grid-template-columns: 1fr; }
+  .journey-img { height: 320px; }
+  .journey-body { padding: 52px 32px; }
+  .prog-cta { padding: 72px 28px; }
+  .disclaimer { padding: 48px 28px; }
 }
 </style>
 </head>
 <body>
 
-<div id="cursor"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='8' fill='%23c4806a' opacity='.9'/%3E%3C/svg%3E" alt=""></div>
+<!-- CURSOR -->
+<div id="cursor"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IS0tIFVwbG9hZGVkIHRvOiBTVkcgUmVwbywgd3d3LnN2Z3JlcG8uY29tLCBHZW5lcmF0b3I6IFNWRyBSZXBvIE1peGVyIFRvb2xzIC0tPgo8c3ZnIHdpZHRoPSI4MDBweCIgaGVpZ2h0PSI4MDBweCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIGFyaWEtaGlkZGVuPSJ0cnVlIiByb2xlPSJpbWciIGNsYXNzPSJpY29uaWZ5IGljb25pZnktLW5vdG8iIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiPjxwYXRoIGQ9Ik01Ni44MSA4NS4yOWwyMS44Ni4xN3MtMS43NCA1LjY1LTMuMTggNy44N2MtMi4zNSAzLjYtMy41MiA1LjQ0LTQuNTIgOS4xM2MtMS41NSA1LjY4LTEuNDIgMTAuMDUtMS40MiAxMC4wNXMxLjIxLS40MiAyLjY4IDBjMS43OS41MSAyLjc2IDEuNyAyLjYgMi40M2MtLjE1LjY1LTIuMTQuMjEtMy41MiAxLjU5Yy0xLjA5IDEuMDktMS41MSAzLjAyLTEuNjggNC4yN2MtLjE3IDEuMjYtLjM0IDIuODUtMi42OCAzLjE4Yy0yLjM1LjM0LTUuODYuNTktNi42Mi0uNTljLS43NS0xLjE3LS4zNC0yMS42MS0uMzQtMjEuNjFsLTMuMTgtMTYuNDl6IiBmaWxsPSIjMzA3ZDMxIj48L3BhdGg+PHBhdGggZD0iTTU2LjU2IDgwLjc2Yy0uNDIuNzUtMTAuMzIgMi41My0xMC4zMiAyLjUzcy0zLjMxIDEuNzctNC41NiA3LjU1Yy0uNjggMy4xMy0uNTMgOS40Ny0xLjEyIDExLjY5Yy0uODQgMy4xOC00LjM2IDUuMDMtNC4xOSA1Ljc4Yy4xNy43NSAzLjI0LjcgNS42MS0uMzRjNS4zNi0yLjM1IDYuMy03LjIxIDguMDQtMTEuMzljMS42OC00LjAyIDQuODYtNi4xMyA0Ljg2LTYuMTNzLS43NSAyLjkyLS40MyA2LjE0Yy4yNyAyLjc3IDEuMTQgNi4zIDAgOS43M2MtMS4wOSAzLjI3LTIuNjIgNS4yNC0yLjAxIDUuNTRjLjQ2LjIyIDUuOTItLjMzIDguMS01LjExYzIuNDEtNS4yOCAyLjU4LTkuNjEgNC4wMi0xMi43MWMxLjU5LTMuNDMgNC42Mi00Ljg5IDQuNjItNC44OXMyLjE1IDEuMjYgNC43OCA0Ljk0YzIuOTMgNC4xIDUuMzggNy41NSA2Ljk2IDkuNjdjMy43IDQuOTggOC44MyA2LjU1IDguOTkgNS43MWMuMjUtMS4zNC0yLjQ3LTMuNDktMy4wMi02LjExYy0xLjM1LTYuNDUuNS05LjU0LTEuMDMtMTQuNDljLTIuMi03LjE1LTcuMzktNy4yOC05LjE5LTcuNjJjLS40Mi0uMDYtMjAuMTEtLjQ5LTIwLjExLS40OXoiIGZpbGw9IiM1Yzk4MjMiPjwvcGF0aD48cGF0aCBkPSJNNDcuMzEgNDQuMzRjLTEuMTMtMS4wMS0xNy44Ny0xMy4yMS0xNy44Ny0xMy4yMWwtLjI1LTcuNDJzLTQuMS03Ljc1LjYyLTEzLjUyYzQuMS01LjAxIDkuNTctMy41OSA5LjU3LTMuNTlzMi43NC0zLjQ1IDcuNTItMy42OWM2LjExLS4zMSA5LjA5IDQuODMgOS4wOSA0LjgzbDI3LjU1IDQuNTNsMTUuNDcgMTAuMDZzMi4yOS0uNzQgNC4xOS42YzEuOTggMS4zOSAxLjMzIDQuMzEgMS4xMSA1LjYyYy0uMjEgMS4yNS0yMC42NSAxNy41Ni0yMC42NSAxNy41NmwyLjE0IDMxLjk2bC03LjE0IDcuOTdzLTEgLjk4LTMuMDUgMS4yNGMtMS4xOS4xNS0yLjcyLS4zMy0yLjcyLS4zM2wtNC40NS0xMi43OGwtMjEuMTMtMjkuODN6IiBmaWxsPSIjOTYwMTBjIj48L3BhdGg+PHBhdGggZD0iTTgzLjE1IDYuODZsLTMuNzIuMjhsLTIuNjEgMi4xOWwuOTMgNC4yMXMuMTIgMy4xNS0yLjM2IDQuNjZjLTIuNDggMS41MS03LjM1IDMuOTktNy4zNSAzLjk5bC0zLjM2IDUuNTZzLTIuMTYtLjcxLTUuNjgtMi41MmMtMy4yOS0xLjctNy41LTUuNTgtNy41LTUuNThsLTcuNTMtLjUxcy0xLjQ0LS4xMy0yLjY1IDEuMTVjLTEuNzQgMS44Ni0xLjEyIDUuOCAyLjI5IDkuNDFjMy4yOCAzLjQ3IDEwLjM4IDcuNyAxMS45NiA4Ljg3YzEuNTggMS4xNyAzLjk5IDIuNjcgNS4zNiAzLjQ0YzEuMzIuNzQgMi45IDEuOCAzLjU5IDEuNjdjLjY5LS4xNCAxLjcxLTIuNDkgNC45NC00Ljc2YzMuMjMtMi4yNyA2LjM5LTQuMTkgMTEuNTUtNS45OGM1LjE2LTEuNzkgMTAuMTEtMy44NSAxMS42Mi00LjgxYzEuNTEtLjk2LS41NS03LjQ5LTIuNDEtMTEuNDhzLTYuOTQtMTAuMi03LjA3LTkuNzl6IiBmaWxsPSIjYWYwYzFiIj48L3BhdGg+PHBhdGggZD0iTTY1LjA3IDIzLjk4Yy0xLjI3IDEuNjgtMS4wMyAzLjY0LTEuMDMgMy42NHMyLjc3IDEuNjYgNS41IDIuNjFjNC45NSAxLjcyIDE2LjA5IDEuMjQgMjEuNDUtMS4xN3M3Ljk4LTQuNDkgOC44LTcuMDFjLjk2LTIuOTYgMS43Ni04Ljk0LTQtMTMuNTVjLTYuNi01LjI5LTE2LjU2LTIuNC0xNi41Ni0xLjAyczMuOTkuMjggMy45OSA1LjI5cy00LjQgOC4wNC04Ljg3IDguNjZjLTQuNDcuNjItNy4zNiAwLTkuMjggMi41NXoiIGZpbGw9IiNkYjEzMmMiPjwvcGF0aD48cGF0aCBkPSJNNDIuMjQgMTkuNjVzLS41MS0yLjAyIDEuMTctMy42NGMyLjU0LTIuNDggNS43OC0zLjc4IDcuNjMtNS43OHM0LjQ4LTUuNzkgMTAuOTMtNi42N2M5LjU2LTEuMzEgMTUuNzQgMi4yNyAxNy4xMiA2LjY3cy0xLjI0IDUuOTEtMy45MiA1Ljk4Yy0yLjY4LjA3LTQuMTctMS4xOS05LjA4LS4zNGMtOC4zMiAxLjQ0LTExLjIxIDUuOTEtMTEuOTYgNi4zM2MtLjc2LjQxLTMuMjMtMS4wMy02LjYtMS45M2MtMi40My0uNjUtNC4xOS0uNDktNS4yOS0uNjJ6IiBmaWxsPSIjZjcxNTM4Ij48L3BhdGg+PHBhdGggZD0iTTY5LjYyIDQ4LjM4czEuNy01LjY1IDcuMjUtOS4yM2M1LjU2LTMuNTggOS42MS0zLjY3IDE2LjY4LTYuODhzOS41MS01LjMyIDEwLjY0LTYuMDZjMS4xNi0uNzYgMi4yMS0xLjQ1IDMuMDItLjEyYy41Mi44Ni0uMzggNC4zOC0yLjc3IDcuOGMtMi40NCAzLjQ5LTQuODQgNS40MS02LjY2IDExLjQyYy0yLjQxIDcuOTMgMi4yMiAxNS4xNC0yLjcyIDI3Ljg4Yy0xLjYgNC4xMi01LjM1IDcuODktOC44NCAxMC4zNHMtOC41MiAzLTguNTIgM3MxLjc5LTEuMjUgMi43Ny01Ljg1Yy40OC0yLjI2IDEuMi02LjI3LjY1LTEwLjU0Yy0xLjU3LTEyLjIxLTExLjUtMjEuNzYtMTEuNS0yMS43NnoiIGZpbGw9IiNjZDBlMWYiPjwvcGF0aD48cGF0aCBkPSJNMzEuNzQgNDYuNjhjLjEyIDIuNjgtMS4xNCAxMi40My40OSAyMC4yNmMxLjI4IDYuMTYgNy42MiAxNy4wNSAxOS40OSAyMC4yNWMxMC45MiAyLjk1IDIyLjYxLS4wOSAyMi42MS0uMDlzNC40MS03LjQ1IDIuMTgtMTguMzFjLTIuNDMtMTEuODQtMTQuMjYtMjAuNjQtMjcuOS0yNy4zOGMtMTYuMzktOC4xLTE5LjM2LTE3Ljg2LTE5LjM2LTE3Ljg2cy01LjM5LTEuNDEtNi43NCAzLjQ0Yy0yLjA3IDcuNDQgOS4wNSAxNS42NCA5LjIzIDE5LjY5eiIgZmlsbD0iI2UyMTIyZCI+PC9wYXRoPjwvc3ZnPg==" alt=""></div>
 
-<nav id="nav">
-  <a href="index.html" class="nav-logo">Diosa Rosa</a>
-  <ul id="nav-menu">
-    <li><a href="index.html#about" class="nl">About</a></li>
-    <li><a href="index.html#medicine" class="nl">My Medicine</a></li>
-    <li><a href="index.html#sessions" class="nl">Sessions</a></li>
-    <li><a href="program.html" class="nl" style="color:var(--gold);">The Path</a></li>
-    <li><a href="index.html#contact" class="nav-cta">Work With Me</a></li>
+<!-- NAV -->
+<nav id="sitenav">
+  <a href="index.html" class="nav-logo">Rosa Diosa</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#medicine">My Medicine</a></li>
+    <li><a href="program.html" class="active">The Path</a></li>
+    <li><a href="index.html#sessions">Sessions</a></li>
   </ul>
-  <button class="nav-burger" id="nav-burger" aria-label="Open menu">
+  <a href="index.html#contact" class="btn-rose nav-cta">Work With Me</a>
+  <button id="nav-burger" class="nav-burger" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- PROGRAM HERO -->
-<section class="prog-hero">
-  <img
-    class="prog-hero-bg"
-    src="https://drive.google.com/thumbnail?id=1YBArNwUaWhUaYslWetgSpL2I9_69si4O&sz=w1800"
-    onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&auto=format&fit=crop&q=80'"
-    alt="Rose Goddess Path"
-  >
-  <div class="prog-hero-grad"></div>
-  <div class="prog-hero-content">
-    <div class="prog-hero-eyebrow">
-      <div class="prog-hero-line"></div>
-      A Guided Earth-Centered Journey
-    </div>
-    <h1>The Rose<br><em>Goddess Path</em></h1>
-    <p class="prog-hero-sub">12 weeks of embodied feminine awakening — from the first seed of potential to the full sovereignty of the Rose Goddess within you.</p>
-    <div class="prog-hero-btns">
-      <a href="index.html#contact" class="btn-rose">Begin the Journey</a>
-      <a href="#overview" class="btn-out">Explore the Path</a>
-    </div>
+<!-- MOBILE MENU -->
+<div id="nav-mobile" class="nav-mobile">
+  <button id="nav-close" class="nav-close" aria-label="Close menu">✕</button>
+  <nav class="nav-mobile-links">
+    <a href="index.html#about">About</a>
+    <a href="index.html#medicine">My Medicine</a>
+    <a href="program.html">The Path</a>
+    <a href="index.html#sessions">Sessions</a>
+    <a href="index.html#contact" class="nav-mobile-cta">Work With Me</a>
+  </nav>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <img src="https://drive.google.com/thumbnail?id=1i6mgPKdwMFYstJNhTg1oAd8Mx4Ica10g&sz=w1200" alt="The Rose Goddess Path">
   </div>
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    <span class="scroll-txt">Scroll</span>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <p class="eyebrow">Signature Initiation Program</p>
+    <h1>The Rose<br>Goddess Path</h1>
+    <p>A 10-week sacred journey from Seed to Rose Goddess — for women ready to reclaim their pleasure, power, and full feminine sovereignty.</p>
   </div>
 </section>
 
-<!-- OVERVIEW -->
-<section class="overview" id="overview">
-  <div class="overview-grid">
-    <div>
-      <div class="eyebrow rv">The Journey</div>
-      <h2 class="display rv" style="transition-delay:60ms">A sacred path back<br>to <em>yourself.</em></h2>
-      <p class="lead rv" style="transition-delay:120ms">The Rose Goddess Path is a 10-week earth-centered journey designed for women who are ready to awaken their bodies, reclaim their pleasure, and embody the full power of the sacred feminine.</p>
-      <p class="lead rv" style="transition-delay:160ms">You will move through five elemental stages — Earth, Water, Fire, Air, and Spirit — each one a sacred doorway into a deeper layer of yourself. The journey begins with a 2-week Rose Dieta initiation.</p>
-      <div class="gold-rule rv" style="transition-delay:200ms"></div>
-      <p class="lead rv" style="font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--clay);transition-delay:240ms">"Everything you seek already lives within you."</p>
+<!-- PROGRAM INTRO -->
+<section class="prog-intro">
+  <div class="prog-intro-inner">
+    <div class="rv-l">
+      <p class="eyebrow">What is The Path?</p>
+      <h2>An Initiation,<br>Not a Course</h2>
+      <p>The Rose Goddess Path is a living, breathing initiation into the full spectrum of the feminine. Over 10 weeks, you will journey through 5 sacred Stages — each one a death and a rebirth — and embody 7 Archetypes of the Rose lineage.</p>
+      <p>This is not about learning something new. It is about remembering something ancient. It is about coming home to yourself — all of yourself — in the deepest possible way.</p>
+      <p>The journey begins with the Rose Dieta, a 2-week initiation that prepares your body, spirit, and field to receive the medicine of the Rose.</p>
+      <a href="index.html#contact" class="btn-dark" style="margin-top:16px">Begin the Conversation</a>
     </div>
-    <div>
-      <div class="overview-stats rv" style="transition-delay:100ms">
-        <div class="overview-stat">
-          <div class="overview-stat-num">12</div>
-          <div class="overview-stat-label">Total Weeks</div>
+    <div class="rv-r">
+      <div class="prog-stats">
+        <div class="prog-stat">
+          <div class="prog-stat-num">10</div>
+          <div class="prog-stat-label">Weeks Total</div>
         </div>
-        <div class="overview-stat">
-          <div class="overview-stat-num">5</div>
-          <div class="overview-stat-label">Sacred Stages</div>
+        <div class="prog-stat">
+          <div class="prog-stat-num">5</div>
+          <div class="prog-stat-label">Stages of the Rose</div>
         </div>
-        <div class="overview-stat">
-          <div class="overview-stat-num">7</div>
-          <div class="overview-stat-label">Archetypes</div>
+        <div class="prog-stat">
+          <div class="prog-stat-num">7</div>
+          <div class="prog-stat-label">Sacred Archetypes</div>
         </div>
-        <div class="overview-stat">
-          <div class="overview-stat-num">∞</div>
-          <div class="overview-stat-label">Online · Worldwide</div>
+        <div class="prog-stat" style="grid-column:1/-1">
+          <div class="prog-stat-num" style="font-size:2rem">Rose Dieta</div>
+          <div class="prog-stat-label">2-Week Initiation Preparation</div>
         </div>
-      </div>
-      <div class="overview-tags rv" style="transition-delay:180ms">
-        <span class="overview-tag">Somatic Embodiment</span>
-        <span class="overview-tag">Energy Healing</span>
-        <span class="overview-tag">Sacred Ceremony</span>
-        <span class="overview-tag">Rose Priestess</span>
-        <span class="overview-tag">Sound Healing</span>
-        <span class="overview-tag">Shadow Work</span>
-        <span class="overview-tag">Voice Activation</span>
-        <span class="overview-tag">Light Language</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ROSE DIETA -->
-<section class="dieta" id="dieta">
-  <div class="dieta-inner">
-    <div>
-      <div class="dieta-badge rv"><span>The Initiation</span></div>
-      <h2 class="display rv" style="transition-delay:60ms">The Rose<br><em>Dieta</em></h2>
-      <p class="lead rv" style="transition-delay:120ms">Before the journey begins, there is a 2-week period of sacred listening. Rooted in indigenous traditions, a <em>dieta</em> invites you to slow down and build a relationship with a plant spirit.</p>
-      <p class="lead rv" style="transition-delay:160ms">The rose becomes your teacher of softness, boundaries, beauty, and truth. She asks nothing of you except your presence.</p>
-      <div class="gold-rule rv" style="transition-delay:200ms"></div>
-      <p class="lead rv" style="transition-delay:240ms;font-size:.82rem;color:rgba(26,21,16,.4);">Duration: 2 weeks · Online · Guided by Rosa</p>
+<section class="rose-dieta">
+  <div class="rose-dieta-inner rv">
+    <p class="eyebrow" style="color:var(--blush);text-align:center;margin-bottom:16px">The Beginning</p>
+    <h2>The Rose Dieta</h2>
+    <p>Before entering the full initiation, every woman undergoes the Rose Dieta — a 2-week ceremonial preparation period. This is a time of intentional simplification, cleansing, and opening. You will be guided through specific practices, dietary adjustments, and ceremonial work to prepare your entire being to receive the deep medicine of the Rose Goddess Path.</p>
+    <p>The Dieta is not a prerequisite to be completed — it is the first act of devotion. The first place you practice saying yes to yourself.</p>
+    <div class="dieta-divider"></div>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--petal)">"Before the rose blooms, she must be tended. The Dieta is how we tend the soil of your soul."</p>
+    <p style="margin-top:8px">— Rosa Diaz de Leon</p>
+  </div>
+</section>
+
+<!-- STAGES -->
+<section class="stages">
+  <div class="stages-header rv">
+    <p class="eyebrow">The Journey</p>
+    <h2>5 Stages of<br>the Rose</h2>
+    <p>Each stage is a complete world — an element, an archetype, a death, a rebirth. You will not leave any stage the same woman who entered it.</p>
+  </div>
+  <div class="stage-list">
+    <div class="stage-item rv">
+      <div class="stage-num">I</div>
+      <div class="stage-meta">
+        <div class="stage-element">Earth</div>
+        <div class="stage-name">Awakening<br>the Body</div>
+      </div>
+      <div class="stage-body">
+        <p>The foundation of all healing is the body. In this first stage, you return to your physical home — meeting your nervous system, your sensations, your hungers. You begin to remember that your body is not a problem to be solved, but a temple to be inhabited. The earth holds you. You learn to let it.</p>
+      </div>
+      <div class="stage-archetype">
+        <div class="stage-archetype-label">Archetype</div>
+        <div class="stage-archetype-name">The Seed</div>
+      </div>
     </div>
-    <div class="dieta-visual rv-r">
-      <div class="dieta-rose-sym">✦</div>
-      <h3>The rose teaches</h3>
-      <p>In the stillness of the dieta, the rose reveals herself as teacher. She holds the paradox of the feminine — profound softness and fierce protection, delicate beauty and sharp truth.</p>
-      <div class="dieta-teachers">
-        <span class="dieta-teacher">Softness</span>
-        <span class="dieta-teacher">Boundaries</span>
-        <span class="dieta-teacher">Beauty</span>
-        <span class="dieta-teacher">Truth</span>
-        <span class="dieta-teacher">Presence</span>
-        <span class="dieta-teacher">Listening</span>
+    <div class="stage-item rv">
+      <div class="stage-num">II</div>
+      <div class="stage-meta">
+        <div class="stage-element">Water</div>
+        <div class="stage-name">Reclaiming<br>Pleasure</div>
+      </div>
+      <div class="stage-body">
+        <p>Pleasure is not a luxury — it is your birthright. In the Water stage, you reclaim your erotic innocence, your sensuality, your capacity for delight. You meet the conditioning that taught you to shrink, to perform, to apologize for your desire. And you begin, gently, to dissolve it.</p>
+      </div>
+      <div class="stage-archetype">
+        <div class="stage-archetype-label">Archetype</div>
+        <div class="stage-archetype-name">The Bud</div>
+      </div>
+    </div>
+    <div class="stage-item rv">
+      <div class="stage-num">III</div>
+      <div class="stage-meta">
+        <div class="stage-element">Fire</div>
+        <div class="stage-name">Shadow<br>Integration</div>
+      </div>
+      <div class="stage-body">
+        <p>The fire does not destroy — it refines. In this stage, you descend into the shadow: the rage, the grief, the shame, the parts of yourself you have hidden from the world and from yourself. You meet the Thorn Keeper — the fierce guardian of your most sacred wounds. And you discover that she has been protecting gold.</p>
+      </div>
+      <div class="stage-archetype">
+        <div class="stage-archetype-label">Archetype</div>
+        <div class="stage-archetype-name">The Thorn Keeper</div>
+      </div>
+    </div>
+    <div class="stage-item rv">
+      <div class="stage-num">IV</div>
+      <div class="stage-meta">
+        <div class="stage-element">Air</div>
+        <div class="stage-name">Reclaiming<br>Your Voice</div>
+      </div>
+      <div class="stage-body">
+        <p>Your voice is your sovereignty. In the Air stage, you reclaim the right to speak your truth — to name your needs, to set your boundaries, to be heard. You meet the Wild Rose: untamed, unashamed, wholly herself. You practice living from that place.</p>
+      </div>
+      <div class="stage-archetype">
+        <div class="stage-archetype-label">Archetype</div>
+        <div class="stage-archetype-name">The Wild Rose</div>
+      </div>
+    </div>
+    <div class="stage-item rv">
+      <div class="stage-num">V</div>
+      <div class="stage-meta">
+        <div class="stage-element">Spirit</div>
+        <div class="stage-name">Rose Goddess<br>Integration</div>
+      </div>
+      <div class="stage-body">
+        <p>The final stage is not an arrival — it is an integration. You gather everything you have met, healed, and reclaimed, and you bring it fully into your life. You embody the Rose Goddess: whole, sovereign, radiant, and real. You know, now, who you are. And you know how to live from there.</p>
+      </div>
+      <div class="stage-archetype">
+        <div class="stage-archetype-label">Archetype</div>
+        <div class="stage-archetype-name">The Rose Goddess</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ARCHETYPES -->
-<section class="archetypes" id="archetypes">
-  <div class="arch-intro rv">
-    <div class="eyebrow gold center">The 7 Archetypes of the Rose Goddess</div>
-    <h2 class="display light">Seven faces of<br><em>feminine power.</em></h2>
-    <p style="font-size:.85rem;line-height:1.95;color:rgba(245,237,228,.35);font-weight:300;margin-top:12px;">Throughout the journey, women encounter seven archetypal expressions of feminine power. These archetypes emerge naturally during the stages of the path.</p>
+<section class="archetypes">
+  <div class="archetypes-header rv">
+    <p class="eyebrow">The 7 Archetypes</p>
+    <h2>Faces of the<br>Rose Lineage</h2>
+    <p>Each archetype is a facet of your wholeness — a part of you waiting to be recognized, embodied, and integrated.</p>
   </div>
-  <div class="arch-grid">
-    <div class="arch-card rv" style="transition-delay:0ms">
-      <div class="arch-num">I</div>
-      <div class="arch-name">The Seed</div>
-      <div class="arch-essence">Potential &amp; beginnings</div>
-      <div class="arch-line"></div>
+  <div class="archetype-grid">
+    <div class="acard rv">
+      <div class="acard-num">I</div>
+      <h3>The Seed</h3>
+      <p>Dormant potential. The untouched self before conditioning. The pure essence of who you were before the world told you who to be.</p>
     </div>
-    <div class="arch-card rv" style="transition-delay:60ms">
-      <div class="arch-num">II</div>
-      <div class="arch-name">The Bud</div>
-      <div class="arch-essence">Awakening sensuality</div>
-      <div class="arch-line"></div>
+    <div class="acard rv" style="transition-delay:.06s">
+      <div class="acard-num">II</div>
+      <h3>The Bud</h3>
+      <p>Tender emergence. The self beginning to open. Soft, curious, reaching toward the light with cautious hope.</p>
     </div>
-    <div class="arch-card rv" style="transition-delay:120ms">
-      <div class="arch-num">III</div>
-      <div class="arch-name">The Blooming Rose</div>
-      <div class="arch-essence">Embodied pleasure</div>
-      <div class="arch-line"></div>
+    <div class="acard rv" style="transition-delay:.12s">
+      <div class="acard-num">III</div>
+      <h3>The Blooming Rose</h3>
+      <p>Radiant expression. Fully open, fully herself, unashamed of her beauty and fragrance. The self in full creative flow.</p>
     </div>
-    <div class="arch-card rv" style="transition-delay:180ms">
-      <div class="arch-num">IV</div>
-      <div class="arch-name">The Thorn Keeper</div>
-      <div class="arch-essence">Boundaries &amp; truth</div>
-      <div class="arch-line"></div>
+    <div class="acard rv" style="transition-delay:.18s">
+      <div class="acard-num">IV</div>
+      <h3>The Thorn Keeper</h3>
+      <p>Sacred protector. The fierce guardian of your boundaries and your wounds. She does not apologize for her edges — they are holy.</p>
     </div>
-    <div class="arch-card rv" style="transition-delay:240ms">
-      <div class="arch-num">V</div>
-      <div class="arch-name">The Wild Rose</div>
-      <div class="arch-essence">Untamed feminine power</div>
-      <div class="arch-line"></div>
+    <div class="acard rv" style="transition-delay:.24s">
+      <div class="acard-num">V</div>
+      <h3>The Wild Rose</h3>
+      <p>Untamed sovereignty. She who grows where she will, answers to no one, and speaks her truth without apology or explanation.</p>
     </div>
-    <div class="arch-card rv" style="transition-delay:300ms">
-      <div class="arch-num">VI</div>
-      <div class="arch-name">Priestess of the Rose</div>
-      <div class="arch-essence">Intuition &amp; spiritual connection</div>
-      <div class="arch-line"></div>
+    <div class="acard rv" style="transition-delay:.3s">
+      <div class="acard-num">VI</div>
+      <h3>Priestess of the Rose</h3>
+      <p>Sacred service. She who tends the temple, holds the ceremony, carries the lineage. Devotion as a way of life.</p>
     </div>
-    <div class="arch-card rv" style="transition-delay:360ms">
-      <div class="arch-num">VII</div>
-      <div class="arch-name">The Rose Goddess</div>
-      <div class="arch-essence">Sovereignty &amp; integration</div>
-      <div class="arch-line"></div>
+    <div class="acard rv" style="transition-delay:.36s;grid-column:span 2">
+      <div class="acard-num">VII</div>
+      <h3>The Rose Goddess</h3>
+      <p>Full integration. The woman who has walked through all the stages, met all the faces of herself, and emerged whole. Not perfect — whole. Not healed — healing. Fully alive. Fully here. Fully herself.</p>
     </div>
   </div>
 </section>
 
-<!-- THE 5 STAGES -->
-<div id="stages">
-
-<!-- STAGE 1: EARTH -->
-<div class="stage stage-earth">
-  <div class="stage-content rv-l">
-    <span class="stage-roman">Stage I</span>
-    <div class="stage-archetype-tag"><span>🌱 Archetype: The Seed</span></div>
-    <h2 class="display">Earth —<br><em>Awakening the Body</em></h2>
-    <p class="lead">The journey begins in the earth. We come home to the body — the most sacred temple you will ever inhabit. Here, you learn to feel safe within yourself again.</p>
-    <div class="stage-focus">
-      <h4>What you'll explore</h4>
-      <ul>
-        <li>Grounding &amp; rootedness in the body</li>
-        <li>Nervous system safety &amp; regulation</li>
-        <li>Deep body awareness &amp; listening</li>
+<!-- JOURNEY DETAILS -->
+<section class="journey-split">
+  <div class="journey-img">
+    <img src="https://drive.google.com/thumbnail?id=1MjsfayT5s0ExrW7fZ0tWj8ZLxAqWXMAA&sz=w1200" alt="The Path Journey">
+  </div>
+  <div class="journey-body">
+    <div class="journey-body-inner rv-r">
+      <p class="eyebrow" style="color:var(--blush);margin-bottom:16px">What Is Included</p>
+      <h2>Your Container<br>of Transformation</h2>
+      <p>The Rose Goddess Path is a fully held initiation — meaning you are never alone in this journey. Rosa walks with you through every stage, every threshold, every dark night and every dawn.</p>
+      <ul class="journey-includes">
+        <li>2-week Rose Dieta initiation preparation</li>
+        <li>10 weeks of guided, staged ceremony &amp; ritual</li>
+        <li>Weekly 1:1 sessions with Rosa</li>
+        <li>Somatic embodiment &amp; womb healing practices</li>
+        <li>Shadow work &amp; integration processes</li>
+        <li>Sacred feminine archetypes &amp; teachings</li>
+        <li>Community &amp; sisterhood container</li>
+        <li>Ongoing support between sessions</li>
       </ul>
+      <a href="index.html#contact" class="btn-rose">Apply for The Path</a>
     </div>
   </div>
-  <div class="stage-visual">
-    <img class="stage-bg" src="https://drive.google.com/thumbnail?id=12eUr9SL26PXBaZuvk3LtK-CvnoPeLO9P&sz=w900" onerror="this.src='https://images.unsplash.com/photo-1448375240586-882707db888b?w=900&auto=format&fit=crop&q=75'" alt="Earth">
-    <div class="stage-visual-inner">
-      <div class="stage-vis-num">I</div>
-    </div>
-    <div class="stage-vis-label">
-      <h3>Earth</h3>
-      <p>Weeks 3–4</p>
-    </div>
-    <div class="stage-element">Earth</div>
-  </div>
-</div>
+</section>
 
-<!-- STAGE 2: WATER -->
-<div class="stage stage-water">
-  <div class="stage-visual">
-    <img class="stage-bg" src="https://drive.google.com/thumbnail?id=1MjsfayT5s0ExrW7fZ0tWj8ZLxAqWXMAA&sz=w900" onerror="this.src='https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=900&auto=format&fit=crop&q=75'" alt="Water">
-    <div class="stage-visual-inner">
-      <div class="stage-vis-num">II</div>
-    </div>
-    <div class="stage-vis-label">
-      <h3>Water</h3>
-      <p>Weeks 5–6</p>
-    </div>
-    <div class="stage-element">Water</div>
-  </div>
-  <div class="stage-content rv-r">
-    <span class="stage-roman">Stage II</span>
-    <div class="stage-archetype-tag"><span>🌸 Archetype: The Bud</span></div>
-    <h2 class="display">Water —<br><em>Reclaiming Pleasure</em></h2>
-    <p class="lead">Pleasure is not a luxury — it is the language your body uses to guide you home. In this stage, you reclaim sensuality as your birthright and allow emotional flow to be your compass.</p>
-    <div class="stage-focus">
-      <h4>What you'll explore</h4>
-      <ul>
-        <li>Sensuality as a sacred practice</li>
-        <li>Emotional flow &amp; fluidity</li>
-        <li>Pleasure as an inner guidance system</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- STAGE 3: FIRE -->
-<div class="stage stage-fire">
-  <div class="stage-content rv-l">
-    <span class="stage-roman">Stage III</span>
-    <div class="stage-archetype-tag"><span>🌹 Archetype: The Thorn Keeper</span></div>
-    <h2 class="display">Fire —<br><em>Meeting the Shadow</em></h2>
-    <p class="lead">The fire is where transformation lives. Here you meet the parts of yourself that were hidden, suppressed, or deemed too much. The Thorn Keeper protects your truth.</p>
-    <div class="stage-focus">
-      <h4>What you'll explore</h4>
-      <ul>
-        <li>Shadow work &amp; integration</li>
-        <li>Reclaiming suppressed parts of the self</li>
-        <li>Boundaries as an act of love &amp; power</li>
-      </ul>
-    </div>
-  </div>
-  <div class="stage-visual">
-    <img class="stage-bg" src="https://drive.google.com/thumbnail?id=1lHWVsLTAAkmuvHPmms3OkpAT0W6xEWO1&sz=w900" onerror="this.src='https://images.unsplash.com/photo-1519750783826-e2420f4d687f?w=900&auto=format&fit=crop&q=75'" alt="Fire">
-    <div class="stage-visual-inner">
-      <div class="stage-vis-num">III</div>
-    </div>
-    <div class="stage-vis-label">
-      <h3>Fire</h3>
-      <p>Weeks 7–8</p>
-    </div>
-    <div class="stage-element">Fire</div>
-  </div>
-</div>
-
-<!-- STAGE 4: AIR -->
-<div class="stage stage-air">
-  <div class="stage-visual">
-    <img class="stage-bg" src="https://drive.google.com/thumbnail?id=1A2OFmnNeNdVhh_wfbqQ9CYFIh2bEqVRw&sz=w900" onerror="this.src='https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=900&auto=format&fit=crop&q=75'" alt="Air">
-    <div class="stage-visual-inner">
-      <div class="stage-vis-num">IV</div>
-    </div>
-    <div class="stage-vis-label">
-      <h3>Air</h3>
-      <p>Weeks 9–10</p>
-    </div>
-    <div class="stage-element">Air</div>
-  </div>
-  <div class="stage-content rv-r">
-    <span class="stage-roman">Stage IV</span>
-    <div class="stage-archetype-tag"><span>🌿 Archetype: The Wild Rose</span></div>
-    <h2 class="display">Air —<br><em>Awakening the Voice</em></h2>
-    <p class="lead">The voice is one of the most powerful expressions of the feminine. In this stage, you reclaim your right to be heard — through sound, breath, and the full expression of who you truly are.</p>
-    <div class="stage-focus">
-      <h4>What you'll explore</h4>
-      <ul>
-        <li>Voice activation &amp; expression</li>
-        <li>Breathwork as liberation</li>
-        <li>Speaking your truth from the body</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- STAGE 5: SPIRIT -->
-<div class="stage stage-spirit">
-  <div class="stage-content rv-l">
-    <span class="stage-roman">Stage V</span>
-    <div class="stage-archetype-tag"><span>✨ Archetype: The Rose Goddess</span></div>
-    <h2 class="display">Spirit —<br><em>Embodying the Rose Goddess</em></h2>
-    <p class="lead">The final stage is integration. You have moved through the elements, met your archetypes, and reclaimed what was always yours. Now you step into sovereignty — the full embodiment of the Rose Goddess within you.</p>
-    <div class="stage-focus">
-      <h4>What you'll explore</h4>
-      <ul>
-        <li>Full integration of all stages</li>
-        <li>Sovereignty &amp; sacred self-leadership</li>
-        <li>Sacred feminine leadership in the world</li>
-      </ul>
-    </div>
-    <a href="index.html#contact" class="btn-rose" style="margin-top:40px;display:inline-block;">Begin the Path</a>
-  </div>
-  <div class="stage-visual">
-    <img class="stage-bg" src="https://drive.google.com/thumbnail?id=1s_iaAMqKXwtXmG_VV5yxsYYrWLrAUDWq&sz=w900" onerror="this.src='https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&auto=format&fit=crop&q=75'" alt="Spirit">
-    <div class="stage-visual-inner">
-      <div class="stage-vis-num">V</div>
-    </div>
-    <div class="stage-vis-label">
-      <h3>Spirit</h3>
-      <p>Weeks 11–12</p>
-    </div>
-    <div class="stage-element">Spirit</div>
-  </div>
-</div>
-
-</div><!-- /stages -->
-
-<!-- PROGRAM CTA -->
+<!-- CTA -->
 <section class="prog-cta">
-  <div class="prog-cta-glow"></div>
-  <div class="prog-cta-inner">
-    <div class="eyebrow gold center rv">Begin the Journey</div>
-    <h2 class="rv" style="transition-delay:60ms">Your body<br>already <em>knows the way.</em></h2>
-    <p class="prog-cta-sub rv" style="transition-delay:120ms">The Rose Goddess Path is an invitation to remember who you are beneath everything you have been told to be. You are not broken. There is nothing to fix.</p>
-    <div class="prog-cta-btns rv" style="transition-delay:180ms">
-      <a href="index.html#contact" class="btn-rose">Work With Me</a>
-      <a href="index.html" class="btn-out">Back to the Temple</a>
+  <div class="rv">
+    <p class="eyebrow" style="color:var(--blush);text-align:center;margin-bottom:16px">Ready to Begin?</p>
+    <h2>The Rose Is Calling You</h2>
+    <p>The Rose Goddess Path is a deeply intimate container. Rosa works with a small number of women at a time to ensure each initiate receives the full depth of presence and support. If you feel the call, reach out. There is a place for you here.</p>
+    <div class="prog-cta-btns">
+      <a href="mailto:rosa@rosadiosa.com" class="btn-rose">Send a Message</a>
+      <a href="index.html" class="btn-out">Back to Home</a>
     </div>
-  </div>
-</section>
-
-<!-- DISCLAIMER -->
-<section class="disclaimer-section">
-  <div class="disclaimer-inner rv">
-    <h5>Disclaimer</h5>
-    <p>This work is devotional and educational in nature. It is intended to support personal exploration, spiritual reflection, and embodied awareness. It is not a substitute for medical care, psychological counseling, mental health treatment, or trauma therapy.</p>
-    <p>By participating in this program, you acknowledge that you are responsible for your own physical, emotional, and psychological wellbeing. You agree to listen to your body, honor your personal boundaries, and engage in all practices with self-sovereignty and discernment.</p>
-    <p>If you have medical, psychological, or trauma-related concerns, please consult with a qualified and licensed healthcare provider before participating.</p>
-    <p>By entering this course or engaging in these teachings, you agree to release and hold Rosa Diaz de Leon harmless from any and all liability, claims, or damages arising from participation in this work.</p>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div>
-      <div class="f-logo">Templo de la Diosa Rosa</div>
-      <p class="f-tagline">A sacred space for women to remember their power, their bodies, and their inner medicine. Private online sessions worldwide.</p>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Rosa Diosa</div>
+      <p class="footer-tagline">Templo de la Diosa Rosa</p>
     </div>
-    <div class="f-col">
-      <h5>The Temple</h5>
-      <ul>
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#medicine">My Medicine</a></li>
-        <li><a href="index.html#sessions">Private Sessions</a></li>
-        <li><a href="program.html">The Rose Goddess Path</a></li>
-      </ul>
-    </div>
-    <div class="f-col">
-      <h5>Connect</h5>
-      <ul>
-        <li><a href="index.html#contact">Work With Me</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
+    <nav class="footer-nav">
+      <a href="index.html#about">About</a>
+      <a href="index.html#medicine">My Medicine</a>
+      <a href="program.html">The Path</a>
+      <a href="index.html#sessions">Sessions</a>
+      <a href="index.html#contact">Work With Me</a>
+    </nav>
+    <div class="footer-social">
+      <a href="https://instagram.com/rosadiosa" aria-label="Instagram" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+      </a>
     </div>
   </div>
-  <div class="footer-disclaimer">
-    <p><strong>Disclaimer:</strong> This work is devotional and educational in nature. It is not a substitute for medical care, psychological counseling, mental health treatment, or trauma therapy. By engaging in these teachings, you agree to release and hold Rosa Diaz de Leon harmless from any and all liability, claims, or damages arising from participation in this work.</p>
-  </div>
-  <div class="footer-btm">
-    <span>© 2026 Templo de la Diosa Rosa</span>
-    <span>Sacred Feminine · Healing · Online</span>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Rosa Diaz de Leon · Templo de la Diosa Rosa · All rights reserved.</p>
   </div>
 </footer>
 
-<script>
-(function(){
-  // Nav scroll
-  var nav = document.getElementById('nav');
-  window.addEventListener('scroll', function(){ nav.classList.toggle('sc', window.scrollY > 60); }, {passive:true});
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <div class="disclaimer-inner">
+    <h3>Important Notice</h3>
+    <p>The offerings, ceremonies, and sessions provided by Rosa Diaz de Leon are spiritual and ceremonial in nature and are not intended to diagnose, treat, cure, or prevent any medical or psychological condition. By participating in any session, ceremony, or program, you acknowledge that you are responsible for your own well-being and that you are engaging with this work voluntarily and of your own free will. Rosa Diaz de Leon is not a licensed medical professional, therapist, or counselor. This work is not a substitute for professional medical or psychological treatment. If you are experiencing a mental health crisis or medical emergency, please seek appropriate professional help. Participation in any of Rosa's offerings constitutes acceptance of full personal responsibility for your experience and your journey.</p>
+  </div>
+</div>
 
-  // Hamburger
-  var burger = document.getElementById('nav-burger');
-  var menu = document.getElementById('nav-menu');
-  if(burger && menu){
-    burger.addEventListener('click', function(){
-      var open = menu.classList.toggle('open');
-      burger.classList.toggle('open', open);
-      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      document.body.style.overflow = open ? 'hidden' : '';
-    });
-    menu.querySelectorAll('a').forEach(function(link){
-      link.addEventListener('click', function(){
-        menu.classList.remove('open');
-        burger.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
-  }
-
-  // Reveal on scroll
-  var rvEls = document.querySelectorAll('.rv,.rv-l,.rv-r,.rv-s');
-  function reveal(){
-    rvEls.forEach(function(el){
-      if(el.getBoundingClientRect().top < window.innerHeight * 0.92) el.classList.add('on');
-    });
-  }
-  if('IntersectionObserver' in window){
-    var obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); }});
-    }, {threshold:0.08});
-    rvEls.forEach(function(el){ obs.observe(el); });
-  }
-  reveal();
-  window.addEventListener('scroll', reveal, {passive:true});
-  setTimeout(reveal, 200);
-
-  // Custom cursor
-  var cur = document.getElementById('cursor');
-  if(cur){
-    document.addEventListener('mousemove', function(e){
-      cur.style.left = e.clientX + 'px';
-      cur.style.top  = e.clientY + 'px';
-    });
-    document.querySelectorAll('a,button,.arch-card,.stage-content').forEach(function(el){
-      el.addEventListener('mouseenter', function(){ cur.classList.add('hovering'); });
-      el.addEventListener('mouseleave', function(){ cur.classList.remove('hovering'); });
-    });
-  }
-})();
-</script>
+<script src="shared.js"></script>
 </body>
 </html>
