@@ -127,13 +127,44 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300;}
 .archetypes-hd h2 em{font-style:italic;color:var(--rose-pale);}
 .archetypes-hd p{color:rgba(255,255,255,.45);font-size:.98rem;line-height:1.85;max-width:520px;margin:0 auto;}
 .arch-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;}
-.arch-card{background:rgba(255,255,255,.03);border:1px solid rgba(170,68,102,.1);padding:36px 20px 32px;text-align:center;transition:background .35s,border-color .35s;position:relative;overflow:hidden;}
-.arch-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--rose-pale),transparent);transform:scaleX(0);transition:transform .45s cubic-bezier(.16,1,.3,1);}
-.arch-card:hover{background:rgba(170,68,102,.07);border-color:rgba(170,68,102,.22);}
-.arch-card:hover::after{transform:scaleX(1);}
-.arch-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--rose-pale);opacity:.28;line-height:1;margin-bottom:12px;}
-.arch-card h3{font-family:'Cormorant Garamond',serif;font-size:.98rem;font-weight:400;color:#fff;margin-bottom:8px;line-height:1.3;}
-.arch-card p{font-size:.74rem;line-height:1.65;color:rgba(255,255,255,.38);}
+.arch-card{
+  border:1px solid rgba(170,68,102,.08);padding:36px 20px 32px;text-align:center;
+  position:relative;overflow:hidden;
+  transition:border-color .45s,box-shadow .45s;
+}
+/* photo bg */
+.arch-card::before{
+  content:'';position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  opacity:.13;filter:saturate(.25) brightness(.55);
+  transition:opacity .45s;
+}
+/* dark overlay */
+.arch-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(170deg,rgba(24,10,16,.94),rgba(38,20,28,.96));
+  z-index:0;transition:background .45s;
+}
+.arch-card > *{position:relative;z-index:1;}
+/* dimmed by default */
+.arch-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--rose-pale);opacity:.12;line-height:1;margin-bottom:12px;transition:opacity .45s;}
+.arch-card h3{font-family:'Cormorant Garamond',serif;font-size:.98rem;font-weight:400;color:rgba(255,255,255,.18);margin-bottom:8px;line-height:1.3;transition:color .45s;}
+.arch-card p{font-size:.74rem;line-height:1.65;color:rgba(255,255,255,.1);transition:color .45s;}
+/* hover — illuminate */
+.arch-card:hover{border-color:rgba(170,68,102,.3);}
+.arch-card:hover::before{opacity:.34;}
+.arch-card:hover::after{background:linear-gradient(170deg,rgba(24,10,16,.76),rgba(38,20,28,.82));}
+.arch-card:hover .arch-num{opacity:.55;}
+.arch-card:hover h3{color:#fff;}
+.arch-card:hover p{color:rgba(255,255,255,.62);}
+/* per-card bg images — one per archetype concept */
+.arch-card:nth-child(1)::before{background-image:url('images/rosa-pyramid.jpg');}
+.arch-card:nth-child(2)::before{background-image:url('images/rosa-rose-painting.png');}
+.arch-card:nth-child(3)::before{background-image:url('images/rosa-rose-garden.png');}
+.arch-card:nth-child(4)::before{background-image:url('images/rosa-drum-crown.png');}
+.arch-card:nth-child(5)::before{background-image:url('images/rosa-waterfall-drum.png');}
+.arch-card:nth-child(6)::before{background-image:url('images/rosa-ceremony-healing.jpg');}
+.arch-card:nth-child(7)::before{background-image:url('images/rosa-rainbow-joy.jpg');}
 
 /* PROGRAM CTA */
 .prog-cta{position:relative;min-height:500px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
@@ -202,7 +233,7 @@ footer{background:var(--dark);padding:72px 72px 40px;}
 
 <!-- HERO -->
 <section class="prog-hero">
-  <img src="images/rosa-garden.jpg" alt="" class="prog-hero-bg" id="prog-hero-bg">
+  <img src="images/rosa-program-hero.jpg" alt="" class="prog-hero-bg" id="prog-hero-bg">
   <div class="prog-hero-overlay"></div>
   <div class="prog-hero-content">
     <div class="prog-hero-eyebrow">
@@ -217,7 +248,7 @@ footer{background:var(--dark);padding:72px 72px 40px;}
 <!-- OVERVIEW -->
 <section class="overview" id="overview">
   <div class="rv-l overview-img">
-    <img src="images/rosa-ceremony-gong.jpg" alt="Rosa leading ceremony">
+    <img src="images/rosa-ceremony-offering.png" alt="Rosa leading ceremony">
     <div class="overview-badge">
       <span class="badge-num">10</span>
       <span class="badge-label">Weeks</span>
@@ -358,32 +389,32 @@ footer{background:var(--dark);padding:72px 72px 40px;}
       <h3>The Seed</h3>
       <p>Potential and beginnings</p>
     </div>
-    <div class="arch-card rv" style="transition-delay:55ms">
+    <div class="arch-card rv" style="transition-delay:110ms">
       <div class="arch-num">02</div>
       <h3>The Bud</h3>
       <p>Awakening sensuality</p>
     </div>
-    <div class="arch-card rv" style="transition-delay:110ms">
+    <div class="arch-card rv" style="transition-delay:220ms">
       <div class="arch-num">03</div>
       <h3>The Blooming Rose</h3>
       <p>Embodied pleasure</p>
     </div>
-    <div class="arch-card rv" style="transition-delay:165ms">
+    <div class="arch-card rv" style="transition-delay:330ms">
       <div class="arch-num">04</div>
       <h3>The Thorn Keeper</h3>
       <p>Boundaries and truth</p>
     </div>
-    <div class="arch-card rv" style="transition-delay:220ms">
+    <div class="arch-card rv" style="transition-delay:440ms">
       <div class="arch-num">05</div>
       <h3>The Wild Rose</h3>
       <p>Untamed feminine power</p>
     </div>
-    <div class="arch-card rv" style="transition-delay:275ms">
+    <div class="arch-card rv" style="transition-delay:550ms">
       <div class="arch-num">06</div>
       <h3>The Priestess of the Rose</h3>
       <p>Intuition and spiritual connection</p>
     </div>
-    <div class="arch-card rv" style="transition-delay:330ms">
+    <div class="arch-card rv" style="transition-delay:660ms">
       <div class="arch-num">07</div>
       <h3>The Rose Goddess</h3>
       <p>Sovereignty and integration</p>
@@ -393,7 +424,7 @@ footer{background:var(--dark);padding:72px 72px 40px;}
 
 <!-- CTA -->
 <section class="prog-cta">
-  <img src="images/rosa-beach-dance.jpg" alt="" class="prog-cta-bg" id="prog-cta-bg">
+  <img src="images/rosa-dance-field.png" alt="" class="prog-cta-bg" id="prog-cta-bg">
   <div class="prog-cta-grad"></div>
   <div class="prog-cta-body rv">
     <p class="eyebrow eyebrow-c" style="color:var(--rose-pale);">The Invitation</p>
