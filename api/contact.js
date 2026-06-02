@@ -13,7 +13,7 @@ module.exports = async function handler(req, res) {
     const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
       from: 'Templo de la Diosa Rosa <hello@rosadiosa.com>',
-      to: 'hello@rosadiosa.com',
+      to: 'rosadiazdl@gmail.com',
       reply_to: email,
       subject: `New message from ${name}`,
       html: `
