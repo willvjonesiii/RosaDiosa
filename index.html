@@ -272,6 +272,17 @@ footer{background:var(--dark);padding:76px 72px 40px;}
   .quote-band{padding:72px 24px;}
   .footer-bottom{flex-direction:column;align-items:flex-start;}
 }
+/* ── CONTACT FORM ── */
+.contact-form{max-width:480px;margin:32px auto 0;text-align:left;}
+.form-field{margin-bottom:26px;}
+.form-field label{display:block;font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(212,137,154,.75);margin-bottom:10px;}
+.form-field input,.form-field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Jost',sans-serif;font-weight:300;font-size:.95rem;padding:10px 0;outline:none;transition:border-color .3s;-webkit-appearance:none;}
+.form-field input::placeholder,.form-field textarea::placeholder{color:rgba(255,255,255,.28);}
+.form-field input:focus,.form-field textarea:focus{border-bottom-color:var(--rose-pale);}
+.form-field textarea{resize:none;height:100px;}
+.form-status{font-size:.8rem;letter-spacing:.06em;margin-top:18px;text-align:center;min-height:1.4em;}
+.form-status.ok{color:var(--rose-pale);}
+.form-status.err{color:#e8a0a0;}
 </style>
 </head>
 <body>
@@ -461,7 +472,22 @@ footer{background:var(--dark);padding:76px 72px 40px;}
     <p class="eyebrow eyebrow-c" style="color:var(--rose-pale);">Begin</p>
     <h2>Your body remembers.<br>Your pleasure knows the way.<br><em>And your power has always been yours.</em></h2>
     <p>Are you ready to remember?</p>
-    <a href="mailto:hello@rosadiosa.com" class="btn-ghost">Reach Out</a>
+    <form class="contact-form" id="contactForm" novalidate>
+      <div class="form-field">
+        <label for="cf-name">Your Name</label>
+        <input type="text" id="cf-name" name="name" placeholder="How shall we call you?" required>
+      </div>
+      <div class="form-field">
+        <label for="cf-email">Email</label>
+        <input type="email" id="cf-email" name="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-field">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" placeholder="Share what's calling you…" required></textarea>
+      </div>
+      <button type="submit" class="btn-ghost" id="contactBtn" style="white-space:nowrap;flex-shrink:0;cursor:pointer;background:none;font-family:inherit;">Send Message</button>
+      <p class="form-status" id="formStatus"></p>
+    </form>
   </div>
 </section>
 
@@ -545,6 +571,26 @@ footer{background:var(--dark);padding:76px 72px 40px;}
   var fb=document.querySelector('.hero-fallback');
   if(!vid||!fb)return;
   vid.addEventListener('playing',function(){fb.classList.add('hidden');},{once:true});
+})();
+(function(){
+  var form=document.getElementById('contactForm');
+  var btn=document.getElementById('contactBtn');
+  var status=document.getElementById('formStatus');
+  if(!form)return;
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    var name=form.querySelector('[name=name]').value.trim();
+    var email=form.querySelector('[name=email]').value.trim();
+    var message=form.querySelector('[name=message]').value.trim();
+    if(!name||!email||!message){status.textContent='Please fill in all fields.';status.className='form-status err';return;}
+    btn.textContent='Sending…';btn.disabled=true;
+    status.textContent='';status.className='form-status';
+    try{
+      var res=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,email:email,message:message})});
+      if(res.ok){form.reset();btn.textContent='Message Sent ✦';status.textContent='Thank you. Rosa will be in touch soon.';status.className='form-status ok';}
+      else{throw new Error();}
+    }catch(err){btn.textContent='Send Message';btn.disabled=false;status.textContent='Something went wrong. Please try again.';status.className='form-status err';}
+  });
 })();
 </script>
 </body>
