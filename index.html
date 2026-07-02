@@ -290,6 +290,10 @@ footer{background:var(--dark);padding:76px 72px 40px;}
 .form-status{font-size:.8rem;letter-spacing:.06em;margin-top:18px;text-align:center;min-height:1.4em;}
 .form-status.ok{color:var(--rose-pale);}
 .form-status.err{color:#e8a0a0;}
+/* ── LANG TOGGLE ── */
+#langToggle{background:none;border:1px solid rgba(255,255,255,.28);color:rgba(255,255,255,.65);font-family:'Cinzel',serif;font-size:.48rem;letter-spacing:.22em;padding:7px 16px;cursor:pointer;transition:all .3s;flex-shrink:0;-webkit-appearance:none;appearance:none;line-height:1;}
+nav.sc #langToggle,nav.scrolled #langToggle{border-color:rgba(170,68,102,.3);color:var(--muted);}
+#langToggle:hover{border-color:var(--rose-pale);color:var(--rose-pale);}
 </style>
 </head>
 <body>
@@ -300,12 +304,13 @@ footer{background:var(--dark);padding:76px 72px 40px;}
     <span></span><span></span><span></span>
   </div>
   <ul class="nav-links" id="nav-menu">
-    <li><a href="#about">About</a></li>
-    <li><a href="#medicine">My Medicine</a></li>
-    <li><a href="#work">Work With Me</a></li>
-    <li><a href="program.html">The Path</a></li>
-    <li><a href="#contact" class="nav-cta">Connect</a></li>
+    <li><a href="#about" data-i18n="nav.about">About</a></li>
+    <li><a href="#medicine" data-i18n="nav.medicine">My Medicine</a></li>
+    <li><a href="#work" data-i18n="nav.work">Work With Me</a></li>
+    <li><a href="program.html" data-i18n="nav.path">The Path</a></li>
+    <li><a href="#contact" class="nav-cta" data-i18n="nav.connect">Connect</a></li>
   </ul>
+  <button id="langToggle" aria-label="Switch language">ES</button>
 </nav>
 
 <section class="hero">
@@ -316,35 +321,35 @@ footer{background:var(--dark);padding:76px 72px 40px;}
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">
-      <div class="hero-line"></div>Sacred Feminine &nbsp;&middot;&nbsp; Shamanic Healing &nbsp;&middot;&nbsp; Online<div class="hero-line"></div>
+      <div class="hero-line"></div><span data-i18n="hero.eyebrow">Sacred Feminine &nbsp;&middot;&nbsp; Shamanic Healing &nbsp;&middot;&nbsp; Online</span><div class="hero-line"></div>
     </div>
     <h1>Templo de la<em>Diosa Rosa</em></h1>
-    <p class="hero-sub">&ldquo;Your pleasure is your compass&rdquo;</p>
+    <p class="hero-sub" data-i18n="hero.quote">&ldquo;Your pleasure is your compass&rdquo;</p>
     <div class="hero-btns">
-      <a href="#about" class="btn-ghost">Enter the Temple</a>
-      <a href="#work" class="btn-fill">Work With Me</a>
+      <a href="#about" class="btn-ghost" data-i18n="hero.btn1">Enter the Temple</a>
+      <a href="#work" class="btn-fill" data-i18n="hero.btn2">Work With Me</a>
     </div>
   </div>
 </section>
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
-    <span class="t-item">Cacao Medicine<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Sound Healing<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Rose Priestess<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Somatic Embodiment<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Light Language<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Shadow Work<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Sacred Touch<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Shamanic Traditions<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Cacao Medicine<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Sound Healing<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Rose Priestess<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Somatic Embodiment<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Light Language<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Shadow Work<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Sacred Touch<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Shamanic Traditions<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
+    <span class="t-item"><span data-i18n="ticker.1">Cacao Medicine</span><span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
+    <span class="t-item"><span data-i18n="ticker.2">Sound Healing</span><span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
+    <span class="t-item"><span data-i18n="ticker.3">Rose Priestess</span><span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
+    <span class="t-item"><span data-i18n="ticker.4">Somatic Embodiment</span><span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
+    <span class="t-item"><span data-i18n="ticker.5">Light Language</span><span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
+    <span class="t-item"><span data-i18n="ticker.6">Shadow Work</span><span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
+    <span class="t-item"><span data-i18n="ticker.7">Sacred Touch</span><span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
+    <span class="t-item"><span data-i18n="ticker.8">Shamanic Traditions</span><span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
+    <span class="t-item"><span data-i18n="ticker.1">Cacao Medicine</span><span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
+    <span class="t-item"><span data-i18n="ticker.2">Sound Healing</span><span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
+    <span class="t-item"><span data-i18n="ticker.3">Rose Priestess</span><span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
+    <span class="t-item"><span data-i18n="ticker.4">Somatic Embodiment</span><span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
+    <span class="t-item"><span data-i18n="ticker.5">Light Language</span><span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
+    <span class="t-item"><span data-i18n="ticker.6">Shadow Work</span><span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
+    <span class="t-item"><span data-i18n="ticker.7">Sacred Touch</span><span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
+    <span class="t-item"><span data-i18n="ticker.8">Shamanic Traditions</span><span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
   </div>
 </div>
 
@@ -353,35 +358,35 @@ footer{background:var(--dark);padding:76px 72px 40px;}
     <img src="images/rosa-pyramid.jpg" alt="Rosa Diaz de Leon" id="about-img">
   </div>
   <div class="rv-r about-text">
-    <p class="eyebrow">Who I Am</p>
-    <h2>She is both <em>soft and wild</em>,<br>nurturing and fierce.</h2>
+    <p class="eyebrow" data-i18n="about.eyebrow">Who I Am</p>
+    <h2 data-i18n="about.h2">She is both <em>soft and wild</em>,<br>nurturing and fierce.</h2>
     <div class="divider"></div>
-    <p>Within every woman lives a powerful, intuitive, and sensual force that has been forced to armor her heart and womb.</p>
-    <p>The Rose Goddess represents the feminine that is both soft and wild, nurturing and fierce, sensual and deeply wise. Like the rose, a woman carries beauty, depth, and thorns that protect her truth.</p>
-    <p>This temple is a space where women are invited to reconnect with that sacred energy within themselves.</p>
-    <a href="#medicine" class="link-rose">Discover My Medicine</a>
+    <p data-i18n="about.p1">Within every woman lives a powerful, intuitive, and sensual force that has been forced to armor her heart and womb.</p>
+    <p data-i18n="about.p2">The Rose Goddess represents the feminine that is both soft and wild, nurturing and fierce, sensual and deeply wise. Like the rose, a woman carries beauty, depth, and thorns that protect her truth.</p>
+    <p data-i18n="about.p3">This temple is a space where women are invited to reconnect with that sacred energy within themselves.</p>
+    <a href="#medicine" class="link-rose" data-i18n="about.link">Discover My Medicine</a>
   </div>
 </section>
 
 <div class="diosa">
   <div class="diosa-inner" id="diosa-inner">
-    <p class="eyebrow eyebrow-c rv" style="color:var(--rose-pale);">The Rose Goddess &nbsp;&middot;&nbsp; Diosa Rosa</p>
-    <h2 class="rv">A sacred space for women to remember<br>their power, their bodies, and their <em>inner medicine.</em></h2>
+    <p class="eyebrow eyebrow-c rv" style="color:var(--rose-pale);" data-i18n="diosa.eyebrow">The Rose Goddess &nbsp;&middot;&nbsp; Diosa Rosa</p>
+    <h2 class="rv" data-i18n="diosa.h2">A sacred space for women to remember<br>their power, their bodies, and their <em>inner medicine.</em></h2>
     <div class="divider rv"></div>
-    <p class="rv">Through shamanic guidance, energy work, ceremony, movement, sound, and the exploration of ecstasy, I accompany women on a path of reconnection with their body, their voice, and their truth.</p>
-    <p class="rv">Each session is intuitive and guided by what your body and spirit are ready to explore.</p>
+    <p class="rv" data-i18n="diosa.p1">Through shamanic guidance, energy work, ceremony, movement, sound, and the exploration of ecstasy, I accompany women on a path of reconnection with their body, their voice, and their truth.</p>
+    <p class="rv" data-i18n="diosa.p2">Each session is intuitive and guided by what your body and spirit are ready to explore.</p>
   </div>
 </div>
 
 <div class="pleasure">
   <div class="pleasure-text">
-    <p class="eyebrow rv">Your Compass</p>
-    <h2 class="rv">Your Pleasure is<br>Your <em>Compass.</em></h2>
+    <p class="eyebrow rv" data-i18n="pleasure.eyebrow">Your Compass</p>
+    <h2 class="rv" data-i18n="pleasure.h2">Your Pleasure is<br>Your <em>Compass.</em></h2>
     <div class="divider rv"></div>
-    <p class="rv">Pleasure is your birthright.</p>
-    <p class="rv">It is the most honest language your body speaks &mdash; the compass that guides you back to your truth, your creativity, and your power.</p>
-    <p class="rv">When you learn to listen to your body again, your life begins to change.</p>
-    <p class="pleasure-tag rv">Pleasure does not lie.</p>
+    <p class="rv" data-i18n="pleasure.p1">Pleasure is your birthright.</p>
+    <p class="rv" data-i18n="pleasure.p2">It is the most honest language your body speaks &mdash; the compass that guides you back to your truth, your creativity, and your power.</p>
+    <p class="rv" data-i18n="pleasure.p3">When you learn to listen to your body again, your life begins to change.</p>
+    <p class="pleasure-tag rv" data-i18n="pleasure.tag">Pleasure does not lie.</p>
   </div>
   <div class="pleasure-img">
     <img src="images/rosa-beach-dance.jpg" alt="Rosa" id="pleasure-img">
@@ -391,25 +396,25 @@ footer{background:var(--dark);padding:76px 72px 40px;}
 
 <section class="medicine" id="medicine">
   <div class="medicine-hd">
-    <p class="eyebrow eyebrow-c rv" style="color:var(--rose-pale);">The Work</p>
-    <h2 class="rv">My <em>Medicine</em></h2>
-    <p class="rv">My work weaves together different paths of healing, embodiment, and spiritual awakening &mdash; goddess awakening in every form.</p>
+    <p class="eyebrow eyebrow-c rv" style="color:var(--rose-pale);" data-i18n="med.eyebrow">The Work</p>
+    <h2 class="rv" data-i18n="med.h2">My <em>Medicine</em></h2>
+    <p class="rv" data-i18n="med.p">My work weaves together different paths of healing, embodiment, and spiritual awakening &mdash; goddess awakening in every form.</p>
   </div>
   <div class="med-grid">
-    <div class="med-card rv" style="transition-delay:0ms"><div class="med-icon">&#10047;</div><h3>Cacao Medicine</h3><p>Heart-opening ceremonial cacao rituals to soften the armoring and awaken love within.</p></div>
-    <div class="med-card rv" style="transition-delay:55ms"><div class="med-icon">&#10047;</div><h3>Reiki Certified</h3><p>Energy healing through gentle touch and universal life force to restore natural flow.</p></div>
-    <div class="med-card rv" style="transition-delay:110ms"><div class="med-icon">&#10047;</div><h3>Rose Priestess Practices</h3><p>Ancient feminine wisdom channeled through the sacred lineage of the rose.</p></div>
-    <div class="med-card rv" style="transition-delay:165ms"><div class="med-icon">&#10047;</div><h3>Trauma Informed Coach</h3><p>Compassionate guidance that honors your nervous system and the full truth of your story.</p></div>
-    <div class="med-card rv" style="transition-delay:220ms"><div class="med-icon">&#10047;</div><h3>Somatic &amp; Embodiment</h3><p>Returning home to your body through felt sense, breath, and sacred movement.</p></div>
-    <div class="med-card rv" style="transition-delay:275ms"><div class="med-icon">&#10047;</div><h3>Sound &amp; Vibrational Healing</h3><p>Gongs, crystal bowls, and sacred frequencies for deep cellular release and realignment.</p></div>
-    <div class="med-card rv" style="transition-delay:330ms"><div class="med-icon">&#10047;</div><h3>Light Language</h3><p>Sacred transmissions beyond words that speak directly to the soul&rsquo;s ancient knowing.</p></div>
-    <div class="med-card rv" style="transition-delay:385ms"><div class="med-icon">&#10047;</div><h3>Shadow Work</h3><p>Reclaiming the hidden, suppressed, and forgotten parts of yourself with compassion.</p></div>
-    <div class="med-card rv" style="transition-delay:440ms"><div class="med-icon">&#10047;</div><h3>Sacred Touch &amp; Presence</h3><p>The medicine of loving attention &mdash; holding space through full, devoted presence.</p></div>
-    <div class="med-card rv" style="transition-delay:495ms"><div class="med-icon">&#10047;</div><h3>Mother Earth Wisdom</h3><p>Earth-based practices and plant spirit medicine from indigenous shamanic traditions.</p></div>
+    <div class="med-card rv" style="transition-delay:0ms"><div class="med-icon">&#10047;</div><h3 data-i18n="med.c1.h">Cacao Medicine</h3><p data-i18n="med.c1.p">Heart-opening ceremonial cacao rituals to soften the armoring and awaken love within.</p></div>
+    <div class="med-card rv" style="transition-delay:55ms"><div class="med-icon">&#10047;</div><h3 data-i18n="med.c2.h">Reiki Certified</h3><p data-i18n="med.c2.p">Energy healing through gentle touch and universal life force to restore natural flow.</p></div>
+    <div class="med-card rv" style="transition-delay:110ms"><div class="med-icon">&#10047;</div><h3 data-i18n="med.c3.h">Rose Priestess Practices</h3><p data-i18n="med.c3.p">Ancient feminine wisdom channeled through the sacred lineage of the rose.</p></div>
+    <div class="med-card rv" style="transition-delay:165ms"><div class="med-icon">&#10047;</div><h3 data-i18n="med.c4.h">Trauma Informed Coach</h3><p data-i18n="med.c4.p">Compassionate guidance that honors your nervous system and the full truth of your story.</p></div>
+    <div class="med-card rv" style="transition-delay:220ms"><div class="med-icon">&#10047;</div><h3 data-i18n="med.c5.h">Somatic &amp; Embodiment</h3><p data-i18n="med.c5.p">Returning home to your body through felt sense, breath, and sacred movement.</p></div>
+    <div class="med-card rv" style="transition-delay:275ms"><div class="med-icon">&#10047;</div><h3 data-i18n="med.c6.h">Sound &amp; Vibrational Healing</h3><p data-i18n="med.c6.p">Gongs, crystal bowls, and sacred frequencies for deep cellular release and realignment.</p></div>
+    <div class="med-card rv" style="transition-delay:330ms"><div class="med-icon">&#10047;</div><h3 data-i18n="med.c7.h">Light Language</h3><p data-i18n="med.c7.p">Sacred transmissions beyond words that speak directly to the soul&rsquo;s ancient knowing.</p></div>
+    <div class="med-card rv" style="transition-delay:385ms"><div class="med-icon">&#10047;</div><h3 data-i18n="med.c8.h">Shadow Work</h3><p data-i18n="med.c8.p">Reclaiming the hidden, suppressed, and forgotten parts of yourself with compassion.</p></div>
+    <div class="med-card rv" style="transition-delay:440ms"><div class="med-icon">&#10047;</div><h3 data-i18n="med.c9.h">Sacred Touch &amp; Presence</h3><p data-i18n="med.c9.p">The medicine of loving attention &mdash; holding space through full, devoted presence.</p></div>
+    <div class="med-card rv" style="transition-delay:495ms"><div class="med-icon">&#10047;</div><h3 data-i18n="med.c10.h">Mother Earth Wisdom</h3><p data-i18n="med.c10.p">Earth-based practices and plant spirit medicine from indigenous shamanic traditions.</p></div>
   </div>
   <div class="med-video rv">
-    <h3 class="med-video-title">Experience the <em>Medicine</em></h3>
-    <p class="med-video-sub">A glimpse into the sacred work</p>
+    <h3 class="med-video-title" data-i18n="med.video.h">Experience the <em>Medicine</em></h3>
+    <p class="med-video-sub" data-i18n="med.video.p">A glimpse into the sacred work</p>
     <div class="med-video-wrap">
       <iframe src="https://www.youtube-nocookie.com/embed/Zm8Cipys1A8?rel=0&modestbranding=1" title="Experience the Medicine — Rosa Diaz de Leon" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
@@ -418,56 +423,56 @@ footer{background:var(--dark);padding:76px 72px 40px;}
 
 <section class="work" id="work">
   <div class="work-hd">
-    <p class="eyebrow eyebrow-c rv">Offerings</p>
-    <h2 class="rv">Work <em>With Me</em></h2>
+    <p class="eyebrow eyebrow-c rv" data-i18n="work.eyebrow">Offerings</p>
+    <h2 class="rv" data-i18n="work.h2">Work <em>With Me</em></h2>
   </div>
   <div class="work-grid">
     <div class="work-card rv-l">
       <img src="images/rosa-temple.jpg" alt="Private Sessions">
       <div class="work-overlay"></div>
       <div class="work-body">
-        <span class="cap-label">One-on-One &nbsp;&middot;&nbsp; Online</span>
-        <h3>Private Sessions</h3>
-        <p>Energy healing, somatic exploration, voice activation, ecstatic movement, and sacred feminine practices. A safe space where your body, your story, and your truth are honored.</p>
-        <a href="#contact" class="btn-card">Book a Session</a>
+        <span class="cap-label" data-i18n="work.c1.label">One-on-One &nbsp;&middot;&nbsp; Online</span>
+        <h3 data-i18n="work.c1.h">Private Sessions</h3>
+        <p data-i18n="work.c1.p">Energy healing, somatic exploration, voice activation, ecstatic movement, and sacred feminine practices. A safe space where your body, your story, and your truth are honored.</p>
+        <a href="#contact" class="btn-card" data-i18n="work.c1.btn">Book a Session</a>
       </div>
     </div>
     <div class="work-card rv-r">
       <img src="images/rosa-soundbowls.jpg" alt="The Rose Goddess Path">
       <div class="work-overlay"></div>
       <div class="work-body">
-        <span class="cap-label">10-Week Journey</span>
-        <h3>The Rose<br>Goddess Path</h3>
-        <p>A guided earth-centered journey of embodied feminine awakening. Five elemental stages. Seven archetypes. One complete transformation.</p>
-        <a href="program.html" class="btn-card">Explore The Path</a>
+        <span class="cap-label" data-i18n="work.c2.label">10-Week Journey</span>
+        <h3 data-i18n="work.c2.h">The Rose<br>Goddess Path</h3>
+        <p data-i18n="work.c2.p">A guided earth-centered journey of embodied feminine awakening. Five elemental stages. Seven archetypes. One complete transformation.</p>
+        <a href="program.html" class="btn-card" data-i18n="work.c2.btn">Explore The Path</a>
       </div>
     </div>
   </div>
   <div class="work-quote">
-    <blockquote class="rv">&ldquo;You are not broken. There is nothing to fix. <em>Everything you seek already lives within you.</em>&rdquo;</blockquote>
+    <blockquote class="rv" data-i18n="work.quote">&ldquo;You are not broken. There is nothing to fix. <em>Everything you seek already lives within you.</em>&rdquo;</blockquote>
   </div>
 </section>
 
 <section class="testimonials">
   <div class="testi-hd">
-    <p class="eyebrow eyebrow-c rv" style="color:var(--rose-pale);">Kind Words</p>
-    <h2 class="rv">From women who <em>remembered.</em></h2>
+    <p class="eyebrow eyebrow-c rv" style="color:var(--rose-pale);" data-i18n="testi.eyebrow">Kind Words</p>
+    <h2 class="rv" data-i18n="testi.h2">From women who <em>remembered.</em></h2>
   </div>
   <div class="testi-grid">
     <div class="testi-card rv" style="transition-delay:0ms">
       <span class="testi-mark">&ldquo;</span>
-      <blockquote>&ldquo;A safe space where your body, your story, and your truth are honored. I came in pieces and left feeling whole.&rdquo;</blockquote>
-      <cite>Private Session Client</cite>
+      <blockquote data-i18n="testi.q1">&ldquo;A safe space where your body, your story, and your truth are honored. I came in pieces and left feeling whole.&rdquo;</blockquote>
+      <cite data-i18n="testi.c1">Private Session Client</cite>
     </div>
     <div class="testi-card rv" style="transition-delay:80ms">
       <span class="testi-mark">&ldquo;</span>
-      <blockquote>&ldquo;She guided me through an intense emotional and spiritual experience with such compassion. My whole nervous system shifted.&rdquo;</blockquote>
-      <cite>Sound Healing Client</cite>
+      <blockquote data-i18n="testi.q2">&ldquo;She guided me through an intense emotional and spiritual experience with such compassion. My whole nervous system shifted.&rdquo;</blockquote>
+      <cite data-i18n="testi.c2">Sound Healing Client</cite>
     </div>
     <div class="testi-card rv" style="transition-delay:160ms">
       <span class="testi-mark">&ldquo;</span>
-      <blockquote>&ldquo;I have never felt so seen in my body. This work is unlike anything I have experienced. My life is changing from the inside out.&rdquo;</blockquote>
-      <cite>Goddess Awakening Client</cite>
+      <blockquote data-i18n="testi.q3">&ldquo;I have never felt so seen in my body. This work is unlike anything I have experienced. My life is changing from the inside out.&rdquo;</blockquote>
+      <cite data-i18n="testi.c3">Goddess Awakening Client</cite>
     </div>
   </div>
 </section>
@@ -476,23 +481,23 @@ footer{background:var(--dark);padding:76px 72px 40px;}
   <img src="images/rosa-rainbow-joy.jpg" alt="" class="cta-bg" id="cta-bg">
   <div class="cta-grad"></div>
   <div class="cta-body rv">
-    <p class="eyebrow eyebrow-c" style="color:var(--rose-pale);">Begin</p>
-    <h2>Your body remembers.<br>Your pleasure knows the way.<br><em>And your power has always been yours.</em></h2>
-    <p>Are you ready to remember?</p>
+    <p class="eyebrow eyebrow-c" style="color:var(--rose-pale);" data-i18n="cta.eyebrow">Begin</p>
+    <h2 data-i18n="cta.h2">Your body remembers.<br>Your pleasure knows the way.<br><em>And your power has always been yours.</em></h2>
+    <p data-i18n="cta.p">Are you ready to remember?</p>
     <form class="contact-form" id="contactForm" novalidate>
       <div class="form-field">
-        <label for="cf-name">Your Name</label>
-        <input type="text" id="cf-name" name="name" placeholder="How shall we call you?" required>
+        <label for="cf-name" data-i18n="form.name.label">Your Name</label>
+        <input type="text" id="cf-name" name="name" placeholder="How shall we call you?" data-i18n-ph="form.name.ph" required>
       </div>
       <div class="form-field">
-        <label for="cf-email">Email</label>
+        <label for="cf-email" data-i18n="form.email.label">Email</label>
         <input type="email" id="cf-email" name="email" placeholder="your@email.com" required>
       </div>
       <div class="form-field">
-        <label for="cf-message">Message</label>
-        <textarea id="cf-message" name="message" placeholder="Share what's calling you…" required></textarea>
+        <label for="cf-message" data-i18n="form.msg.label">Message</label>
+        <textarea id="cf-message" name="message" placeholder="Share what's calling you…" data-i18n-ph="form.msg.ph" required></textarea>
       </div>
-      <button type="submit" class="btn-ghost" id="contactBtn" style="white-space:nowrap;flex-shrink:0;cursor:pointer;background:none;font-family:inherit;">Send Message</button>
+      <button type="submit" class="btn-ghost" id="contactBtn" data-i18n="form.btn" style="white-space:nowrap;flex-shrink:0;cursor:pointer;background:none;font-family:inherit;">Send Message</button>
       <p class="form-status" id="formStatus"></p>
     </form>
   </div>
@@ -500,7 +505,7 @@ footer{background:var(--dark);padding:76px 72px 40px;}
 
 <div class="ig-feed">
   <div class="ig-hd rv">
-    <p class="eyebrow eyebrow-c">Follow Along</p>
+    <p class="eyebrow eyebrow-c" data-i18n="ig.eyebrow">Follow Along</p>
     <h2><a href="https://www.instagram.com/rosadiazdleon/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">@rosadiazdleon</a></h2>
   </div>
   <div class="ig-grid">
@@ -511,35 +516,35 @@ footer{background:var(--dark);padding:76px 72px 40px;}
     <a href="https://www.instagram.com/rosadiazdleon/" target="_blank" rel="noopener" class="ig-item rv" style="transition-delay:240ms"><img src="images/rosa-ig-5.png" alt=""></a>
     <a href="https://www.instagram.com/rosadiazdleon/" target="_blank" rel="noopener" class="ig-item rv" style="transition-delay:300ms"><img src="images/rosa-ig-6.jpg" alt=""></a>
   </div>
-  <a href="https://www.instagram.com/rosadiazdleon/" target="_blank" rel="noopener" class="ig-handle">Follow on Instagram &nbsp;&rarr;</a>
+  <a href="https://www.instagram.com/rosadiazdleon/" target="_blank" rel="noopener" class="ig-handle" data-i18n="ig.link">Follow on Instagram &nbsp;&rarr;</a>
 </div>
 
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
       <a href="index.html" class="nav-logo">Templo de la <em>Diosa Rosa</em></a>
-      <p>A sacred space for women to remember their power, their bodies, and their inner medicine.</p>
+      <p data-i18n="footer.brand">A sacred space for women to remember their power, their bodies, and their inner medicine.</p>
     </div>
     <div class="footer-col">
-      <h4>Navigate</h4>
+      <h4 data-i18n="footer.nav">Navigate</h4>
       <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#medicine">My Medicine</a></li>
-        <li><a href="#work">Work With Me</a></li>
-        <li><a href="program.html">The Rose Goddess Path</a></li>
+        <li><a href="#about" data-i18n="footer.about">About</a></li>
+        <li><a href="#medicine" data-i18n="footer.medicine">My Medicine</a></li>
+        <li><a href="#work" data-i18n="footer.work">Work With Me</a></li>
+        <li><a href="program.html" data-i18n="footer.path">The Rose Goddess Path</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Legal</h4>
+      <h4 data-i18n="footer.legal">Legal</h4>
       <ul>
-        <li><a href="disclaimer.html">Disclaimer</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="disclaimer.html" data-i18n="footer.disclaimer">Disclaimer</a></li>
+        <li><a href="#contact" data-i18n="footer.contact">Contact</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2025 Templo de la Diosa Rosa &nbsp;&middot;&nbsp; Rosa Diaz de Leon</p>
-    <a href="disclaimer.html">Disclaimer</a>
+    <p data-i18n="footer.copy">&copy; 2026 Templo de la Diosa Rosa &nbsp;&middot;&nbsp; Rosa Diaz de Leon</p>
+    <a href="disclaimer.html" data-i18n="footer.disclaimer">Disclaimer</a>
   </div>
 </footer>
 
@@ -579,6 +584,154 @@ footer{background:var(--dark);padding:76px 72px 40px;}
   if(!vid||!fb)return;
   vid.addEventListener('playing',function(){fb.classList.add('hidden');},{once:true});
 })();
+/* ── i18n ── */
+var i18n={
+  en:{
+    'nav.about':'About','nav.medicine':'My Medicine','nav.work':'Work With Me','nav.path':'The Path','nav.connect':'Connect',
+    'hero.eyebrow':'Sacred Feminine &nbsp;&middot;&nbsp; Shamanic Healing &nbsp;&middot;&nbsp; Online',
+    'hero.quote':'&ldquo;Your pleasure is your compass&rdquo;',
+    'hero.btn1':'Enter the Temple','hero.btn2':'Work With Me',
+    'ticker.1':'Cacao Medicine','ticker.2':'Sound Healing','ticker.3':'Rose Priestess','ticker.4':'Somatic Embodiment',
+    'ticker.5':'Light Language','ticker.6':'Shadow Work','ticker.7':'Sacred Touch','ticker.8':'Shamanic Traditions',
+    'about.eyebrow':'Who I Am',
+    'about.h2':'She is both <em>soft and wild</em>,<br>nurturing and fierce.',
+    'about.p1':'Within every woman lives a powerful, intuitive, and sensual force that has been forced to armor her heart and womb.',
+    'about.p2':'The Rose Goddess represents the feminine that is both soft and wild, nurturing and fierce, sensual and deeply wise. Like the rose, a woman carries beauty, depth, and thorns that protect her truth.',
+    'about.p3':'This temple is a space where women are invited to reconnect with that sacred energy within themselves.',
+    'about.link':'Discover My Medicine',
+    'diosa.eyebrow':'The Rose Goddess &nbsp;&middot;&nbsp; Diosa Rosa',
+    'diosa.h2':'A sacred space for women to remember<br>their power, their bodies, and their <em>inner medicine.</em>',
+    'diosa.p1':'Through shamanic guidance, energy work, ceremony, movement, sound, and the exploration of ecstasy, I accompany women on a path of reconnection with their body, their voice, and their truth.',
+    'diosa.p2':'Each session is intuitive and guided by what your body and spirit are ready to explore.',
+    'pleasure.eyebrow':'Your Compass','pleasure.h2':'Your Pleasure is<br>Your <em>Compass.</em>',
+    'pleasure.p1':'Pleasure is your birthright.',
+    'pleasure.p2':'It is the most honest language your body speaks &mdash; the compass that guides you back to your truth, your creativity, and your power.',
+    'pleasure.p3':'When you learn to listen to your body again, your life begins to change.',
+    'pleasure.tag':'Pleasure does not lie.',
+    'med.eyebrow':'The Work','med.h2':'My <em>Medicine</em>',
+    'med.p':'My work weaves together different paths of healing, embodiment, and spiritual awakening &mdash; goddess awakening in every form.',
+    'med.c1.h':'Cacao Medicine','med.c1.p':'Heart-opening ceremonial cacao rituals to soften the armoring and awaken love within.',
+    'med.c2.h':'Reiki Certified','med.c2.p':'Energy healing through gentle touch and universal life force to restore natural flow.',
+    'med.c3.h':'Rose Priestess Practices','med.c3.p':'Ancient feminine wisdom channeled through the sacred lineage of the rose.',
+    'med.c4.h':'Trauma Informed Coach','med.c4.p':'Compassionate guidance that honors your nervous system and the full truth of your story.',
+    'med.c5.h':'Somatic &amp; Embodiment','med.c5.p':'Returning home to your body through felt sense, breath, and sacred movement.',
+    'med.c6.h':'Sound &amp; Vibrational Healing','med.c6.p':'Gongs, crystal bowls, and sacred frequencies for deep cellular release and realignment.',
+    'med.c7.h':'Light Language','med.c7.p':'Sacred transmissions beyond words that speak directly to the soul&rsquo;s ancient knowing.',
+    'med.c8.h':'Shadow Work','med.c8.p':'Reclaiming the hidden, suppressed, and forgotten parts of yourself with compassion.',
+    'med.c9.h':'Sacred Touch &amp; Presence','med.c9.p':'The medicine of loving attention &mdash; holding space through full, devoted presence.',
+    'med.c10.h':'Mother Earth Wisdom','med.c10.p':'Earth-based practices and plant spirit medicine from indigenous shamanic traditions.',
+    'med.video.h':'Experience the <em>Medicine</em>','med.video.p':'A glimpse into the sacred work',
+    'work.eyebrow':'Offerings','work.h2':'Work <em>With Me</em>',
+    'work.c1.label':'One-on-One &nbsp;&middot;&nbsp; Online','work.c1.h':'Private Sessions',
+    'work.c1.p':'Energy healing, somatic exploration, voice activation, ecstatic movement, and sacred feminine practices. A safe space where your body, your story, and your truth are honored.',
+    'work.c1.btn':'Book a Session','work.c2.label':'10-Week Journey','work.c2.h':'The Rose<br>Goddess Path',
+    'work.c2.p':'A guided earth-centered journey of embodied feminine awakening. Five elemental stages. Seven archetypes. One complete transformation.',
+    'work.c2.btn':'Explore The Path',
+    'work.quote':'&ldquo;You are not broken. There is nothing to fix. <em>Everything you seek already lives within you.</em>&rdquo;',
+    'testi.eyebrow':'Kind Words','testi.h2':'From women who <em>remembered.</em>',
+    'testi.q1':'&ldquo;A safe space where your body, your story, and your truth are honored. I came in pieces and left feeling whole.&rdquo;',
+    'testi.c1':'Private Session Client',
+    'testi.q2':'&ldquo;She guided me through an intense emotional and spiritual experience with such compassion. My whole nervous system shifted.&rdquo;',
+    'testi.c2':'Sound Healing Client',
+    'testi.q3':'&ldquo;I have never felt so seen in my body. This work is unlike anything I have experienced. My life is changing from the inside out.&rdquo;',
+    'testi.c3':'Goddess Awakening Client',
+    'cta.eyebrow':'Begin',
+    'cta.h2':'Your body remembers.<br>Your pleasure knows the way.<br><em>And your power has always been yours.</em>',
+    'cta.p':'Are you ready to remember?',
+    'form.name.label':'Your Name','form.name.ph':'How shall we call you?',
+    'form.email.label':'Email','form.msg.label':'Message','form.msg.ph':'Share what\'s calling you…',
+    'form.btn':'Send Message','form.success':'Thank you. Rosa will be in touch soon.','form.error':'Something went wrong. Please try again.',
+    'ig.eyebrow':'Follow Along','ig.link':'Follow on Instagram &nbsp;&rarr;',
+    'footer.nav':'Navigate','footer.legal':'Legal','footer.about':'About','footer.medicine':'My Medicine',
+    'footer.work':'Work With Me','footer.path':'The Rose Goddess Path','footer.disclaimer':'Disclaimer',
+    'footer.contact':'Contact','footer.brand':'A sacred space for women to remember their power, their bodies, and their inner medicine.',
+    'footer.copy':'&copy; 2026 Templo de la Diosa Rosa &nbsp;&middot;&nbsp; Rosa Diaz de Leon'
+  },
+  es:{
+    'nav.about':'Acerca de m\xed','nav.medicine':'Mi Medicina','nav.work':'Trabaja Conmigo','nav.path':'El Camino','nav.connect':'Conectar',
+    'hero.eyebrow':'Sagrado Femenino &nbsp;&middot;&nbsp; Sanaci\xf3n Cham\xe1nica &nbsp;&middot;&nbsp; En L\xednea',
+    'hero.quote':'&ldquo;Tu placer es tu br\xfajula&rdquo;',
+    'hero.btn1':'Entra al Templo','hero.btn2':'Trabaja Conmigo',
+    'ticker.1':'Medicina del Cacao','ticker.2':'Sanaci\xf3n Sonora','ticker.3':'Sacerdotisa de la Rosa','ticker.4':'Encarnaci\xf3n Som\xe1tica',
+    'ticker.5':'Lenguaje de Luz','ticker.6':'Trabajo de Sombra','ticker.7':'Toque Sagrado','ticker.8':'Tradiciones Cham\xe1nicas',
+    'about.eyebrow':'Qui\xe9n Soy',
+    'about.h2':'Ella es tanto <em>suave como salvaje</em>,<br>nutritiva y feroz.',
+    'about.p1':'Dentro de cada mujer vive una fuerza poderosa, intuitiva y sensual que ha sido forzada a blindar su coraz\xf3n y su vientre.',
+    'about.p2':'La Diosa Rosa representa lo femenino que es tanto suave como salvaje, nutritivo y feroz, sensual y profundamente sabio. Como la rosa, la mujer lleva belleza, profundidad y espinas que protegen su verdad.',
+    'about.p3':'Este templo es un espacio donde las mujeres son invitadas a reconectarse con esa energ\xeda sagrada dentro de s\xed mismas.',
+    'about.link':'Descubre Mi Medicina',
+    'diosa.eyebrow':'La Diosa Rosa &nbsp;&middot;&nbsp; Diosa Rosa',
+    'diosa.h2':'Un espacio sagrado donde las mujeres recuerdan<br>su poder, sus cuerpos y su <em>medicina interior.</em>',
+    'diosa.p1':'A trav\xe9s de la gu\xeda cham\xe1nica, el trabajo energ\xe9tico, la ceremonia, el movimiento, el sonido y la exploraci\xf3n del \xe9xtasis, acompa\xf1o a las mujeres en un camino de reconexi\xf3n con su cuerpo, su voz y su verdad.',
+    'diosa.p2':'Cada sesi\xf3n es intuitiva y guiada por lo que tu cuerpo y esp\xedritu est\xe1n listos para explorar.',
+    'pleasure.eyebrow':'Tu Br\xfajula','pleasure.h2':'Tu Placer es<br>Tu <em>Br\xfajula.</em>',
+    'pleasure.p1':'El placer es tu derecho de nacimiento.',
+    'pleasure.p2':'Es el lenguaje m\xe1s honesto que habla tu cuerpo &mdash; la br\xfajula que te gu\xeda de regreso a tu verdad, tu creatividad y tu poder.',
+    'pleasure.p3':'Cuando aprendes a escuchar tu cuerpo de nuevo, tu vida comienza a cambiar.',
+    'pleasure.tag':'El placer no miente.',
+    'med.eyebrow':'El Trabajo','med.h2':'Mi <em>Medicina</em>',
+    'med.p':'Mi trabajo entreteje diferentes caminos de sanaci\xf3n, encarnaci\xf3n y despertar espiritual &mdash; el despertar de la diosa en cada forma.',
+    'med.c1.h':'Medicina del Cacao','med.c1.p':'Rituales ceremoniales de cacao que abren el coraz\xf3n para suavizar la armadura y despertar el amor interior.',
+    'med.c2.h':'Reiki Certificada','med.c2.p':'Sanaci\xf3n energ\xe9tica a trav\xe9s del toque suave y la fuerza vital universal para restaurar el flujo natural.',
+    'med.c3.h':'Pr\xe1cticas de Sacerdotisa de la Rosa','med.c3.p':'Sabidur\xeda femenina ancestral canalizada a trav\xe9s del sagrado linaje de la rosa.',
+    'med.c4.h':'Coach Informada en Trauma','med.c4.p':'Gu\xeda compasiva que honra tu sistema nervioso y la verdad completa de tu historia.',
+    'med.c5.h':'Som\xe1tica y Encarnaci\xf3n','med.c5.p':'Regresando al hogar de tu cuerpo a trav\xe9s del sentido sentido, la respiraci\xf3n y el movimiento sagrado.',
+    'med.c6.h':'Sanaci\xf3n Sonora y Vibracional','med.c6.p':'Gongs, cuencos de cristal y frecuencias sagradas para la liberaci\xf3n celular profunda y la realineaci\xf3n.',
+    'med.c7.h':'Lenguaje de Luz','med.c7.p':'Transmisiones sagradas m\xe1s all\xe1 de las palabras que hablan directamente al conocimiento ancestral del alma.',
+    'med.c8.h':'Trabajo de Sombra','med.c8.p':'Reclamando las partes ocultas, suprimidas y olvidadas de ti misma con compasi\xf3n.',
+    'med.c9.h':'Toque Sagrado y Presencia','med.c9.p':'La medicina de la atenci\xf3n amorosa &mdash; sostener el espacio a trav\xe9s de una presencia plena y devota.',
+    'med.c10.h':'Sabidur\xeda de la Madre Tierra','med.c10.p':'Pr\xe1cticas basadas en la tierra y medicina de esp\xedritu de plantas de tradiciones cham\xe1nicas ind\xedgenas.',
+    'med.video.h':'Experimenta la <em>Medicina</em>','med.video.p':'Un vistazo al trabajo sagrado',
+    'work.eyebrow':'Ofrendas','work.h2':'Trabaja <em>Conmigo</em>',
+    'work.c1.label':'Individual &nbsp;&middot;&nbsp; En L\xednea','work.c1.h':'Sesiones Privadas',
+    'work.c1.p':'Sanaci\xf3n energ\xe9tica, exploraci\xf3n som\xe1tica, activaci\xf3n de voz, movimiento ext\xe1tico y pr\xe1cticas femeninas sagradas. Un espacio seguro donde tu cuerpo, tu historia y tu verdad son honrados.',
+    'work.c1.btn':'Reserva una Sesi\xf3n','work.c2.label':'Jornada de 10 Semanas','work.c2.h':'El Camino de la<br>Diosa Rosa',
+    'work.c2.p':'Un viaje guiado centrado en la tierra de despertar femenino encarnado. Cinco etapas elementales. Siete arquetipos. Una transformaci\xf3n completa.',
+    'work.c2.btn':'Explora El Camino',
+    'work.quote':'&ldquo;No est\xe1s rota. No hay nada que arreglar. <em>Todo lo que buscas ya vive dentro de ti.</em>&rdquo;',
+    'testi.eyebrow':'Palabras Amables','testi.h2':'De mujeres que <em>recordaron.</em>',
+    'testi.q1':'&ldquo;Un espacio seguro donde tu cuerpo, tu historia y tu verdad son honrados. Llegu\xe9 en pedazos y me fui sinti\xe9ndome completa.&rdquo;',
+    'testi.c1':'Clienta de Sesi\xf3n Privada',
+    'testi.q2':'&ldquo;Me gui\xf3 a trav\xe9s de una experiencia emocional y espiritual intensa con tanta compasi\xf3n. Todo mi sistema nervioso se transform\xf3.&rdquo;',
+    'testi.c2':'Clienta de Sanaci\xf3n Sonora',
+    'testi.q3':'&ldquo;Nunca me hab\xeda sentido tan vista en mi cuerpo. Este trabajo es diferente a todo lo que he experimentado. Mi vida est\xe1 cambiando desde adentro.&rdquo;',
+    'testi.c3':'Clienta de Despertar de la Diosa',
+    'cta.eyebrow':'Comenzar',
+    'cta.h2':'Tu cuerpo recuerda.<br>Tu placer conoce el camino.<br><em>Y tu poder siempre ha sido tuyo.</em>',
+    'cta.p':'\xbfEst\xe1s lista para recordar?',
+    'form.name.label':'Tu Nombre','form.name.ph':'\xbfC\xf3mo te llamamos?',
+    'form.email.label':'Correo Electr\xf3nico','form.msg.label':'Mensaje','form.msg.ph':'Comparte lo que te est\xe1 llamando…',
+    'form.btn':'Enviar Mensaje','form.success':'Gracias. Rosa se pondr\xe1 en contacto pronto.','form.error':'Algo sali\xf3 mal. Por favor intenta de nuevo.',
+    'ig.eyebrow':'S\xedgueme','ig.link':'S\xedgueme en Instagram &nbsp;&rarr;',
+    'footer.nav':'Navegar','footer.legal':'Legal','footer.about':'Acerca de m\xed','footer.medicine':'Mi Medicina',
+    'footer.work':'Trabaja Conmigo','footer.path':'El Camino de la Diosa Rosa','footer.disclaimer':'Aviso Legal',
+    'footer.contact':'Contacto','footer.brand':'Un espacio sagrado donde las mujeres son invitadas a recordar su poder, sus cuerpos y su medicina interior.',
+    'footer.copy':'&copy; 2026 Templo de la Diosa Rosa &nbsp;&middot;&nbsp; Rosa Diaz de Leon'
+  }
+};
+var currentLang='en';
+function applyLang(lang){
+  var t=i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k=el.getAttribute('data-i18n');
+    if(t[k]!==undefined)el.innerHTML=t[k];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+    var k=el.getAttribute('data-i18n-ph');
+    if(t[k]!==undefined)el.placeholder=t[k];
+  });
+  var toggle=document.getElementById('langToggle');
+  if(toggle)toggle.textContent=lang==='en'?'ES':'EN';
+  document.documentElement.lang=lang;
+  currentLang=lang;
+  try{localStorage.setItem('rosaLang',lang);}catch(e){}
+}
+(function(){
+  var btn=document.getElementById('langToggle');
+  if(!btn)return;
+  btn.addEventListener('click',function(){applyLang(currentLang==='en'?'es':'en');});
+  try{var saved=localStorage.getItem('rosaLang');if(saved&&saved!=='en')applyLang(saved);}catch(e){}
+})();
 (function(){
   var form=document.getElementById('contactForm');
   var btn=document.getElementById('contactBtn');
@@ -589,14 +742,15 @@ footer{background:var(--dark);padding:76px 72px 40px;}
     var name=form.querySelector('[name=name]').value.trim();
     var email=form.querySelector('[name=email]').value.trim();
     var message=form.querySelector('[name=message]').value.trim();
-    if(!name||!email||!message){status.textContent='Please fill in all fields.';status.className='form-status err';return;}
-    btn.textContent='Sending…';btn.disabled=true;
+    var t=i18n[currentLang];
+    if(!name||!email||!message){status.textContent=currentLang==='en'?'Please fill in all fields.':'Por favor completa todos los campos.';status.className='form-status err';return;}
+    btn.textContent=currentLang==='en'?'Sending…':'Enviando…';btn.disabled=true;
     status.textContent='';status.className='form-status';
     try{
       var res=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,email:email,message:message})});
-      if(res.ok){form.reset();btn.textContent='Message Sent ✦';status.textContent='Thank you. Rosa will be in touch soon.';status.className='form-status ok';}
+      if(res.ok){form.reset();btn.textContent=currentLang==='en'?'Message Sent ✦':'Mensaje Enviado ✦';status.textContent=t['form.success'];status.className='form-status ok';}
       else{throw new Error();}
-    }catch(err){btn.textContent='Send Message';btn.disabled=false;status.textContent='Something went wrong. Please try again.';status.className='form-status err';}
+    }catch(err){btn.textContent=t['form.btn'];btn.disabled=false;status.textContent=t['form.error'];status.className='form-status err';}
   });
 })();
 </script>
