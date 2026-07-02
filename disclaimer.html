@@ -124,10 +124,47 @@ footer{background:var(--dark);padding:56px 72px 36px;}
 
 <footer>
   <div class="footer-bottom">
-    <p>&copy; 2025 Templo de la Diosa Rosa &nbsp;&middot;&nbsp; Rosa Diaz de Leon</p>
+    <p>&copy; 2026 Templo de la Diosa Rosa &nbsp;&middot;&nbsp; Rosa Diaz de Leon</p>
     <a href="index.html">Return Home</a>
   </div>
 </footer>
 
+<script>
+(function(){
+  if(localStorage.getItem('rosaLang')!=='es')return;
+  document.documentElement.lang='es';
+  function q(s){return document.querySelector(s);}
+  function set(s,h){var e=q(s);if(e)e.innerHTML=h;}
+
+  var back=q('.nav-back');if(back)back.textContent='Volver al inicio';
+  set('.page-hero h1','Descargo');
+
+  var sectionData=[
+    {h:'La Naturaleza de Este Trabajo',
+     ps:['Este trabajo es <strong>devocional y educativo en su naturaleza.</strong> Est\xe1 destinado a apoyar la exploraci\xf3n personal, la reflexi\xf3n espiritual y la conciencia corporal encarnada.',
+         'No es <strong>no</strong> un sustituto de la atenci\xf3n m\xe9dica, la consejer\xeda psicol\xf3gica, el tratamiento de salud mental ni la terapia de trauma.']},
+    {h:'Tu <em>Responsabilidad</em>',
+     ps:['Al participar en cualquier programa, sesi\xf3n o curso ofrecido a trav\xe9s de Templo de la Diosa Rosa, reconoces que eres responsable de tu propio bienestar f\xedsico, emocional y psicol\xf3gico.',
+         'Aceptas escuchar tu cuerpo, honrar tus l\xedmites personales y participar en todas las pr\xe1cticas con soberan\xeda y discernimiento.',
+         'Si tienes preocupaciones m\xe9dicas, psicol\xf3gicas o relacionadas con trauma, por favor consulta con un proveedor de salud calificado y licenciado antes de participar.']},
+    {h:'Limitaci\xf3n de <em>Responsabilidad</em>',
+     ps:['Al entrar en cualquier curso, sesi\xf3n o participar con estas ense\xf1anzas, aceptas liberar y eximir de responsabilidad a <strong>Rosa Diaz de Leon</strong> de cualquier reclamaci\xf3n o da\xf1o derivado de la participaci\xf3n en este trabajo.',
+         'Rosa Diaz de Leon no ofrece garant\xedas de resultados, logros o experiencias espec\xedficas como resultado de participar en cualquier oferta.']},
+    {h:'Apoyo Profesional',
+     ps:['Este trabajo puede despertar emociones o recuerdos profundos. Si en alg\xfan momento te sientes abrumada, por favor det\xe9nte, descansa y busca apoyo de un profesional de salud mental licenciado.',
+         'Las pr\xe1cticas ofrecidas aqu\xed son de naturaleza complementaria y est\xe1n destinadas a experimentarse junto a &mdash; no en lugar de &mdash; atenci\xf3n profesional cuando sea necesario.']},
+    {h:'Contacto',
+     ps:['Si tienes alguna pregunta sobre este descargo o la naturaleza del trabajo ofrecido, com\xfadn\xedcate directamente a <a href="mailto:hello@rosadiosa.com" style="color:var(--rose);transition:opacity .3s;" onmouseover="this.style.opacity=\'.7\'" onmouseout="this.style.opacity=\'1\'">hello@rosadiosa.com</a>.']}
+  ];
+  Array.from(document.querySelectorAll('.disc-section')).forEach(function(sec,i){
+    var d=sectionData[i];if(!d)return;
+    var h2=sec.querySelector('h2');if(h2)h2.innerHTML=d.h;
+    Array.from(sec.querySelectorAll('p')).forEach(function(p,j){if(d.ps[j]!==undefined)p.innerHTML=d.ps[j];});
+  });
+
+  set('.footer-bottom p','&copy; 2026 Templo de la Diosa Rosa &nbsp;&middot;&nbsp; Rosa Diaz de Leon');
+  var fba=q('.footer-bottom a');if(fba)fba.textContent='Volver al inicio';
+})();
+</script>
 </body>
 </html>

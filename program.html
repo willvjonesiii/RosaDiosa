@@ -460,7 +460,7 @@ footer{background:var(--dark);padding:72px 72px 40px;}
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2025 Templo de la Diosa Rosa &nbsp;&middot;&nbsp; Rosa Diaz de Leon</p>
+    <p>&copy; 2026 Templo de la Diosa Rosa &nbsp;&middot;&nbsp; Rosa Diaz de Leon</p>
     <a href="disclaimer.html">Disclaimer</a>
   </div>
 </footer>
@@ -505,6 +505,122 @@ footer{background:var(--dark);padding:72px 72px 40px;}
     rows.forEach(function(r){r.classList.remove('active');});
     if(rows[0])rows[0].classList.add('active');
   });
+})();
+</script>
+<script>
+(function(){
+  if(localStorage.getItem('rosaLang')!=='es')return;
+  document.documentElement.lang='es';
+  function q(s){return document.querySelector(s);}
+  function set(s,h){var e=q(s);if(e)e.innerHTML=h;}
+
+  // Nav
+  Array.from(document.querySelectorAll('.nav-links a')).forEach(function(e,i){
+    var t=['Acerca de m\xed','Mi Medicina','Trabaja Conmigo','El Camino','Conectar'];
+    if(t[i]!==undefined)e.innerHTML=t[i];
+  });
+
+  // Hero
+  set('.prog-hero-eyebrow','<div class="hero-line"></div>Jornada de 10 Semanas &nbsp;&middot;&nbsp; Centrada en la Tierra<div class="hero-line"></div>');
+  set('.prog-hero h1','El Camino de la<em>Diosa Rosa</em>');
+  set('.prog-hero-sub','Un viaje guiado de despertar femenino encarnado a trav\xe9s de los Cinco Elementos y Siete Arquetipos de la Rosa');
+  var hb=q('.prog-hero .btn-ghost');if(hb)hb.textContent='Comienza el Viaje';
+
+  // Overview
+  set('.overview-text .eyebrow','El Camino');
+  set('.overview-text h2','Un viaje de regreso a<br>tu <em>ser soberano.</em>');
+  Array.from(document.querySelectorAll('.overview-text > p')).forEach(function(e,i){
+    var t=[
+      'El Camino de la Diosa Rosa es un viaje guiado, centrado en la tierra, a trav\xe9s de los cinco elementos &mdash; Tierra, Agua, Fuego, Aire y Esp\xedritu &mdash; dise\xf1ado para despertar lo femenino encarnado dentro de ti.',
+      'Durante diez semanas, te mueves a trav\xe9s de cada etapa elemental, encontrando un arquetipo diferente de la Diosa Rosa dentro de ti misma, emergiendo con una conexi\xf3n m\xe1s profunda con tu cuerpo, tu voz y tu poder sagrado.'
+    ];
+    if(t[i]!==undefined)e.innerHTML=t[i];
+  });
+  Array.from(document.querySelectorAll('.pill')).forEach(function(e,i){
+    var t=['5 Elementos','7 Arquetipos','10 Semanas','En L\xednea','Para Mujeres'];
+    if(t[i]!==undefined)e.textContent=t[i];
+  });
+  var bl=q('.badge-label');if(bl)bl.textContent='Semanas';
+
+  // Initiation
+  set('.init-text .eyebrow','Antes del Camino');
+  set('.init-text h2','La Iniciaci\xf3n:<br><em>La Dieta de la Rosa</em>');
+  Array.from(document.querySelectorAll('.init-text > p')).forEach(function(e,i){
+    var t=[
+      'Antes de que comience el viaje de diez semanas, existe una iniciaci\xf3n &mdash; un sagrado per\xedodo de dos semanas de escucha llamado la Dieta de la Rosa.',
+      'Arraigada en tradiciones ind\xedgenas, una dieta nos invita a desacelerar y construir una relaci\xf3n con el esp\xedritu de una planta. La rosa se convierte en maestra de suavidad, l\xedmites, belleza y verdad.',
+      'La Dieta de la Rosa no es una preparaci\xf3n para el trabajo &mdash; <em style="color:var(--rose-pale);">es</em> el primer acto del mismo.'
+    ];
+    if(t[i]!==undefined)e.innerHTML=t[i];
+  });
+
+  // Stages
+  set('.stages-hd .eyebrow','El Viaje');
+  set('.stages-hd h2','Las Cinco <em>Etapas Elementales</em>');
+  set('.stages-hd p','Cada etapa corresponde a un elemento de la naturaleza, un arquetipo de lo femenino y un dominio de tu paisaje interior esperando ser reclamado.');
+  var stageData=[
+    {el:'Tierra',h:'Despertar el Cuerpo',arch:'Arquetipo: La Semilla',items:['Enraizamiento','Seguridad del sistema nervioso','Conciencia corporal']},
+    {el:'Agua',h:'Reclamar el Placer',arch:'Arquetipo: El Brote',items:['Sensualidad','Flujo emocional','El placer como gu\xeda']},
+    {el:'Fuego',h:'Encontrar la Sombra',arch:'Arquetipo: La Guardiana de Espinas',items:['Transformaci\xf3n','Reclamar partes suprimidas','L\xedmites']},
+    {el:'Aire',h:'Despertar la Voz',arch:'Arquetipo: La Rosa Salvaje',items:['Expresi\xf3n','Voz','Respiraci\xf3n']},
+    {el:'Esp\xedritu',h:'Encarnar la Diosa Rosa',arch:'Arquetipo: La Diosa Rosa',items:['Integraci\xf3n','Soberan\xeda','Liderazgo femenino sagrado']}
+  ];
+  Array.from(document.querySelectorAll('.stage-row')).forEach(function(row,i){
+    var d=stageData[i];if(!d)return;
+    var el=row.querySelector('.stage-element');if(el)el.textContent=d.el;
+    var h3=row.querySelector('h3');if(h3)h3.textContent=d.h;
+    var arch=row.querySelector('.stage-archetype');if(arch)arch.textContent=d.arch;
+    var lbl=row.querySelector('.stage-focus-label');if(lbl)lbl.textContent='Enfoque';
+    Array.from(row.querySelectorAll('.stage-focus li')).forEach(function(li,j){if(d.items[j])li.textContent=d.items[j];});
+  });
+
+  // Archetypes
+  set('.archetypes-hd .eyebrow','Los Siete Rostros');
+  set('.archetypes-hd h2','Arquetipos de la <em>Diosa Rosa</em>');
+  set('.archetypes-hd p','A lo largo del viaje, las mujeres encuentran siete expresiones arquet\xedpicas del poder femenino. Estos arquetipos emergen naturalmente durante las etapas del camino.');
+  var archData=[
+    ['La Semilla','Potencial y comienzos'],
+    ['El Brote','Sensualidad en despertar'],
+    ['La Rosa en Flor','Placer encarnado'],
+    ['La Guardiana de Espinas','L\xedmites y verdad'],
+    ['La Rosa Salvaje','Poder femenino ind\xf3mito'],
+    ['La Sacerdotisa de la Rosa','Intuici\xf3n y conexi\xf3n espiritual'],
+    ['La Diosa Rosa','Soberan\xeda e integraci\xf3n']
+  ];
+  Array.from(document.querySelectorAll('.arch-card')).forEach(function(card,i){
+    var d=archData[i];if(!d)return;
+    var h3=card.querySelector('h3');if(h3)h3.textContent=d[0];
+    var p=card.querySelector('p');if(p)p.textContent=d[1];
+  });
+
+  // CTA
+  set('.prog-cta-body .eyebrow','La Invitaci\xf3n');
+  set('.prog-cta-body h2','\xbfEst\xe1s lista para <em>florecer?</em>');
+  set('.prog-cta-body > p','El Camino de la Diosa Rosa es para mujeres que sienten el llamado de regresar a s\xed mismas &mdash; a sus cuerpos, su poder y su verdad.');
+  Array.from(document.querySelectorAll('.prog-cta-btns a')).forEach(function(e,i){
+    if(i===0)e.textContent='Aplica Ahora';
+    if(i===1)e.textContent='Todas las Ofrendas';
+  });
+
+  // Footer
+  set('.footer-brand p','Un espacio sagrado donde las mujeres recuerdan su poder, sus cuerpos y su medicina interior.');
+  var cols=Array.from(document.querySelectorAll('.footer-col'));
+  if(cols[0]){
+    var h4a=cols[0].querySelector('h4');if(h4a)h4a.textContent='Navegar';
+    Array.from(cols[0].querySelectorAll('a')).forEach(function(e,i){
+      var t=['Acerca de m\xed','Mi Medicina','Trabaja Conmigo','El Camino de la Diosa Rosa'];
+      if(t[i]!==undefined)e.textContent=t[i];
+    });
+  }
+  if(cols[1]){
+    var h4b=cols[1].querySelector('h4');if(h4b)h4b.textContent='Legal';
+    Array.from(cols[1].querySelectorAll('a')).forEach(function(e,i){
+      var t=['Descargo','Contacto'];
+      if(t[i]!==undefined)e.textContent=t[i];
+    });
+  }
+  set('.footer-bottom p','&copy; 2026 Templo de la Diosa Rosa &nbsp;&middot;&nbsp; Rosa Diaz de Leon');
+  var fba=q('.footer-bottom a');if(fba)fba.textContent='Descargo';
 })();
 </script>
 </body>
