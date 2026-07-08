@@ -888,6 +888,7 @@ function applyLang(lang){
   function loadTrack(i){
     trackIndex=(i+TRACKS.length)%TRACKS.length;
     audio.src=TRACKS[trackIndex].src;
+    audio.load();
     updateLabel();
   }
 
