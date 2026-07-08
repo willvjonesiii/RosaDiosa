@@ -597,7 +597,7 @@ nav.sc #langToggle,nav.scrolled #langToggle{border-color:rgba(170,68,102,.3);col
     <p class="portal-eyebrow" data-i18n="portal.eyebrow">Before You Begin</p>
     <h2 class="portal-headline" id="portalHeadline" data-i18n="portal.headline">Welcome. You have entered a <em>sacred</em> space.</h2>
     <p class="portal-body" data-i18n="portal.body">As you arrive, I invite you to pause. Take a breath. Let your shoulders soften. This is the opening of a circle before the rest unfolds &mdash; a moment held for you, before you wander further in.</p>
-    <p class="portal-track-label" data-i18n="portal.trackLabel">From music chosen to accompany you as you move through this space.</p>
+    <p class="portal-track-label" data-i18n="portal.trackLabel">Music chosen from my journey and personal playlist to accompany you as you move through this space.</p>
     <button class="portal-track" data-track-index="0">
       <span class="portal-track-icon">♪</span>
       <span class="portal-track-info">
@@ -723,7 +723,7 @@ var i18n={
     'portal.eyebrow':'Before You Begin',
     'portal.headline':'Welcome. You have entered a <em>sacred</em> space.',
     'portal.body':'As you arrive, I invite you to pause. Take a breath. Let your shoulders soften. This is the opening of a circle before the rest unfolds &mdash; a moment held for you, before you wander further in.',
-    'portal.trackLabel':'From music chosen to accompany you as you move through this space.',
+    'portal.trackLabel':'Music chosen from my journey and personal playlist to accompany you as you move through this space.',
     'portal.enter':'Enter &nbsp;&rarr;',
     'portal.skip':'Continue in silence'
   },
@@ -790,7 +790,7 @@ var i18n={
     'portal.eyebrow':'Antes de Comenzar',
     'portal.headline':'Bienvenida. Has entrado a un espacio <em>sagrado</em>.',
     'portal.body':'Al llegar, te invito a hacer una pausa. Respira. Deja que tus hombros se suavicen. Esta es la apertura de un c\xedrculo antes de que contin\xfae el resto &mdash; un momento sostenido para ti, antes de adentrarte m\xe1s.',
-    'portal.trackLabel':'M\xfasica elegida para acompa\xf1arte mientras te mueves por este espacio.',
+    'portal.trackLabel':'M\xfasica elegida de mi camino y mi playlist personal para acompa\xf1arte mientras te mueves por este espacio.',
     'portal.enter':'Entrar &nbsp;&rarr;',
     'portal.skip':'Continuar en silencio'
   }
@@ -815,7 +815,10 @@ function applyLang(lang){
 (function(){
   var btn=document.getElementById('langToggle');
   if(!btn)return;
-  btn.addEventListener('click',function(){applyLang(currentLang==='en'?'es':'en');});
+  btn.addEventListener('click',function(){
+    applyLang(currentLang==='en'?'es':'en');
+    if(window.rosaOpenPortal)window.rosaOpenPortal();
+  });
   try{var saved=localStorage.getItem('rosaLang');if(saved&&saved!=='en')applyLang(saved);}catch(e){}
 })();
 (function(){
@@ -921,6 +924,7 @@ function applyLang(lang){
     document.documentElement.style.overflow='';
     try{sessionStorage.setItem(KEY,'1');}catch(e){}
   }
+  window.rosaOpenPortal=open;
 
   try{
     if(!sessionStorage.getItem(KEY)){
