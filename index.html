@@ -312,9 +312,9 @@ nav.sc #langToggle,nav.scrolled #langToggle{border-color:rgba(170,68,102,.3);col
 #audio-toggle-label.show{opacity:1;}
 
 /* ── PORTAL WELCOME LIGHTBOX ── */
-#portal-welcome{position:fixed;inset:0;z-index:10050;display:flex;align-items:center;justify-content:center;padding:1.5rem;background:rgba(10,4,7,.28);opacity:0;pointer-events:none;transition:opacity .6s ease;}
+#portal-welcome{position:fixed;inset:0;z-index:10050;display:flex;align-items:center;justify-content:center;padding:1.5rem;background:rgba(10,4,7,.28);opacity:0;pointer-events:none;transition:opacity 1.6s ease;}
 #portal-welcome.show{opacity:1;pointer-events:auto;}
-.portal-card{position:relative;width:100%;max-width:680px;background:rgba(38,20,28,.55);border:1px solid rgba(212,137,154,.2);border-radius:28px;backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);box-shadow:0 30px 80px rgba(0,0,0,.5);padding:clamp(1.9rem,4.2vw,2.7rem) clamp(2rem,5vw,3rem);text-align:center;transform:translateY(18px) scale(.98);opacity:0;transition:transform .6s cubic-bezier(.16,1,.3,1),opacity .6s ease;}
+.portal-card{position:relative;width:100%;max-width:680px;background:rgba(38,20,28,.55);border:1px solid rgba(212,137,154,.2);border-radius:28px;backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);box-shadow:0 30px 80px rgba(0,0,0,.5);padding:clamp(1.9rem,4.2vw,2.7rem) clamp(2rem,5vw,3rem);text-align:center;transform:translateY(18px) scale(.98);opacity:0;transition:transform 1.8s cubic-bezier(.22,.61,.36,1),opacity 1.8s ease;}
 #portal-welcome.show .portal-card{transform:translateY(0) scale(1);opacity:1;}
 .portal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;border:1px solid rgba(212,137,154,.2);background:transparent;color:rgba(255,255,255,.5);font-size:1rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .25s,color .25s;}
 .portal-avatar{display:block;margin:0 auto 1.1rem;width:76px;height:76px;border-radius:50%;object-fit:cover;border:2px solid rgba(212,137,154,.55);box-shadow:0 6px 20px rgba(0,0,0,.35);}
@@ -961,12 +961,23 @@ function applyLang(lang){
   }
   window.rosaOpenPortal=open;
 
-  try{
-    if(!sessionStorage.getItem(KEY)){
-      setTimeout(open,4500);
+  var alreadySeen=false;
+  try{alreadySeen=!!sessionStorage.getItem(KEY);}catch(e){}
+
+  if(!alreadySeen){
+    var triggered=false;
+    var triggerEvents=['scroll','touchstart','wheel'];
+    function onFirstMove(){
+      if(triggered)return;
+      triggered=true;
+      triggerEvents.forEach(function(evt){
+        window.removeEventListener(evt,onFirstMove);
+      });
+      open();
     }
-  }catch(e){
-    setTimeout(open,4500);
+    triggerEvents.forEach(function(evt){
+      window.addEventListener(evt,onFirstMove,{passive:true});
+    });
   }
 
   closeBtn.addEventListener('click',close);
