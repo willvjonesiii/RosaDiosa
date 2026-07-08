@@ -300,6 +300,40 @@ footer{background:var(--dark);padding:76px 72px 40px;}
 #langToggle{background:none;border:1px solid rgba(255,255,255,.28);color:rgba(255,255,255,.65);font-family:'Cinzel',serif;font-size:.48rem;letter-spacing:.22em;padding:7px 16px;cursor:pointer;transition:all .3s;flex-shrink:0;-webkit-appearance:none;appearance:none;line-height:1;}
 nav.sc #langToggle,nav.scrolled #langToggle{border-color:rgba(170,68,102,.3);color:var(--muted);}
 #langToggle:hover{border-color:var(--rose-pale);color:var(--rose-pale);}
+
+/* ── AUDIO TOGGLE ── */
+#audio-toggle{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;width:44px;height:44px;border-radius:50%;border:2px solid rgba(212,137,154,.4);background:rgba(24,10,16,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--rose-pale);transition:border-color .2s,background .2s;-webkit-appearance:none;appearance:none;}
+#audio-toggle:hover{border-color:var(--rose-pale);background:rgba(24,10,16,.95);}
+#audio-toggle.invite{animation:audioInvite 3.2s ease-in-out infinite;}
+#audio-toggle.playing{border-color:rgba(212,137,154,.8);animation:audioPulse 2.4s ease-in-out infinite;}
+@keyframes audioInvite{0%,100%{box-shadow:0 0 0 0 rgba(212,137,154,.28);}50%{box-shadow:0 0 12px 4px rgba(212,137,154,.38);}}
+@keyframes audioPulse{0%,100%{box-shadow:0 0 0 0 rgba(212,137,154,0);}50%{box-shadow:0 0 0 6px rgba(212,137,154,.15);}}
+#audio-toggle-label{position:fixed;bottom:1.5rem;right:4.5rem;z-index:9999;background:rgba(24,10,16,.9);color:var(--cream);font-family:'Cinzel',serif;font-size:.48rem;letter-spacing:.15em;text-transform:uppercase;padding:.4rem .75rem;pointer-events:none;opacity:0;transition:opacity .6s ease;white-space:nowrap;}
+#audio-toggle-label.show{opacity:1;}
+
+/* ── PORTAL WELCOME LIGHTBOX ── */
+#portal-welcome{position:fixed;inset:0;z-index:10050;display:flex;align-items:center;justify-content:center;padding:1.5rem;background:rgba(10,4,7,.28);opacity:0;pointer-events:none;transition:opacity .6s ease;}
+#portal-welcome.show{opacity:1;pointer-events:auto;}
+.portal-card{position:relative;width:100%;max-width:680px;background:rgba(38,20,28,.55);border:1px solid rgba(212,137,154,.2);border-radius:28px;backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);box-shadow:0 30px 80px rgba(0,0,0,.5);padding:clamp(1.9rem,4.2vw,2.7rem) clamp(2rem,5vw,3rem);text-align:center;transform:translateY(18px) scale(.98);opacity:0;transition:transform .6s cubic-bezier(.16,1,.3,1),opacity .6s ease;}
+#portal-welcome.show .portal-card{transform:translateY(0) scale(1);opacity:1;}
+.portal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;border:1px solid rgba(212,137,154,.2);background:transparent;color:rgba(255,255,255,.5);font-size:1rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .25s,color .25s;}
+.portal-close:hover{border-color:var(--rose-pale);color:var(--rose-pale);}
+.portal-eyebrow{font-family:'Cinzel',serif;font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;color:var(--rose-pale);}
+.portal-headline{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.5rem,3.4vw,2rem);line-height:1.22;color:#fff;margin:.8rem 0 .9rem;}
+.portal-headline em{font-style:italic;color:var(--rose-pale);}
+.portal-body{font-family:'Jost',sans-serif;font-weight:300;font-size:.9rem;line-height:1.68;color:rgba(255,255,255,.65);margin-bottom:.9rem;}
+.portal-track-label{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.88rem;letter-spacing:.02em;line-height:1.5;color:var(--rose-pale);margin-bottom:.9rem;}
+.portal-track{display:flex;align-items:center;gap:.9rem;width:100%;background:rgba(212,137,154,.06);border:1px solid rgba(212,137,154,.2);border-radius:14px;padding:.75rem 1.1rem;cursor:pointer;font-family:'Jost',sans-serif;color:#fff;transition:border-color .25s,background .25s;margin-bottom:.6rem;}
+.portal-track:hover{border-color:var(--rose-pale);background:rgba(212,137,154,.12);}
+.portal-track-icon{flex-shrink:0;width:28px;height:28px;border-radius:50%;border:1px solid rgba(212,137,154,.4);display:flex;align-items:center;justify-content:center;color:var(--rose-pale);font-size:.8rem;}
+.portal-track.playing .portal-track-icon{animation:audioPulse 2.4s ease-in-out infinite;border-color:rgba(212,137,154,.8);}
+.portal-track-info{text-align:left;}
+.portal-track-title{font-size:.88rem;}
+.portal-track-artist{font-size:.7rem;color:rgba(255,255,255,.5);}
+.portal-enter{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;background:var(--rose-pale);color:var(--dark);border:1px solid var(--rose-pale);border-radius:999px;padding:.85rem 2.2rem;cursor:pointer;transition:background .3s,color .3s,letter-spacing .3s;margin-top:.7rem;}
+.portal-enter:hover{background:transparent;color:var(--rose-pale);letter-spacing:.28em;}
+.portal-skip{display:block;margin:1.1rem auto 0;font-family:'Jost',sans-serif;font-size:.76rem;color:rgba(255,255,255,.5);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+.portal-skip:hover{color:var(--rose-pale);}
 </style>
 </head>
 <body>
@@ -554,6 +588,38 @@ nav.sc #langToggle,nav.scrolled #langToggle{border-color:rgba(170,68,102,.3);col
   </div>
 </footer>
 
+<!-- ── PORTAL WELCOME LIGHTBOX ── -->
+<div id="portal-welcome" role="dialog" aria-modal="true" aria-labelledby="portalHeadline">
+  <div class="portal-card">
+    <button class="portal-close" id="portalClose" aria-label="Close">✕</button>
+    <p class="portal-eyebrow" data-i18n="portal.eyebrow">Before You Begin</p>
+    <h2 class="portal-headline" id="portalHeadline" data-i18n="portal.headline">Welcome. You have entered a <em>sacred</em> space.</h2>
+    <p class="portal-body" data-i18n="portal.body">As you arrive, I invite you to pause. Take a breath. Let your shoulders soften. This is the opening of a circle before the rest unfolds &mdash; a moment held for you, before you wander further in.</p>
+    <p class="portal-track-label" data-i18n="portal.trackLabel">From music chosen to accompany you as you move through this space.</p>
+    <button class="portal-track" data-track-index="0">
+      <span class="portal-track-icon">♪</span>
+      <span class="portal-track-info">
+        <span class="portal-track-title" style="display:block;">Dreams Rewound</span>
+        <span class="portal-track-artist">Ethan Echo &amp; Jody Livin</span>
+      </span>
+    </button>
+    <button class="portal-track" data-track-index="1">
+      <span class="portal-track-icon">♪</span>
+      <span class="portal-track-info">
+        <span class="portal-track-title" style="display:block;">Time's Embrace</span>
+        <span class="portal-track-artist">Ethan Echo &amp; Jody Livin</span>
+      </span>
+    </button>
+    <br>
+    <button class="portal-enter" id="portalEnter" data-i18n="portal.enter">Enter &nbsp;→</button>
+    <button class="portal-skip" id="portalSkip" data-i18n="portal.skip">Continue in silence</button>
+  </div>
+</div>
+
+<audio id="bgAudio" preload="none"></audio>
+<button id="audio-toggle" class="invite" aria-label="Toggle background music" title="Play background music">♪</button>
+<div id="audio-toggle-label" aria-hidden="true"></div>
+
 <script>
 (function(){
   var nav=document.getElementById('nav');
@@ -651,7 +717,13 @@ var i18n={
     'footer.nav':'Navigate','footer.legal':'Legal','footer.about':'About','footer.medicine':'My Medicine',
     'footer.work':'Work With Me','footer.path':'The Rose Goddess Path','footer.disclaimer':'Disclaimer',
     'footer.contact':'Contact','footer.brand':'A sacred space for women to remember their power, their bodies, and their inner medicine.',
-    'footer.copy':'&copy; 2026 Templo de la Diosa Rosa &nbsp;&middot;&nbsp; Rosa Diaz de Leon'
+    'footer.copy':'&copy; 2026 Templo de la Diosa Rosa &nbsp;&middot;&nbsp; Rosa Diaz de Leon',
+    'portal.eyebrow':'Before You Begin',
+    'portal.headline':'Welcome. You have entered a <em>sacred</em> space.',
+    'portal.body':'As you arrive, I invite you to pause. Take a breath. Let your shoulders soften. This is the opening of a circle before the rest unfolds &mdash; a moment held for you, before you wander further in.',
+    'portal.trackLabel':'From music chosen to accompany you as you move through this space.',
+    'portal.enter':'Enter &nbsp;&rarr;',
+    'portal.skip':'Continue in silence'
   },
   es:{
     'nav.about':'Acerca de m\xed','nav.medicine':'Mi Medicina','nav.work':'Trabaja Conmigo','nav.path':'El Camino','nav.connect':'Conectar',
@@ -712,7 +784,13 @@ var i18n={
     'footer.nav':'Navegar','footer.legal':'Legal','footer.about':'Acerca de m\xed','footer.medicine':'Mi Medicina',
     'footer.work':'Trabaja Conmigo','footer.path':'El Camino de la Diosa Rosa','footer.disclaimer':'Descargo',
     'footer.contact':'Contacto','footer.brand':'Un espacio sagrado donde las mujeres son invitadas a recordar su poder, sus cuerpos y su medicina interior.',
-    'footer.copy':'&copy; 2026 Templo de la Diosa Rosa &nbsp;&middot;&nbsp; Rosa Diaz de Leon'
+    'footer.copy':'&copy; 2026 Templo de la Diosa Rosa &nbsp;&middot;&nbsp; Rosa Diaz de Leon',
+    'portal.eyebrow':'Antes de Comenzar',
+    'portal.headline':'Bienvenida. Has entrado a un espacio <em>sagrado</em>.',
+    'portal.body':'Al llegar, te invito a hacer una pausa. Respira. Deja que tus hombros se suavicen. Esta es la apertura de un c\xedrculo antes de que contin\xfae el resto &mdash; un momento sostenido para ti, antes de adentrarte m\xe1s.',
+    'portal.trackLabel':'M\xfasica elegida para acompa\xf1arte mientras te mueves por este espacio.',
+    'portal.enter':'Entrar &nbsp;&rarr;',
+    'portal.skip':'Continuar en silencio'
   }
 };
 var currentLang='en';
@@ -757,6 +835,114 @@ function applyLang(lang){
       if(res.ok){form.reset();btn.textContent=currentLang==='en'?'Message Sent ✦':'Mensaje Enviado ✦';status.textContent=t['form.success'];status.className='form-status ok';}
       else{throw new Error();}
     }catch(err){btn.textContent=t['form.btn'];btn.disabled=false;status.textContent=t['form.error'];status.className='form-status err';}
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var btn=document.getElementById('audio-toggle');
+  var audio=document.getElementById('bgAudio');
+  var label=document.getElementById('audio-toggle-label');
+  if(!btn||!audio)return;
+
+  var TRACKS=[
+    {src:'/audio/dreams-rewound.mp3',title:'Dreams Rewound',artist:'Ethan Echo & Jody Livin'},
+    {src:'/audio/times-embrace.mp3',title:"Time's Embrace",artist:'Ethan Echo & Jody Livin'}
+  ];
+  var trackIndex=0;
+  var labelTimer=null;
+
+  function updateLabel(){
+    if(!label)return;
+    var t=TRACKS[trackIndex];
+    label.textContent=t.title+' — '+t.artist;
+  }
+  function flashLabel(){
+    if(!label)return;
+    clearTimeout(labelTimer);
+    label.classList.add('show');
+    labelTimer=setTimeout(function(){label.classList.remove('show');},3000);
+  }
+  function loadTrack(i){
+    trackIndex=(i+TRACKS.length)%TRACKS.length;
+    audio.src=TRACKS[trackIndex].src;
+    updateLabel();
+  }
+
+  audio.addEventListener('play',function(){
+    btn.classList.add('playing');
+    btn.classList.remove('invite');
+    btn.title='Pause background music';
+    updateLabel();
+    flashLabel();
+  });
+  audio.addEventListener('pause',function(){
+    btn.classList.remove('playing');
+    btn.title='Play background music';
+  });
+  audio.addEventListener('ended',function(){
+    loadTrack(trackIndex+1);
+    audio.play();
+  });
+
+  loadTrack(0);
+
+  btn.addEventListener('click',function(){
+    if(audio.paused){audio.play();}else{audio.pause();}
+  });
+
+  window.rosaPlayTrack=function(i){
+    loadTrack(i);
+    audio.play();
+  };
+})();
+</script>
+
+<script>
+(function(){
+  var overlay=document.getElementById('portal-welcome');
+  var closeBtn=document.getElementById('portalClose');
+  var enterBtn=document.getElementById('portalEnter');
+  var skipBtn=document.getElementById('portalSkip');
+  var trackBtns=overlay?overlay.querySelectorAll('.portal-track'):[];
+  if(!overlay)return;
+
+  var KEY='rosa_portal_seen';
+
+  function open(){
+    overlay.classList.add('show');
+    document.documentElement.style.overflow='hidden';
+  }
+  function close(){
+    overlay.classList.remove('show');
+    document.documentElement.style.overflow='';
+    try{sessionStorage.setItem(KEY,'1');}catch(e){}
+  }
+
+  try{
+    if(!sessionStorage.getItem(KEY)){
+      setTimeout(open,4500);
+    }
+  }catch(e){
+    setTimeout(open,4500);
+  }
+
+  closeBtn.addEventListener('click',close);
+  skipBtn.addEventListener('click',close);
+  enterBtn.addEventListener('click',close);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)close();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&overlay.classList.contains('show'))close();
+  });
+
+  trackBtns.forEach(function(trackBtn){
+    trackBtn.addEventListener('click',function(){
+      var idx=parseInt(trackBtn.getAttribute('data-track-index'),10)||0;
+      if(window.rosaPlayTrack)window.rosaPlayTrack(idx);
+      trackBtns.forEach(function(b){b.classList.remove('playing');});
+      trackBtn.classList.add('playing');
+    });
   });
 })();
 </script>
