@@ -850,6 +850,7 @@ function applyLang(lang){
   var audio=document.getElementById('bgAudio');
   var label=document.getElementById('audio-toggle-label');
   if(!btn||!audio)return;
+  audio.volume=0.7;
 
   var TRACKS=[
     {src:'/audio/dreams-rewound.mp3',title:'Dreams Rewound',artist:'Ethan Echo & Jody Livin'},
