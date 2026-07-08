@@ -857,6 +857,7 @@ function applyLang(lang){
   ];
   var trackIndex=0;
   var labelTimer=null;
+  var STATE_KEY='rosa_audio_state';
 
   function updateLabel(){
     if(!label)return;
@@ -868,6 +869,21 @@ function applyLang(lang){
     clearTimeout(labelTimer);
     label.classList.add('show');
     labelTimer=setTimeout(function(){label.classList.remove('show');},3000);
+  }
+  function saveState(){
+    try{
+      sessionStorage.setItem(STATE_KEY,JSON.stringify({
+        trackIndex:trackIndex,
+        currentTime:audio.currentTime||0,
+        playing:!audio.paused
+      }));
+    }catch(e){}
+  }
+  function readState(){
+    try{
+      var raw=sessionStorage.getItem(STATE_KEY);
+      return raw?JSON.parse(raw):null;
+    }catch(e){return null;}
   }
   function loadTrack(i){
     trackIndex=(i+TRACKS.length)%TRACKS.length;
@@ -881,17 +897,35 @@ function applyLang(lang){
     btn.title='Pause background music';
     updateLabel();
     flashLabel();
+    saveState();
   });
   audio.addEventListener('pause',function(){
     btn.classList.remove('playing');
     btn.title='Play background music';
+    saveState();
   });
   audio.addEventListener('ended',function(){
     loadTrack(trackIndex+1);
     audio.play();
   });
+  audio.addEventListener('timeupdate',function(){
+    if(Math.floor(audio.currentTime)%2===0)saveState();
+  });
+  window.addEventListener('pagehide',saveState);
 
-  loadTrack(0);
+  var resumed=readState();
+  if(resumed&&TRACKS[resumed.trackIndex]){
+    loadTrack(resumed.trackIndex);
+    audio.addEventListener('loadedmetadata',function once(){
+      audio.currentTime=resumed.currentTime||0;
+      audio.removeEventListener('loadedmetadata',once);
+      if(resumed.playing){
+        audio.play().catch(function(){});
+      }
+    });
+  }else{
+    loadTrack(0);
+  }
 
   btn.addEventListener('click',function(){
     if(audio.paused){audio.play();}else{audio.pause();}

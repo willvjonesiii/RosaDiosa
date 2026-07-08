@@ -67,6 +67,16 @@ footer{background:var(--dark);padding:56px 72px 36px;}
   footer{padding:40px 24px 28px;}
   .footer-bottom{flex-direction:column;align-items:flex-start;}
 }
+
+/* ── AUDIO TOGGLE (self-contained, portable) ── */
+#audio-toggle{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;width:44px;height:44px;border-radius:50%;border:2px solid rgba(212,137,154,.4);background:rgba(24,10,16,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;color:#d4899a;transition:border-color .2s,background .2s;-webkit-appearance:none;appearance:none;}
+#audio-toggle:hover{border-color:#d4899a;background:rgba(24,10,16,.95);}
+#audio-toggle.invite{animation:audioInvite 3.2s ease-in-out infinite;}
+#audio-toggle.playing{border-color:rgba(212,137,154,.8);animation:audioPulse 2.4s ease-in-out infinite;}
+@keyframes audioInvite{0%,100%{box-shadow:0 0 0 0 rgba(212,137,154,.28);}50%{box-shadow:0 0 12px 4px rgba(212,137,154,.38);}}
+@keyframes audioPulse{0%,100%{box-shadow:0 0 0 0 rgba(212,137,154,0);}50%{box-shadow:0 0 0 6px rgba(212,137,154,.15);}}
+#audio-toggle-label{position:fixed;bottom:1.5rem;right:4.5rem;z-index:9999;background:rgba(24,10,16,.9);color:#fdf6f2;font-family:'Cinzel',serif;font-size:.48rem;letter-spacing:.15em;text-transform:uppercase;padding:.4rem .75rem;pointer-events:none;opacity:0;transition:opacity .6s ease;white-space:nowrap;}
+#audio-toggle-label.show{opacity:1;}
 </style>
 </head>
 <body>
@@ -166,6 +176,107 @@ footer{background:var(--dark);padding:56px 72px 36px;}
 
   set('.footer-bottom p','&copy; 2026 Templo de la Diosa Rosa &nbsp;&middot;&nbsp; Rosa Diaz de Leon');
   var fba=q('.footer-bottom a');if(fba)fba.textContent='Volver al inicio';
+})();
+</script>
+
+<audio id="bgAudio" preload="auto"></audio>
+<button id="audio-toggle" class="invite" aria-label="Toggle background music" title="Play background music">♪</button>
+<div id="audio-toggle-label" aria-hidden="true"></div>
+<script>
+(function(){
+  var btn=document.getElementById('audio-toggle');
+  var audio=document.getElementById('bgAudio');
+  var label=document.getElementById('audio-toggle-label');
+  if(!btn||!audio)return;
+
+  var TRACKS=[
+    {src:'/audio/dreams-rewound.mp3',title:'Dreams Rewound',artist:'Ethan Echo & Jody Livin'},
+    {src:'/audio/times-embrace.mp3',title:"Time's Embrace",artist:'Ethan Echo & Jody Livin'}
+  ];
+  var trackIndex=0;
+  var labelTimer=null;
+  var STATE_KEY='rosa_audio_state';
+
+  function updateLabel(){
+    if(!label)return;
+    var t=TRACKS[trackIndex];
+    label.textContent=t.title+' — '+t.artist;
+  }
+  function flashLabel(){
+    if(!label)return;
+    clearTimeout(labelTimer);
+    label.classList.add('show');
+    labelTimer=setTimeout(function(){label.classList.remove('show');},3000);
+  }
+  function saveState(){
+    try{
+      sessionStorage.setItem(STATE_KEY,JSON.stringify({
+        trackIndex:trackIndex,
+        currentTime:audio.currentTime||0,
+        playing:!audio.paused
+      }));
+    }catch(e){}
+  }
+  function readState(){
+    try{
+      var raw=sessionStorage.getItem(STATE_KEY);
+      return raw?JSON.parse(raw):null;
+    }catch(e){return null;}
+  }
+  function loadTrack(i){
+    trackIndex=(i+TRACKS.length)%TRACKS.length;
+    audio.src=TRACKS[trackIndex].src;
+    updateLabel();
+  }
+
+  audio.addEventListener('play',function(){
+    btn.classList.add('playing');
+    btn.classList.remove('invite');
+    btn.title='Pause background music';
+    updateLabel();
+    flashLabel();
+    saveState();
+  });
+  audio.addEventListener('pause',function(){
+    btn.classList.remove('playing');
+    btn.title='Play background music';
+    saveState();
+  });
+  audio.addEventListener('ended',function(){
+    loadTrack(trackIndex+1);
+    audio.play();
+  });
+  audio.addEventListener('timeupdate',function(){
+    if(Math.floor(audio.currentTime)%2===0)saveState();
+  });
+  window.addEventListener('pagehide',saveState);
+
+  var resumed=readState();
+  if(resumed&&TRACKS[resumed.trackIndex]){
+    loadTrack(resumed.trackIndex);
+    audio.addEventListener('loadedmetadata',function once(){
+      audio.currentTime=resumed.currentTime||0;
+      audio.removeEventListener('loadedmetadata',once);
+      if(resumed.playing){
+        audio.play().catch(function(){});
+      }
+    });
+  }else{
+    loadTrack(0);
+  }
+
+  btn.addEventListener('click',function(){
+    if(audio.paused){
+      audio.play();
+    }else{
+      audio.pause();
+    }
+  });
+
+  window.rosaPlayTrack=function(i){
+    loadTrack(i);
+    audio.play();
+  };
 })();
 </script>
 </body>
