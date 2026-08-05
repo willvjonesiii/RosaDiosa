@@ -526,6 +526,10 @@ nav.sc #langToggle,nav.scrolled #langToggle{border-color:rgba(170,68,102,.3);col
     <h2 data-i18n="cta.h2">Your body remembers.<br>Your pleasure knows the way.<br><em>And your power has always been yours.</em></h2>
     <p data-i18n="cta.p">Are you ready to remember?</p>
     <form class="contact-form" id="contactForm" novalidate>
+      <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+        <label for="cf-hp">Leave this field empty</label>
+        <input type="text" id="cf-hp" name="_hp" tabindex="-1" autocomplete="off">
+      </div>
       <div class="form-field">
         <label for="cf-name" data-i18n="form.name.label">Your Name</label>
         <input type="text" id="cf-name" name="name" placeholder="How shall we call you?" data-i18n-ph="form.name.ph" required>
@@ -826,17 +830,19 @@ function applyLang(lang){
   var btn=document.getElementById('contactBtn');
   var status=document.getElementById('formStatus');
   if(!form)return;
+  var pageLoadedAt=Date.now();
   form.addEventListener('submit',async function(e){
     e.preventDefault();
     var name=form.querySelector('[name=name]').value.trim();
     var email=form.querySelector('[name=email]').value.trim();
     var message=form.querySelector('[name=message]').value.trim();
+    var hp=form.querySelector('[name=_hp]').value;
     var t=i18n[currentLang];
     if(!name||!email||!message){status.textContent=currentLang==='en'?'Please fill in all fields.':'Por favor completa todos los campos.';status.className='form-status err';return;}
     btn.textContent=currentLang==='en'?'Sending…':'Enviando…';btn.disabled=true;
     status.textContent='';status.className='form-status';
     try{
-      var res=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,email:email,message:message})});
+      var res=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,email:email,message:message,_hp:hp,loadedAt:pageLoadedAt})});
       if(res.ok){form.reset();btn.textContent=currentLang==='en'?'Message Sent ✦':'Mensaje Enviado ✦';status.textContent=t['form.success'];status.className='form-status ok';}
       else{throw new Error();}
     }catch(err){btn.textContent=t['form.btn'];btn.disabled=false;status.textContent=t['form.error'];status.className='form-status err';}
